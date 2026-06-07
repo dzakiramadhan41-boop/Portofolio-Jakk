@@ -3,95 +3,96 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portofolio JAKK</title>
+
+<title>Student Finance Tracker</title>
+
 <link rel="stylesheet" href="style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
 
-<nav>
-    <div class="logo">DZAKI</div>
+<header>
 
-    <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">Tentang</a></li>
-        <li><a href="project.html">Project</a></li>
-        <li><a href="contact.html">Kontak</a></li>
-    </ul>
+<h1>💰 Student Finance Tracker</h1>
 
-    <div class="theme-switch" onclick="toggleDark()">
-    <div class="switch-circle"></div>
+<p>Kelola keuanganmu dengan lebih cerdas</p>
+
+</header>
+
+<section class="dashboard">
+
+<div class="card saldo">
+<h2>Saldo</h2>
+<p id="balance">Rp 0</p>
 </div>
-</nav>
 
-<section class="hero">
+<div class="card income">
+<h2>Pemasukan</h2>
+<p id="income">Rp 0</p>
+</div>
 
-    <img src="foto dzaki.jpeg" alt="Foto dzaki" class="foto">
-
-    <h1>Dzaki Pasha Ramadhan</h1>
-
-    <h2 id="typing"></h2>
-
-    <p>
-        Mahasiswa Manajemen Informatika
-        Universitas Negeri Surabaya
-    </p>
-
-    <a href="contact.html">
-        <button>Hubungi Saya</button>
-    </a>
+<div class="card expense">
+<h2>Pengeluaran</h2>
+<p id="expense">Rp 0</p>
+</div>
 
 </section>
 
-<section class="stats">
+<section class="form-box">
 
-    <div class="box">
-        <h3 id="visitor"></h3>
-        <p>Pengunjung</p>
-    </div>
+<h2>Tambah Transaksi</h2>
 
-    <div class="box">
-        <h3 id="jam"></h3>
-        <p>Jam Sekarang</p>
-    </div>
+<input type="text" id="desc" placeholder="Nama Transaksi">
+
+<input type="number" id="amount" placeholder="Nominal">
+
+<select id="type">
+<option value="income">Pemasukan</option>
+<option value="expense">Pengeluaran</option>
+</select>
+
+<button onclick="addTransaction()">
+Tambah
+</button>
+
+</section>
+
+<section class="chart-box">
+
+<canvas id="financeChart"></canvas>
+
+</section>
+
+<section class="history">
+
+<h2>Riwayat Transaksi</h2>
+
+<ul id="list"></ul>
 
 </section>
 
 <script src="script.js"></script>
-<section class="services">
 
-<h1>Apa yang Saya Kerjakan?</h1>
+<div id="toast"></div>
+<h2 id="greeting"></h2>
 
-<div class="service-grid">
+<h3>Pengeluaran Bulanan</h3>
 
-<div class="service-card">
-<h2>🌐 Web Development</h2>
-<p>Membangun website modern menggunakan HTML, CSS dan JavaScript.</p>
+<div class="progress">
+    <div id="progressBar"></div>
 </div>
 
-<div class="service-card">
-<h2>🎨 UI Design</h2>
-<p>Membuat tampilan website yang menarik dan nyaman digunakan.</p>
-</div>
+<select id="filter" onchange="filterTransactions()">
+    <option value="all">Semua</option>
+    <option value="income">Pemasukan</option>
+    <option value="expense">Pengeluaran</option>
+</select>
 
-<div class="service-card">
-<h2>💻 Programming</h2>
-<p>Belajar pemrograman dan pemecahan masalah menggunakan teknologi.</p>
-</div>
-
-</div>
-
-</section>
-<footer>
-
-<p>© 2026 Dzaki Pasha Ramadhan</p>
-
-<p>Made with ❤️ Manajemen Informatika UNESA</p>
-
-</footer>
-<div id="particles-js"></div>
-
-<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-<script src="script.js"></script>
+<button onclick="resetData()">
+🧹 Reset Data
+</button>
 
 </body>
 </html>
