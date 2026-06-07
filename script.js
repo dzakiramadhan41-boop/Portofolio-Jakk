@@ -1,6 +1,6 @@
 // Typing Effect
 const text =
-"Web Developer | Programmer | Mahasiswa";
+"Learning | Building | Growing | Tech Enthusiast";
 
 let i = 0;
 
