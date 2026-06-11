@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KostKu Premium</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <div id="toast"></div> 
+</body>
+
+<header>
+    <button id="themeBtn">
+🌙 Dark Mode
+</button>
+
+   <div class="logo">
+
+    <div class="logo-icon">
+        <i class="fa-solid fa-house"></i>
+    </div>
+
+    <div>
+        <h2>KOSTKU</h2>
+        <small>PREMIUM</small>
+    </div>
+
+</div>
+
+    <p>Temukan Kost Terbaik Dekat Kampusmu</p>
+
+    <input type="text"
+    id="search"
+    placeholder="Cari lokasi kost...">
+
+</header>
+<section class="stats">
+
+    <div class="stat-box">
+        <h2 id="totalKost">0</h2>
+        <p>Total Kost</p>
+    </div>
+
+    <div class="stat-box">
+        <h2>4.9</h2>
+        <p>Rating Tertinggi</p>
+    </div>
+
+    <div class="stat-box">
+        <h2>Rp650K</h2>
+        <p>Harga Termurah</p>
+    </div>
+
+</section>
+
+<section class="kost-container" id="kostContainer">
+
+    <div class="kost-card">
+
+        <img src="../../images/kost1.jpg">
+
+        <div class="content">
+
+            <h3>
+    Kost Putri Ketintang
+
+    <span class="favorite"
+    onclick="toggleFavorite(this)">
+        🤍
+    </span>
+
+</h3>
+
+            <p>📍 Ketintang, Surabaya</p>
+
+            <p>⭐ 4.9</p>
+
+            <p class="price">
+                Rp800.000/bulan
+            </p>
+
+            <button onclick="showDetail(
+                'Kost Putri Ketintang',
+                'Ketintang Surabaya',
+                'Rp800.000/bulan',
+                'AC, WiFi, Kamar Mandi Dalam'
+            )">
+                Detail
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="kost-card">
+
+        <img src="../../images/kost2.jpg">
+
+        <div class="content">
+
+            <h3>
+    Kost Putra Unesa
+
+    <span class="favorite"
+    onclick="toggleFavorite(this)">
+        🤍
+    </span>
+
+</h3>
+
+            <p>📍 Lidah Wetan, Surabaya</p>
+
+            <p>⭐ 4.8</p>
+
+            <p class="price">
+                Rp650.000/bulan
+            </p>
+
+            <button onclick="showDetail(
+                'Kost Putra Unesa',
+                'Lidah Wetan, Surabaya',
+                'Rp650.000/bulan',
+                'WiFi, Parkir Luas'
+            )">
+                Detail
+            </button>
+
+        </div>
+
+    </div>
+    <div class="kost-card">
+
+        <img src="../../images/kost3.jpg">
+
+    <div class="content">
+
+        <h3>
+            Kost AC Dekat Kampus
+
+            <span class="favorite"
+            onclick="toggleFavorite(this)">
+                🤍
+            </span>
+        </h3>
+
+        <p>📍 Ketintang, Surabaya</p>
+
+        <p>⭐ 5.0</p>
+
+        <p class="price">
+            Rp1.200.000/bulan
+        </p>
+
+        <button onclick="showDetail(
+            'Kost AC Dekat Kampus',
+            'Ketintang, Surabaya',
+            'Rp1.200.000/bulan',
+            'AC, WiFi, Kamar Mandi Dalam, Laundry'
+        )">
+            Detail
+        </button>
+
+    </div>
+
+</div>
+
+<div class="kost-card">
+
+    <img src="../../images/kost4.jpg">
+
+    <div class="content">
+
+        <h3>
+            Kost Mahasiswa Lidah Wetan
+
+            <span class="favorite"
+            onclick="toggleFavorite(this)">
+                🤍
+            </span>
+        </h3>
+
+        <p>📍 Lidah Wetan, Surabaya</p>
+
+        <p>⭐ 4.7</p>
+
+        <p class="price">
+            Rp700.000/bulan
+        </p>
+
+        <button onclick="showDetail(
+            'Kost Mahasiswa Lidah Wetan',
+            'Lidah Wetan, Surabaya',
+            'Rp700.000/bulan',
+            'WiFi, Parkir, Dapur Bersama'
+        )">
+            Detail
+        </button>
+
+    </div>
+
+</div>
+ 
+ 
+<div class="kost-card">
+
+    <img src="../../images/kost5.jpg">
+
+    <div class="content">
+
+        <h3>
+            Kost Premium Wiyung
+
+            <span class="favorite"
+            onclick="toggleFavorite(this)">
+                🤍
+            </span>
+        </h3>
+
+        <p>📍 Wiyung, Surabaya</p>
+
+        <p>⭐ 4.9</p>
+
+        <p class="price">
+            Rp1.500.000/bulan
+        </p>
+
+        <button onclick="showDetail(
+            'Kost Premium Wiyung',
+            'Wiyung Surabaya',
+            'Rp1.500.000/bulan',
+            'AC, WiFi, TV, Laundry, Security'
+        )">
+            Detail
+        </button>
+
+    </div>
+
+</div>
+
+<div class="kost-card">
+
+    <img src="../../images/kost6.jpg">
+
+    <div class="content">
+
+        <h3>
+            Kost Exclusive Surabaya Barat
+
+            <span class="favorite"
+            onclick="toggleFavorite(this)">
+                🤍
+            </span>
+        </h3>
+
+        <p>📍 Surabaya Barat</p>
+
+        <p>⭐ 5.0</p>
+
+        <p class="price">
+            Rp1.800.000/bulan
+        </p>
+
+        <button onclick="showDetail(
+            'Kost Exclusive Surabaya Barat',
+            'Surabaya Barat',
+            'Rp1.800.000/bulan',
+            'AC, WiFi, Smart TV, Kulkas, Security 24 Jam'
+        )">
+            Detail
+        </button>
+
+    </div>
+
+</div>
+
+</section>
+
+<div class="modal" id="modal">
+
+    <div class="modal-content">
+
+        <span class="close"
+        onclick="closeModal()">
+        &times;
+        </span>
+
+        <h2 id="kostName"></h2>
+
+        <p id="kostLocation"></p>
+
+        <p id="kostPrice"></p>
+
+        <p id="kostFacility"></p>
+
+        <a href="https://wa.me/6285236583917"
+        target="_blank">
+
+            <button class="wa-btn">
+                Hubungi Pemilik
+            </button>
+
+        </a>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+<div class="wave"></div>
+<div class="glow glow1"></div>
+<div class="glow glow2"></div>
+<footer>
+
+    <div class="footer-line"></div>
+
+    <h3>🏠 KostKu Premium</h3>
+
+    <p>
+        Temukan kost terbaik dekat kampus impianmu
+    </p>
+
+    <div class="footer-social">
+
+        <a href="#">📧</a>
+
+        <a href="#">📱</a>
+
+        <a href="#">🌐</a>
+
+    </div>
+
+    <p class="copyright">
+        © 2026 Dzaki Pasha Ramadhan
+    </p>
+
+    <p>
+        Made with ❤️ Manajemen Informatika UNESA
+    </p>
+
+</footer>
+</div>
+<div class="kost-card featured"></div>
+<div id="particles-js"></div>
+
+
+</body>
+</html>

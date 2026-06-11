@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Student Finance Tracker</title>
+
+<link rel="stylesheet" href="style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<header>
+
+<h1>💰 Student Finance Tracker</h1>
+
+<p>Kelola keuanganmu dengan lebih cerdas</p>
+
+</header>
+
+<section class="dashboard">
+
+<div class="card saldo">
+<h2>Saldo</h2>
+<p id="balance">Rp 0</p>
+</div>
+
+<div class="card income">
+<h2>Pemasukan</h2>
+<p id="income">Rp 0</p>
+</div>
+
+<div class="card expense">
+<h2>Pengeluaran</h2>
+<p id="expense">Rp 0</p>
+</div>
+
+</section>
+
+<section class="form-box">
+
+<h2>Tambah Transaksi</h2>
+
+<input type="text" id="desc" placeholder="Nama Transaksi">
+
+<input type="number" id="amount" placeholder="Nominal">
+
+<select id="type">
+<option value="income">Pemasukan</option>
+<option value="expense">Pengeluaran</option>
+</select>
+
+<button onclick="addTransaction()">
+Tambah
+</button>
+
+</section>
+
+<section class="chart-box">
+
+<canvas id="financeChart"></canvas>
+
+</section>
+
+<section class="history">
+
+<h2>Riwayat Transaksi</h2>
+
+<ul id="list"></ul>
+
+</section>
+
+<script src="script.js"></script>
+
+<div id="toast"></div>
+<h2 id="greeting"></h2>
+
+<h3>Pengeluaran Bulanan</h3>
+
+<div class="progress">
+    <div id="progressBar"></div>
+</div>
+
+<select id="filter" onchange="filterTransactions()">
+    <option value="all">Semua</option>
+    <option value="income">Pemasukan</option>
+    <option value="expense">Pengeluaran</option>
+</select>
+
+<button onclick="resetData()">
+🧹 Reset Data
+</button>
+
+</body>
+</html>

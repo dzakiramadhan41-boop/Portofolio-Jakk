@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>🎓 Sistem Absensi Mahasiswa</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<header>
+
+    <h1>🎓 Sistem Absensi Mahasiswa</h1>
+
+    <p>
+        Monitoring Kehadiran Mahasiswa Secara Modern
+    </p>
+
+    <div id="clock"></div>
+
+</header>
+
+<section class="stats">
+
+    <div class="stat-card">
+        <h2 id="totalData">0</h2>
+        <p>Total Data</p>
+    </div>
+
+    <div class="stat-card">
+        <h2 id="hadirCount">0</h2>
+        <p>Hadir</p>
+    </div>
+
+    <div class="stat-card">
+        <h2 id="izinCount">0</h2>
+        <p>Izin</p>
+    </div>
+
+    <div class="stat-card">
+        <h2 id="alphaCount">0</h2>
+        <p>Alpha</p>
+    </div>
+
+</section>
+
+<section class="form-section">
+
+    <h2>➕ Input Absensi</h2>
+
+    <input
+    type="text"
+    id="nama"
+    placeholder="Nama Mahasiswa">
+
+    <input
+    type="text"
+    id="nim"
+    placeholder="NIM">
+
+    <select id="status">
+
+        <option value="Hadir">
+            ✅ Hadir
+        </option>
+
+        <option value="Izin">
+            🟡 Izin
+        </option>
+
+        <option value="Alpha">
+            🔴 Alpha
+        </option>
+
+    </select>
+
+    <button onclick="tambahAbsensi()">
+        Simpan Absensi
+    </button>
+
+</section>
+
+<section class="search-box">
+
+    <input
+    type="text"
+    id="search"
+    placeholder="🔍 Cari Nama atau NIM">
+
+</section>
+
+<section>
+
+    <h2 class="title">
+        📋 Riwayat Absensi
+    </h2>
+
+    <div id="history"></div>
+
+</section>
+
+<div id="toast"></div>
+
+<script src="script.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+
+<div id="particles-js"></div>
+
+<section class="attendance-progress">
+
+    <h2>📈 Tingkat Kehadiran</h2>
+
+    <div class="progress-bar">
+
+        <div id="progressFill"></div>
+
+    </div>
+
+    <h3 id="attendancePercent">
+        0%
+    </h3>
+
+</section>
+
+<button onclick="exportCSV()">
+📥 Export CSV
+</button>
+
+<footer>
+
+    <div class="footer-line"></div>
+
+    <h2>🎓 Sistem Absensi Mahasiswa</h2>
+
+    <p>
+        Monitoring Kehadiran Mahasiswa Secara Modern
+    </p>
+
+    <div class="footer-info">
+
+        <span>📚 Manajemen Informatika</span>
+
+        <span>💻 Portfolio Project</span>
+
+        <span>🚀 Built With ❤️</span>
+
+    </div>
+
+    <p class="copyright">
+        © 2026 Dzaki Pasha Ramadhan
+    </p>
+
+</footer>
+</body>
+</html>
