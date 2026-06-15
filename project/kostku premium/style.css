@@ -310,3 +310,49 @@ footer p{
 
     display:inline-block;
 }
+@media (max-width:768px){
+
+    .kost-container{
+        grid-template-columns: repeat(2,1fr);
+        padding: 15px;
+        gap: 20px;
+    }
+
+    .kost-card{
+        max-width: 380px;
+        margin: auto;
+    }
+
+    .kost-card img{
+        height: 220px;
+    }
+
+    .content h3{
+        font-size: 22px;
+    }
+
+    .content p{
+        font-size: 16px;
+    }
+
+    .price{
+        font-size: 22px;
+    }
+
+    button{
+        width: 100%;
+    }
+
+    #search{
+        width: 90%;
+    }
+
+    .logo{
+        justify-content: center;
+        margin-bottom: 15px;
+    }
+
+    header{
+        padding: 30px 15px;
+    }
+}
