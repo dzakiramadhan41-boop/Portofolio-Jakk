@@ -1,121 +1,237 @@
-// Typing Effect
-const text =
-"Learning | Building | Growing | Tech Enthusiast";
+// ===========================
+// TYPING EFFECT
+// ===========================
+const words = ["Web Developer", "UI Designer", "Tech Enthusiast", "Programmer Muda"];
+let wordIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
 
-let i = 0;
+function typeEffect() {
+  const typingEl = document.getElementById("typing");
+  if (!typingEl) return;
 
-function ketik() {
+  const currentWord = words[wordIndex];
 
-if(i < text.length){
-
-document.getElementById("typing").innerHTML += text.charAt(i);
-
-i++;
-
-setTimeout(ketik,100);
-
-}
-
-}
-
-if(document.getElementById("typing")){
-ketik();
-}
-
-// Jam Real Time
-
-function updateJam(){
-
-const sekarang = new Date();
-
-const jam =
-sekarang.toLocaleTimeString('id-ID');
-
-const elemen =
-document.getElementById("jam");
-
-if(elemen){
-elemen.innerHTML = jam;
-}
-
-}
-
-setInterval(updateJam,1000);
-
-// Counter Pengunjung
-
-let visitor =
-localStorage.getItem("visitor") || 0;
-
-visitor++;
-
-localStorage.setItem("visitor",visitor);
-
-const v =
-document.getElementById("visitor");
-
-if(v){
-v.innerHTML = visitor;
-}
-
-// Dark Mode
-function toggleDark(){
-
-    document.body.classList.toggle("dark");
-
-    if(document.body.classList.contains("dark")){
-        localStorage.setItem("theme","dark");
-    }else{
-        localStorage.setItem("theme","light");
+  if (!isDeleting) {
+    typingEl.textContent = currentWord.slice(0, charIndex + 1);
+    charIndex++;
+    if (charIndex === currentWord.length) {
+      isDeleting = true;
+      setTimeout(typeEffect, 1800);
+      return;
     }
-
-}
-
-if(localStorage.getItem("theme") === "dark"){
-    document.body.classList.add("dark");
-}
-particlesJS("particles-js", {
-  particles: {
-    number: {
-      value: 80
-    },
-
-    color: {
-      value: "#38bdf8"
-    },
-
-    shape: {
-      type: "circle"
-    },
-
-    opacity: {
-      value: 0.5
-    },
-
-    size: {
-      value: 3
-    },
-
-    move: {
-      enable: true,
-      speed: 2
-    },
-
-    line_linked: {
-      enable: true,
-      distance: 150,
-      color: "#38bdf8",
-      opacity: 0.4,
-      width: 1
-    }
-  },
-
-  interactivity: {
-    events: {
-      onhover: {
-        enable: true,
-        mode: "repulse"
-      }
+  } else {
+    typingEl.textContent = currentWord.slice(0, charIndex - 1);
+    charIndex--;
+    if (charIndex === 0) {
+      isDeleting = false;
+      wordIndex = (wordIndex + 1) % words.length;
     }
   }
+
+  setTimeout(typeEffect, isDeleting ? 60 : 100);
+}
+
+if (document.getElementById("typing")) {
+  typeEffect();
+}
+
+// ===========================
+// REAL-TIME CLOCK
+// ===========================
+function updateJam() {
+  const el = document.getElementById("jam");
+  if (el) {
+    el.textContent = new Date().toLocaleTimeString("id-ID");
+  }
+}
+setInterval(updateJam, 1000);
+updateJam();
+
+// ===========================
+// VISITOR COUNTER
+// ===========================
+let visitor = parseInt(localStorage.getItem("visitor") || "0");
+visitor++;
+localStorage.setItem("visitor", visitor);
+
+const vEl = document.getElementById("visitor");
+if (vEl) {
+  // Animate count up
+  let count = 0;
+  const target = visitor;
+  const step = Math.ceil(target / 40);
+  const timer = setInterval(() => {
+    count += step;
+    if (count >= target) {
+      count = target;
+      clearInterval(timer);
+    }
+    vEl.textContent = count;
+  }, 30);
+}
+
+// ===========================
+// DARK MODE TOGGLE
+// ===========================
+function toggleDark() {
+  document.body.classList.toggle("dark");
+  localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark" : "light");
+}
+
+if (localStorage.getItem("theme") === "dark") {
+  document.body.classList.add("dark");
+}
+
+// ===========================
+// SCROLL FADE-IN ANIMATION
+// ===========================
+const fadeEls = document.querySelectorAll(".fade-in");
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => {
+        entry.target.classList.add("visible");
+      }, i * 100);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+fadeEls.forEach(el => observer.observe(el));
+
+// ===========================
+// PARTICLES.JS
+// ===========================
+if (typeof particlesJS !== "undefined") {
+  particlesJS("particles-js", {
+    particles: {
+      number: { value: 100, density: { enable: true, value_area: 800 } },
+      color: { value: ["#0ea5e9", "#6366f1", "#ec4899"] },
+      shape: { type: "circle" },
+      opacity: { value: 0.7, random: true, anim: { enable: true, speed: 0.8, opacity_min: 0.3 } },
+      size: { value: 4, random: true, anim: { enable: true, speed: 2, size_min: 1 } },
+      move: {
+        enable: true,
+        speed: 2,
+        random: true,
+        out_mode: "out"
+      },
+      line_linked: {
+        enable: true,
+        distance: 150,
+        color: "#0ea5e9",
+        opacity: 0.5,
+        width: 1.5
+      }
+    },
+    interactivity: {
+      detect_on: "canvas",
+      events: {
+        onhover: { enable: true, mode: "grab" },
+        onclick: { enable: true, mode: "push" }
+      },
+      modes: {
+        grab: { distance: 180, line_linked: { opacity: 0.9 } },
+        push: { particles_nb: 5 }
+      }
+    },
+    retina_detect: true
+  });
+}
+
+// ===========================
+// CUSTOM CURSOR
+// ===========================
+const cursorDot  = document.querySelector('.cursor-dot');
+const cursorRing = document.querySelector('.cursor-ring');
+
+if (cursorDot && cursorRing) {
+  let mouseX = 0, mouseY = 0;
+  let ringX = 0, ringY = 0;
+
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    cursorDot.style.left = mouseX + 'px';
+    cursorDot.style.top  = mouseY + 'px';
+  });
+
+  // Smooth ring follow
+  function animateRing() {
+    ringX += (mouseX - ringX) * 0.15;
+    ringY += (mouseY - ringY) * 0.15;
+    cursorRing.style.left = ringX + 'px';
+    cursorRing.style.top  = ringY + 'px';
+    requestAnimationFrame(animateRing);
+  }
+  animateRing();
+
+  // Hover effect on interactive elements
+  const hoverTargets = document.querySelectorAll('a, button, .tech-icon, .service-card, .box, .project-card, .theme-switch');
+  hoverTargets.forEach(el => {
+    el.addEventListener('mouseenter', () => cursorRing.classList.add('hovered'));
+    el.addEventListener('mouseleave', () => cursorRing.classList.remove('hovered'));
+  });
+}
+
+// ===========================
+// BACK TO TOP BUTTON
+// ===========================
+const backToTopBtn = document.getElementById('backToTop');
+if (backToTopBtn) {
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      backToTopBtn.classList.add('visible');
+    } else {
+      backToTopBtn.classList.remove('visible');
+    }
+  });
+}
+
+// ===========================
+// SKILL BAR ANIMATION
+// ===========================
+const skillFills = document.querySelectorAll('.skill-fill');
+
+if (skillFills.length > 0) {
+  const skillObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const target = entry.target;
+        const width = target.getAttribute('data-width');
+        setTimeout(() => {
+          target.style.width = width + '%';
+        }, 200);
+        skillObserver.unobserve(target);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  skillFills.forEach(el => skillObserver.observe(el));
+}
+
+// ===========================
+// HAMBURGER MENU
+// ===========================
+function openMobileMenu() {
+  const menu = document.getElementById('mobileMenu');
+  const btn  = document.getElementById('hamburger');
+  if (menu) menu.classList.add('open');
+  if (btn)  btn.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeMobileMenu() {
+  const menu = document.getElementById('mobileMenu');
+  const btn  = document.getElementById('hamburger');
+  if (menu) menu.classList.remove('open');
+  if (btn)  btn.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// Tutup menu kalau klik di luar
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeMobileMenu();
 });

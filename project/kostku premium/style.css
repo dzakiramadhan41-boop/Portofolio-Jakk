@@ -313,46 +313,78 @@ footer p{
 @media (max-width:768px){
 
     .kost-container{
-        grid-template-columns: repeat(2,1fr);
-        padding: 15px;
-        gap: 20px;
+        grid-template-columns: 1fr;
+        padding: 16px;
+        gap: 16px;
     }
 
     .kost-card{
-        max-width: 380px;
-        margin: auto;
+        max-width: 100%;
+        margin: 0;
     }
 
     .kost-card img{
-        height: 220px;
+        height: 200px;
     }
 
-    .content h3{
-        font-size: 22px;
+    .content { padding: 16px; }
+    .content h3 { font-size: 17px; }
+    .content p  { font-size: 14px; }
+
+    .price { font-size: 17px; }
+
+    button { width: 100%; padding: 12px; font-size: 14px; border-radius: 8px; }
+
+    #search {
+        width: 95%;
+        padding: 12px;
+        font-size: 14px;
     }
 
-    .content p{
-        font-size: 16px;
-    }
-
-    .price{
-        font-size: 22px;
-    }
-
-    button{
-        width: 100%;
-    }
-
-    #search{
-        width: 90%;
-    }
-
-    .logo{
+    .logo {
         justify-content: center;
-        margin-bottom: 15px;
+        margin-bottom: 12px;
     }
 
-    header{
-        padding: 30px 15px;
+    header { padding: 28px 16px; }
+    header p { font-size: 13px; }
+
+    .stats {
+        gap: 12px;
+        padding: 0 16px;
+        margin-bottom: 20px;
     }
+
+    .stat-box {
+        min-width: calc(50% - 8px);
+        padding: 16px;
+        border-radius: 12px;
+    }
+
+    .stat-box h2 { font-size: 22px; }
+    .stat-box p  { font-size: 12px; }
+
+    .modal-content {
+        width: 95%;
+        margin: 60px auto;
+        padding: 20px;
+        border-radius: 16px;
+    }
+
+    .modal-content h2 { font-size: 18px; }
+    .modal-content p  { font-size: 14px; }
+
+    footer { padding: 24px 16px; margin-top: 40px; }
+    footer h3 { font-size: 18px; }
+
+    .footer-social a { font-size: 22px; margin: 0 8px; }
+
+    #toast { top: 12px; right: 12px; padding: 10px 16px; font-size: 13px; }
+}
+
+@media (max-width: 480px) {
+    .kost-container { padding: 12px; gap: 12px; }
+    .kost-card img  { height: 170px; }
+    .logo h2 { font-size: 18px; }
+    header p { font-size: 12px; }
 }

@@ -1,83 +1,149 @@
+<!DOCTYPE html>
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tentang Saya</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tentang – Dzaki Pasha</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+<body>
+
+<div class="cursor-dot"></div>
+<div class="cursor-ring"></div>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" onclick="closeMobileMenu()">✕</button>
+  <a href="index.html" onclick="closeMobileMenu()">Home</a>
+  <a href="about.html" class="active" onclick="closeMobileMenu()">Tentang</a>
+  <a href="project.html" onclick="closeMobileMenu()">Project</a>
+  <a href="contact.html" onclick="closeMobileMenu()">Kontak</a>
+</div>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="logo">DZAKI</div>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html" class="active">Tentang</a></li>
+    <li><a href="project.html">Project</a></li>
+    <li><a href="contact.html">Kontak</a></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <div class="theme-switch" onclick="toggleDark()" title="Toggle Dark Mode">
+      <div class="switch-circle"></div>
+    </div>
+    <button class="hamburger" id="hamburger" onclick="openMobileMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ABOUT -->
 <section class="about">
-<div class="about-banner">
+
+  <div class="about-banner fade-in">
+    <div class="section-label">PROFIL</div>
     <h1>About Me</h1>
-    <p>Passionate About Technology & Continuous Learning</p>
-</div>
+    <p>Passionate About Technology &amp; Continuous Learning</p>
+  </div>
 
-    <p class="intro">
-        Halo, saya <b>Dzaki Pasha Ramadhan</b>, mahasiswa Manajemen Informatika
-        di Universitas Negeri Surabaya. Saya memiliki minat besar pada
-        pengembangan website, teknologi digital, dan pemecahan masalah
-        menggunakan pemrograman.
-    </p>
+  <p class="intro fade-in">
+    Halo, saya <b>Dzaki Pasha Ramadhan</b>, mahasiswa Manajemen Informatika
+    di Universitas Negeri Surabaya. Saya memiliki minat besar pada
+    pengembangan website, teknologi digital, dan pemecahan masalah
+    menggunakan pemrograman.
+  </p>
 
-    <div class="about-grid">
+  <div class="about-grid">
 
-        <div class="about-card">
-            <h2>🎯 Tujuan Saya</h2>
-            <p>
-                Menjadi seorang profesional di bidang teknologi yang mampu
-                menciptakan solusi digital yang bermanfaat bagi banyak orang.
-            </p>
-        </div>
-
-        <div class="about-card">
-            <h2>💻 Bidang yang Saya Sukai</h2>
-            <p>
-                Web Development, UI/UX Design, Front-End Development,
-                dan teknologi berbasis internet.
-            </p>
-        </div>
-
-        <div class="about-card">
-            <h2>🚀 Karakter Saya</h2>
-            <p>
-                Cepat belajar, disiplin, bertanggung jawab,
-                dan selalu ingin mengembangkan kemampuan diri.
-            </p>
-        </div>
-
-        <div class="about-card">
-            <h2>📚 Saat Ini Sedang Belajar</h2>
-            <p>
-                HTML, CSS, JavaScript, Python, C++ dan berbagai teknologi web modern.
-            </p>
-        </div>
-
-    </div>
-    <div class="stats-about">
-
-    <div class="stat">
-        <h2>10+</h2>
-        <p>Project Latihan</p>
+    <div class="about-card fade-in">
+      <h2>🎯 Tujuan Saya</h2>
+      <p>
+        Menjadi seorang profesional di bidang teknologi yang mampu
+        menciptakan solusi digital yang bermanfaat bagi banyak orang.
+      </p>
     </div>
 
-    <div class="stat">
-        <h2>2026</h2>
-        <p>Mulai Kuliah</p>
+    <div class="about-card fade-in">
+      <h2>💻 Bidang Favorit</h2>
+      <p>
+        Web Development, UI/UX Design, Front-End Development,
+        dan teknologi berbasis internet.
+      </p>
     </div>
 
-    <div class="stat">
-        <h2>100%</h2>
-        <p>Semangat Belajar</p>
+    <div class="about-card fade-in">
+      <h2>🚀 Karakter Saya</h2>
+      <p>
+        Cepat belajar, disiplin, bertanggung jawab,
+        dan selalu ingin mengembangkan kemampuan diri.
+      </p>
     </div>
 
-</div>
+    <div class="about-card fade-in">
+      <h2>📚 Sedang Belajar</h2>
+      <p>
+        HTML, CSS, JavaScript, Python, C++ dan berbagai teknologi web modern.
+      </p>
+    </div>
+
+  </div>
+
+  <!-- SKILL BARS -->
+  <div class="skills-section fade-in">
+    <h2>⚡ Skill & Kemampuan</h2>
+    <div class="skill-item">
+      <div class="skill-header"><span class="skill-name">HTML5</span><span class="skill-pct">90%</span></div>
+      <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-header"><span class="skill-name">CSS3</span><span class="skill-pct">85%</span></div>
+      <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-header"><span class="skill-name">JavaScript</span><span class="skill-pct">75%</span></div>
+      <div class="skill-bar"><div class="skill-fill" data-width="75"></div></div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-header"><span class="skill-name">Python</span><span class="skill-pct">65%</span></div>
+      <div class="skill-bar"><div class="skill-fill" data-width="65"></div></div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-header"><span class="skill-name">C++</span><span class="skill-pct">60%</span></div>
+      <div class="skill-bar"><div class="skill-fill" data-width="60"></div></div>
+    </div>
+  </div>
+
+  <div class="stats-about">
+    <div class="stat fade-in">
+      <h2>10+</h2>
+      <p>Project Latihan</p>
+    </div>
+    <div class="stat fade-in">
+      <h2>2026</h2>
+      <p>Mulai Kuliah</p>
+    </div>
+    <div class="stat fade-in">
+      <h2>100%</h2>
+      <p>Semangat Belajar</p>
+    </div>
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 <span>Dzaki Pasha Ramadhan</span></p>
+  <p>Made with ❤️ · Manajemen Informatika UNESA</p>
+</footer>
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Kembali ke atas">↑</button>
+
 <div id="particles-js"></div>
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 <script src="script.js"></script>
-<script src="script.js"></script>
-<footer>
 
-<p>© 2026 Dzaki Pasha Ramadhan</p>
-
-<p>Made with ❤️ Manajemen Informatika UNESA</p>
-
-</footer>
-</section>
+</body>
+</html>

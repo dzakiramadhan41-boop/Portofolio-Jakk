@@ -1,73 +1,101 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kontak</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontak – Dzaki Pasha</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<div class="cursor-dot"></div>
+<div class="cursor-ring"></div>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" onclick="closeMobileMenu()">✕</button>
+  <a href="index.html" onclick="closeMobileMenu()">Home</a>
+  <a href="about.html" onclick="closeMobileMenu()">Tentang</a>
+  <a href="project.html" onclick="closeMobileMenu()">Project</a>
+  <a href="contact.html" class="active" onclick="closeMobileMenu()">Kontak</a>
+</div>
+
+<!-- NAVBAR -->
 <nav>
-<ul>
-<li><a href="index.html">Home</a></li>
-<li><a href="about.html">Tentang</a></li>
-<li><a href="project.html">Project</a></li>
-<li><a href="contact.html">Kontak</a></li>
-</ul>
+  <div class="logo">DZAKI</div>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">Tentang</a></li>
+    <li><a href="project.html">Project</a></li>
+    <li><a href="contact.html" class="active">Kontak</a></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <div class="theme-switch" onclick="toggleDark()" title="Toggle Dark Mode">
+      <div class="switch-circle"></div>
+    </div>
+    <button class="hamburger" id="hamburger" onclick="openMobileMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
 
-<div class="container">
- <section class="contact-section">
+<!-- CONTACT -->
+<section class="contact-section">
 
+  <div class="fade-in">
+    <div class="section-label">GET IN TOUCH</div>
     <h1>📬 Hubungi Saya</h1>
-
     <p class="contact-desc">
-        Saya terbuka untuk diskusi, kolaborasi project,
-        magang, freelance, maupun peluang kerja.
+      Saya terbuka untuk diskusi, kolaborasi project, magang, freelance, maupun peluang kerja. Jangan ragu untuk menghubungi saya!
     </p>
+  </div>
 
-    <div class="contact-grid">
+  <div class="contact-grid">
 
-        <div class="contact-card">
-            <h3>📱 WhatsApp</h3>
-            <p>+62 852-3658-3917</p>
-            <a href="https://wa.me/6285236583917" target="_blank">Chat Sekarang</a>
-        </div>
-
-        <div class="contact-card">
-            <h3>📷 Instagram</h3>
-            <p>@dzkrmdhn_6</p>
-            <a href="https://www.instagram.com/dzkrmdhn_6/" target="_blank">Lihat Profil</a>
-        </div>
-
-        <div class="contact-card">
-            <h3>📧 Email</h3>
-            <p>dzakiramadhan41@gmail.com</p>
-            <a href="mailto:dzakiramadhan41@gmail.com" target="_blank">Kirim Email</a>
-        </div>
-
-        <div class="contact-card">
-            <h3>💻 GitHub</h3>
-            <p>github.com/dzakiramadhan41-boop</p>
-            <a href="https://github.com/dzakiramadhan41-boop" target="_blank">Lihat Project</a>
-        </div>
-
+    <div class="contact-card fade-in">
+      <span class="contact-icon">📱</span>
+      <h3>WhatsApp</h3>
+      <p>+62 852-3658-3917</p>
+      <a href="https://wa.me/6285236583917" target="_blank" rel="noopener">Chat Sekarang →</a>
     </div>
 
+    <div class="contact-card fade-in">
+      <span class="contact-icon">📷</span>
+      <h3>Instagram</h3>
+      <p>@dzkrmdhn_6</p>
+      <a href="https://www.instagram.com/dzkrmdhn_6/" target="_blank" rel="noopener">Lihat Profil →</a>
+    </div>
+
+    <div class="contact-card fade-in">
+      <span class="contact-icon">📧</span>
+      <h3>Email</h3>
+      <p>dzakiramadhan41@gmail.com</p>
+      <a href="mailto:dzakiramadhan41@gmail.com">Kirim Email →</a>
+    </div>
+
+    <div class="contact-card fade-in">
+      <span class="contact-icon">💻</span>
+      <h3>GitHub</h3>
+      <p>dzakiramadhan41-boop</p>
+      <a href="https://github.com/dzakiramadhan41-boop" target="_blank" rel="noopener">Lihat Project →</a>
+    </div>
+
+  </div>
+
 </section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 <span>Dzaki Pasha Ramadhan</span></p>
+  <p>Made with ❤️ · Manajemen Informatika UNESA</p>
+</footer>
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Kembali ke atas">↑</button>
 
 <div id="particles-js"></div>
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 <script src="script.js"></script>
-<script src="script.js"></script>
-<footer>
-
-<p>© 2026 Dzaki Pasha Ramadhan</p>
-
-<p>Made with ❤️ Manajemen Informatika UNESA</p>
-
-</footer>
 
 </body>
 </html>

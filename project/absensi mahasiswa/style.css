@@ -388,3 +388,104 @@ footer p{
     opacity:.8;
 
 }
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+@media (max-width: 768px) {
+  header { padding: 30px 16px; }
+  header h1 { font-size: 1.6rem; }
+  header p  { font-size: 13px; }
+  #clock    { font-size: 1rem; }
+
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .stat-card { padding: 16px; border-radius: 14px; }
+  .stat-card h2 { font-size: 24px; }
+  .stat-card p  { font-size: 12px; }
+
+  .form-section {
+    width: 95%;
+    padding: 18px;
+    border-radius: 14px;
+  }
+
+  .form-section h2 { font-size: 16px; margin-bottom: 14px; }
+
+  .form-section input,
+  .form-section select {
+    padding: 12px;
+    font-size: 14px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+  }
+
+  button {
+    padding: 12px;
+    font-size: 14px;
+    border-radius: 8px;
+  }
+
+  .search-box {
+    width: 95%;
+    margin: 16px auto;
+  }
+
+  .search-box input {
+    padding: 12px;
+    font-size: 14px;
+    border-radius: 8px;
+  }
+
+  .title { font-size: 16px; }
+
+  #history {
+    width: 95%;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .history-card {
+    padding: 16px;
+    border-radius: 14px;
+    font-size: 14px;
+  }
+
+  .attendance-progress { padding: 0 16px 20px; }
+  .attendance-progress h2 { font-size: 16px; text-align: center; }
+
+  .progress-bar { height: 18px; border-radius: 14px; }
+
+  #attendancePercent { text-align: center; font-size: 18px; margin-top: 8px; }
+
+  button[onclick="exportCSV()"] {
+    width: 90%;
+    max-width: 400px;
+    display: block;
+    margin: 16px auto;
+  }
+
+  footer { padding: 28px 16px; margin-top: 40px; }
+  footer h2 { font-size: 18px; }
+  footer p  { font-size: 13px; }
+
+  .footer-info {
+    gap: 10px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-info span { font-size: 13px; padding: 8px 14px; }
+
+  #toast { right: 12px; bottom: 12px; padding: 10px 16px; font-size: 13px; }
+}
+
+@media (max-width: 480px) {
+  header h1 { font-size: 1.3rem; }
+  .stats { grid-template-columns: repeat(2, 1fr); }
+  .stat-card h2 { font-size: 20px; }
+}
