@@ -191,7 +191,7 @@ if (backToTopBtn) {
 }
 
 // ===========================
-// SKILL BAR ANIMATION
+// SKILL BAR ANIMATION (legacy — kept for compatibility)
 // ===========================
 const skillFills = document.querySelectorAll('.skill-fill');
 
@@ -235,3 +235,155 @@ function closeMobileMenu() {
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closeMobileMenu();
 });
+
+// ===========================
+// SCROLL PROGRESS BAR
+// ===========================
+const scrollProgress = document.getElementById('scroll-progress');
+if (scrollProgress) {
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    scrollProgress.style.width = pct + '%';
+  }, { passive: true });
+}
+
+// ===========================
+// RIPPLE EFFECT
+// ===========================
+function createRipple(e) {
+  const btn = e.currentTarget;
+  const existingRipple = btn.querySelector('.ripple');
+  if (existingRipple) existingRipple.remove();
+
+  const rect = btn.getBoundingClientRect();
+  const size = Math.max(rect.width, rect.height);
+  const x = e.clientX - rect.left - size / 2;
+  const y = e.clientY - rect.top  - size / 2;
+
+  const ripple = document.createElement('span');
+  ripple.classList.add('ripple');
+  ripple.style.cssText = `width:${size}px;height:${size}px;left:${x}px;top:${y}px`;
+  btn.appendChild(ripple);
+
+  ripple.addEventListener('animationend', () => ripple.remove());
+}
+
+// Attach ripple to all buttons and primary links
+document.querySelectorAll('.btn-primary, .btn-outline, .project-btn, .filter-btn, .contact-card a').forEach(el => {
+  el.addEventListener('click', createRipple);
+});
+
+// ===========================
+// TOAST NOTIFICATION
+// ===========================
+function showToast(message, duration = 3000) {
+  const container = document.getElementById('toast-container');
+  if (!container) return;
+
+  const toast = document.createElement('div');
+  toast.className = 'toast';
+  toast.innerHTML = `<span class="toast-icon">🔔</span><span>${message}</span>`;
+  container.appendChild(toast);
+
+  // Trigger show
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => toast.classList.add('show'));
+  });
+
+  setTimeout(() => {
+    toast.classList.remove('show');
+    toast.addEventListener('transitionend', () => toast.remove());
+  }, duration);
+}
+
+// Attach toast to elements with data-toast attribute
+document.querySelectorAll('[data-toast]').forEach(el => {
+  el.addEventListener('click', () => {
+    showToast(el.dataset.toast);
+  });
+});
+
+// ===========================
+// PROJECT FILTER
+// ===========================
+const filterBtns = document.querySelectorAll('.filter-btn');
+const projectCards = document.querySelectorAll('.project-card[data-category]');
+
+if (filterBtns.length > 0) {
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Update active button
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filter = btn.dataset.filter;
+
+      projectCards.forEach(card => {
+        const categories = card.dataset.category || '';
+        const match = filter === 'all' || categories.split(' ').includes(filter);
+
+        if (match) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    });
+  });
+}
+
+// ===========================
+// COUNTER ANIMATION (ABOUT STATS)
+// ===========================
+const countEls = document.querySelectorAll('.count-up');
+
+if (countEls.length > 0) {
+  const countObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = parseInt(el.dataset.target, 10);
+      const suffix = el.dataset.suffix || '';
+      const duration = 1400;
+      const start = performance.now();
+
+      function update(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        // Ease out cubic
+        const ease = 1 - Math.pow(1 - progress, 3);
+        const current = Math.round(ease * target);
+        el.textContent = current + suffix;
+        if (progress < 1) requestAnimationFrame(update);
+      }
+
+      requestAnimationFrame(update);
+      countObserver.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+
+  countEls.forEach(el => countObserver.observe(el));
+}
+
+// ===========================
+// PARALLAX BANNER (SUBTLE)
+// ===========================
+const parallaxEls = document.querySelectorAll('.parallax-banner');
+
+if (parallaxEls.length > 0) {
+  // Only apply parallax if not on a touch/mobile device
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isMobile = window.innerWidth <= 768;
+
+  if (!prefersReducedMotion && !isMobile) {
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      parallaxEls.forEach(el => {
+        // Move at 20% of scroll speed — subtle, won't go below initial position
+        el.style.transform = `translateY(${scrollY * 0.2}px)`;
+      });
+    }, { passive: true });
+  }
+}

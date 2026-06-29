@@ -8,6 +8,12 @@
 </head>
 <body>
 
+<!-- SCROLL PROGRESS -->
+<div id="scroll-progress"></div>
+
+<!-- TOAST CONTAINER -->
+<div id="toast-container"></div>
+
 <div class="cursor-dot"></div>
 <div class="cursor-ring"></div>
 
@@ -42,7 +48,7 @@
 <!-- ABOUT -->
 <section class="about">
 
-  <div class="about-banner fade-in">
+  <div class="about-banner fade-in parallax-banner">
     <div class="section-label">PROFIL</div>
     <h1>About Me</h1>
     <p>Passionate About Technology &amp; Continuous Learning</p>
@@ -66,7 +72,7 @@
     </div>
 
     <div class="about-card fade-in">
-      <h2>💻 Bidang Favorit</h2>
+      <h2>🖥️ Bidang Favorit</h2>
       <p>
         Web Development, UI/UX Design, Front-End Development,
         dan teknologi berbasis internet.
@@ -74,7 +80,7 @@
     </div>
 
     <div class="about-card fade-in">
-      <h2>🚀 Karakter Saya</h2>
+      <h2>🔥 Karakter Saya</h2>
       <p>
         Cepat belajar, disiplin, bertanggung jawab,
         dan selalu ingin mengembangkan kemampuan diri.
@@ -82,7 +88,7 @@
     </div>
 
     <div class="about-card fade-in">
-      <h2>📚 Sedang Belajar</h2>
+      <h2>📖 Sedang Belajar</h2>
       <p>
         HTML, CSS, JavaScript, Python, C++ dan berbagai teknologi web modern.
       </p>
@@ -90,42 +96,49 @@
 
   </div>
 
-  <!-- SKILL BARS -->
+  <!-- SKILLS -->
   <div class="skills-section fade-in">
     <h2>⚡ Skill & Kemampuan</h2>
-    <div class="skill-item">
-      <div class="skill-header"><span class="skill-name">HTML5</span><span class="skill-pct">90%</span></div>
-      <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
-    </div>
-    <div class="skill-item">
-      <div class="skill-header"><span class="skill-name">CSS3</span><span class="skill-pct">85%</span></div>
-      <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
-    </div>
-    <div class="skill-item">
-      <div class="skill-header"><span class="skill-name">JavaScript</span><span class="skill-pct">75%</span></div>
-      <div class="skill-bar"><div class="skill-fill" data-width="75"></div></div>
-    </div>
-    <div class="skill-item">
-      <div class="skill-header"><span class="skill-name">Python</span><span class="skill-pct">65%</span></div>
-      <div class="skill-bar"><div class="skill-fill" data-width="65"></div></div>
-    </div>
-    <div class="skill-item">
-      <div class="skill-header"><span class="skill-name">C++</span><span class="skill-pct">60%</span></div>
-      <div class="skill-bar"><div class="skill-fill" data-width="60"></div></div>
+    <div class="skill-list">
+      <div class="skill-item">
+        <span class="skill-name">HTML</span>
+        <span class="skill-badge advanced">Advanced</span>
+        <div class="skill-tooltip">Sudah membuat 5+ project dengan HTML5 semantik</div>
+      </div>
+      <div class="skill-item">
+        <span class="skill-name">CSS</span>
+        <span class="skill-badge advanced">Advanced</span>
+        <div class="skill-tooltip">Mahir layout Flexbox, Grid, animasi & responsive design</div>
+      </div>
+      <div class="skill-item">
+        <span class="skill-name">JavaScript</span>
+        <span class="skill-badge intermediate">Intermediate</span>
+        <div class="skill-tooltip">Memahami DOM manipulation, event, & localStorage</div>
+      </div>
+      <div class="skill-item">
+        <span class="skill-name">Python</span>
+        <span class="skill-badge intermediate">Intermediate</span>
+        <div class="skill-tooltip">Bisa scripting dasar, logika, dan struktur data</div>
+      </div>
+      <div class="skill-item">
+        <span class="skill-name">C++</span>
+        <span class="skill-badge beginner">Beginner</span>
+        <div class="skill-tooltip">Sedang belajar sintaks dasar dan pemrograman OOP</div>
+      </div>
     </div>
   </div>
 
   <div class="stats-about">
     <div class="stat fade-in">
-      <h2>10+</h2>
+      <h2 class="count-up" data-target="10" data-suffix="+">0</h2>
       <p>Project Latihan</p>
     </div>
     <div class="stat fade-in">
-      <h2>2026</h2>
+      <h2 class="count-up" data-target="2026" data-suffix="">0</h2>
       <p>Mulai Kuliah</p>
     </div>
     <div class="stat fade-in">
-      <h2>100%</h2>
+      <h2 class="count-up" data-target="100" data-suffix="%">0</h2>
       <p>Semangat Belajar</p>
     </div>
   </div>

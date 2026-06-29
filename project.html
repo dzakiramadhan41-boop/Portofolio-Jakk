@@ -8,6 +8,12 @@
 </head>
 <body>
 
+<!-- SCROLL PROGRESS -->
+<div id="scroll-progress"></div>
+
+<!-- TOAST CONTAINER -->
+<div id="toast-container"></div>
+
 <div class="cursor-dot"></div>
 <div class="cursor-ring"></div>
 
@@ -50,43 +56,51 @@
     </p>
   </div>
 
+  <!-- FILTER BAR -->
+  <div class="filter-bar">
+    <button class="filter-btn active" data-filter="all">Semua</button>
+    <button class="filter-btn" data-filter="web">Web App</button>
+    <button class="filter-btn" data-filter="ui">UI/UX</button>
+    <button class="filter-btn" data-filter="js">JavaScript</button>
+  </div>
+
   <div class="projects-grid">
 
-    <div class="project-card fade-in">
+    <div class="project-card fade-in" data-category="web js">
       <div class="project-img-wrap">
         <img src="images/finance tracker.jpeg" alt="Finance Tracker">
         <div class="project-img-overlay"></div>
       </div>
       <div class="project-content">
-        <h3>💰 Student Finance Tracker</h3>
+        <h3>💸 Student Finance Tracker</h3>
         <p>Aplikasi manajemen keuangan mahasiswa dengan dashboard interaktif dan penyimpanan data lokal.</p>
         <div class="project-tags">
           <span class="tag">HTML</span>
           <span class="tag">CSS</span>
           <span class="tag">JavaScript</span>
         </div>
-        <a href="project/finance tracker/index.html" class="project-btn">▶ Buka Project</a>
+        <a href="project/finance tracker/index.html" class="project-btn">⚡ Buka Project</a>
       </div>
     </div>
 
-    <div class="project-card fade-in">
+    <div class="project-card fade-in" data-category="web ui">
       <div class="project-img-wrap">
         <img src="images/kostku premium.png" alt="Kostku Premium">
         <div class="project-img-overlay"></div>
       </div>
       <div class="project-content">
-        <h3>🏠 Kost Finder</h3>
+        <h3>🏡 Kost Finder</h3>
         <p>Aplikasi pencarian kost berbasis web berdasarkan budget, lokasi, dan fasilitas.</p>
         <div class="project-tags">
           <span class="tag">HTML</span>
           <span class="tag">CSS</span>
           <span class="tag">JavaScript</span>
         </div>
-        <a href="project/kostku premium/index.html" class="project-btn">▶ Buka Project</a>
+        <a href="project/kostku premium/index.html" class="project-btn">⚡ Buka Project</a>
       </div>
     </div>
 
-    <div class="project-card fade-in">
+    <div class="project-card fade-in" data-category="web js">
       <div class="project-img-wrap">
         <img src="images/absensi mahasiswa.png" alt="Absensi Mahasiswa">
         <div class="project-img-overlay"></div>
@@ -99,7 +113,7 @@
           <span class="tag">CSS</span>
           <span class="tag">JavaScript</span>
         </div>
-        <a href="project/absensi mahasiswa/index.html" class="project-btn">▶ Buka Project</a>
+        <a href="project/absensi mahasiswa/index.html" class="project-btn">⚡ Buka Project</a>
       </div>
     </div>
 
