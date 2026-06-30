@@ -13,86 +13,198 @@
 
 <body>
 
-<header>
+<div id="particles-js"></div>
 
-<h1>💰 Student Finance Tracker</h1>
+<header class="topbar">
 
-<p>Kelola keuanganmu dengan lebih cerdas</p>
+  <div class="brand">
+    <h1>💰 Student Finance Tracker</h1>
+    <p>Kelola Keuangan Mahasiswa Secara Modern</p>
+  </div>
+
+  <div class="top-actions">
+
+  <div class="clock">
+    <span id="clock-time">00:00:00</span>
+    <small id="clock-date"></small>
+  </div>
+
+  <a href="../../project.html" class="back-btn">
+    ← Kembali
+  </a>
+
+  <button id="themeBtn">
+    🌙
+  </button>
+
+</div>
 
 </header>
 
-<section class="dashboard">
+<section class="hero">
 
-<div class="card saldo">
-<h2>Saldo</h2>
-<p id="balance">Rp 0</p>
+  <h2 id="greeting">Halo Bro 👋</h2>
+
+</section>
+
+<section class="stats-grid">
+
+  <div class="stat-card saldo">
+    <span>💰</span>
+    <h3>Saldo</h3>
+    <p id="balance">Rp 0</p>
+  </div>
+
+  <div class="stat-card income">
+    <span>📈</span>
+    <h3>Pemasukan</h3>
+    <p id="income">Rp 0</p>
+  </div>
+
+  <div class="stat-card expense">
+    <span>📉</span>
+    <h3>Pengeluaran</h3>
+    <p id="expense">Rp 0</p>
+  </div>
+
+  <div class="stat-card saving">
+    <span>🏦</span>
+    <h3>Tabungan</h3>
+    <p id="saving">Rp 0</p>
+  </div>
+
+</section>
+
+<div class="main-grid">
+
+  <section class="form-card">
+
+    <h2>➕ Tambah Transaksi</h2>
+
+    <input type="text" id="desc" placeholder="Nama Transaksi">
+
+    <input type="number" id="amount" placeholder="Nominal">
+
+    <select id="type">
+      <option value="income">📈 Pemasukan</option>
+      <option value="expense">📉 Pengeluaran</option>
+    </select>
+
+    <button onclick="addTransaction()">
+      💾 Simpan Transaksi
+    </button>
+
+  </section>
+
+  <section class="chart-card">
+
+    <h2>📊 Statistik Keuangan</h2>
+
+    <canvas id="financeChart"></canvas>
+    <canvas id="monthlyChart"></canvas>
+
+    <div class="progress-box">
+
+      <h4>Target Pengeluaran</h4>
+
+      <div class="progress">
+        <div id="progressBar"></div>
+      </div>
+
+    </div>
+
+  </section>
+
+</div>
+<div class="insight-card">
+
+<h3>🤖 Financial Insight</h3>
+
+<p id="insightText">
+Belum ada analisis
+</p>
+
 </div>
 
-<div class="card income">
-<h2>Pemasukan</h2>
-<p id="income">Rp 0</p>
 </div>
 
-<div class="card expense">
-<h2>Pengeluaran</h2>
-<p id="expense">Rp 0</p>
-</div>
+<section class="history-card">
+
+  <div class="history-top">
+
+    <h2>📋 Riwayat Transaksi</h2>
+
+    <div class="actions">
+
+      <input
+        type="text"
+        id="search"
+        placeholder="Cari transaksi..."
+      >
+
+      <select id="filter">
+        <option value="all">Semua</option>
+        <option value="income">Pemasukan</option>
+        <option value="expense">Pengeluaran</option>
+      </select>
+
+      <button onclick="exportCSV()">📥 CSV</button>
+
+      <button onclick="resetData()">🗑 Reset</button>
+
+    </div>
+
+  </div>
+
+  <table>
+
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>Transaksi</th>
+        <th>Tanggal</th>
+        <th>Jenis</th>
+        <th>Nominal</th>
+        <th>Aksi</th>
+      </tr>
+    </thead>
+
+    <tbody id="tableBody"></tbody>
+
+  </table>
 
 </section>
-
-<section class="form-box">
-
-<h2>Tambah Transaksi</h2>
-
-<input type="text" id="desc" placeholder="Nama Transaksi">
-
-<input type="number" id="amount" placeholder="Nominal">
-
-<select id="type">
-<option value="income">Pemasukan</option>
-<option value="expense">Pengeluaran</option>
-</select>
-
-<button onclick="addTransaction()">
-Tambah
-</button>
-
-</section>
-
-<section class="chart-box">
-
-<canvas id="financeChart"></canvas>
-
-</section>
-
-<section class="history">
-
-<h2>Riwayat Transaksi</h2>
-
-<ul id="list"></ul>
-
-</section>
-
-<script src="script.js"></script>
 
 <div id="toast"></div>
-<h2 id="greeting"></h2>
 
-<h3>Pengeluaran Bulanan</h3>
+<script src="script.js"></script>
+<section class="goal-card">
 
-<div class="progress">
-    <div id="progressBar"></div>
-</div>
+<h2>🎯 Target Tabungan</h2>
 
-<select id="filter" onchange="filterTransactions()">
-    <option value="all">Semua</option>
-    <option value="income">Pemasukan</option>
-    <option value="expense">Pengeluaran</option>
+<input
+type="number"
+id="savingGoal"
+placeholder="Masukkan target tabungan">
+
+<button onclick="saveGoal()">
+Simpan Target
+</button>
+
+<h3 id="goalText">
+Belum ada target
+</h3>
+
+</section>
+<select id="category">
+  <option value="Makan">🍔 Makan</option>
+  <option value="Transport">🚌 Transport</option>
+  <option value="Kuliah">📚 Kuliah</option>
+  <option value="Hiburan">🎮 Hiburan</option>
+  <option value="Belanja">🛍 Belanja</option>
+  <option value="Lainnya">📦 Lainnya</option>
 </select>
 
-<button onclick="resetData()">
-🧹 Reset Data
-</button>
 
 </body>
 </html>

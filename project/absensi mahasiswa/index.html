@@ -1,160 +1,244 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" data-theme="dark">
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>🎓 Sistem Absensi Mahasiswa</title>
-
-<link rel="stylesheet" href="style.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎓 Sistem Absensi Mahasiswa</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
+<!-- AURORA BACKGROUND -->
+<div class="aurora aurora-1"></div>
+<div class="aurora aurora-2"></div>
+<div class="aurora aurora-3"></div>
 
-<header>
-
-    <h1>🎓 Sistem Absensi Mahasiswa</h1>
-
-    <p>
-        Monitoring Kehadiran Mahasiswa Secara Modern
-    </p>
-
-    <div id="clock"></div>
-
-</header>
-
-<section class="stats">
-
-    <div class="stat-card">
-        <h2 id="totalData">0</h2>
-        <p>Total Data</p>
-    </div>
-
-    <div class="stat-card">
-        <h2 id="hadirCount">0</h2>
-        <p>Hadir</p>
-    </div>
-
-    <div class="stat-card">
-        <h2 id="izinCount">0</h2>
-        <p>Izin</p>
-    </div>
-
-    <div class="stat-card">
-        <h2 id="alphaCount">0</h2>
-        <p>Alpha</p>
-    </div>
-
-</section>
-
-<section class="form-section">
-
-    <h2>➕ Input Absensi</h2>
-
-    <input
-    type="text"
-    id="nama"
-    placeholder="Nama Mahasiswa">
-
-    <input
-    type="text"
-    id="nim"
-    placeholder="NIM">
-
-    <select id="status">
-
-        <option value="Hadir">
-            ✅ Hadir
-        </option>
-
-        <option value="Izin">
-            🟡 Izin
-        </option>
-
-        <option value="Alpha">
-            🔴 Alpha
-        </option>
-
-    </select>
-
-    <button onclick="tambahAbsensi()">
-        Simpan Absensi
-    </button>
-
-</section>
-
-<section class="search-box">
-
-    <input
-    type="text"
-    id="search"
-    placeholder="🔍 Cari Nama atau NIM">
-
-</section>
-
-<section>
-
-    <h2 class="title">
-        📋 Riwayat Absensi
-    </h2>
-
-    <div id="history"></div>
-
-</section>
-
-<div id="toast"></div>
-
-<script src="script.js"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
-
+<!-- PARTICLES -->
 <div id="particles-js"></div>
 
-<section class="attendance-progress">
-
-    <h2>📈 Tingkat Kehadiran</h2>
-
-    <div class="progress-bar">
-
-        <div id="progressFill"></div>
-
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="header-left">
+      <div class="logo-icon">🎓</div>
+      <div>
+        <h1>Sistem Absensi Mahasiswa</h1>
+        <p>Monitoring Kehadiran Secara Modern</p>
+      </div>
     </div>
+    <div class="header-right">
+      <div class="clock-box">
+        <div id="clock-time">--:--:--</div>
+        <div id="clock-date">-</div>
+      </div>
+      <button class="theme-btn" id="themeBtn" title="Toggle tema">🌙</button>
+      <a href="../../project.html" class="back-btn">← Kembali</a>
+    </div>
+  </div>
+</header>
 
-    <h3 id="attendancePercent">
-        0%
-    </h3>
-
+<!-- STATS -->
+<section class="stats-section">
+  <div class="stat-card" id="card-total">
+    <div class="stat-icon">📊</div>
+    <div class="stat-info">
+      <h2 class="stat-num" id="totalData">0</h2>
+      <p>Total Absensi</p>
+    </div>
+  </div>
+  <div class="stat-card hadir-card" id="card-hadir">
+    <div class="stat-icon">✅</div>
+    <div class="stat-info">
+      <h2 class="stat-num" id="hadirCount">0</h2>
+      <p>Hadir</p>
+    </div>
+  </div>
+  <div class="stat-card izin-card" id="card-izin">
+    <div class="stat-icon">🟡</div>
+    <div class="stat-info">
+      <h2 class="stat-num" id="izinCount">0</h2>
+      <p>Izin</p>
+    </div>
+  </div>
+  <div class="stat-card alpha-card" id="card-alpha">
+    <div class="stat-icon">🔴</div>
+    <div class="stat-info">
+      <h2 class="stat-num" id="alphaCount">0</h2>
+      <p>Alpha</p>
+    </div>
+  </div>
 </section>
 
-<button onclick="exportCSV()">
-📥 Export CSV
-</button>
+<!-- MAIN CONTENT -->
+<main class="main-grid">
 
-<footer>
+  <!-- LEFT: Form + Chart -->
+  <div class="left-panel">
 
-    <div class="footer-line"></div>
-
-    <h2>🎓 Sistem Absensi Mahasiswa</h2>
-
-    <p>
-        Monitoring Kehadiran Mahasiswa Secara Modern
-    </p>
-
-    <div class="footer-info">
-
-        <span>📚 Manajemen Informatika</span>
-
-        <span>💻 Portfolio Project</span>
-
-        <span>🚀 Built With ❤️</span>
-
+    <!-- FORM -->
+    <div class="card form-card">
+      <div class="card-header">
+        <h2 id="formTitle">➕ Input Absensi</h2>
+      </div>
+      <div class="form-body">
+        <div class="input-group">
+          <label>Nama Mahasiswa</label>
+          <input type="text" id="nama" placeholder="Masukkan nama lengkap" autocomplete="off">
+          <span class="input-error" id="namaError"></span>
+        </div>
+        <div class="input-group">
+          <label>NIM</label>
+          <input type="text" id="nim" placeholder="Contoh: 24080574001" autocomplete="off">
+          <span class="input-error" id="nimError"></span>
+        </div>
+        <div class="input-group">
+          <label>Mata Kuliah</label>
+          <input type="text" id="matkul" placeholder="Contoh: Pemrograman Web" autocomplete="off">
+        </div>
+        <div class="input-group">
+          <label>Tanggal</label>
+          <input type="date" id="tanggal">
+        </div>
+        <div class="input-group">
+          <label>Status Kehadiran</label>
+          <div class="status-selector">
+            <button type="button" class="status-opt active" data-val="Hadir">✅ Hadir</button>
+            <button type="button" class="status-opt" data-val="Izin">🟡 Izin</button>
+            <button type="button" class="status-opt" data-val="Alpha">🔴 Alpha</button>
+          </div>
+          <input type="hidden" id="status" value="Hadir">
+        </div>
+        <div class="form-actions">
+          <button class="btn-save" id="saveBtn" onclick="simpanAbsensi()">
+            <span>💾 Simpan Absensi</span>
+          </button>
+          <button class="btn-cancel hidden" id="cancelBtn" onclick="batalEdit()">Batal</button>
+        </div>
+      </div>
     </div>
 
-    <p class="copyright">
-        © 2026 Dzaki Pasha Ramadhan
-    </p>
+    <!-- DONUT CHART -->
+    <div class="card chart-card">
+      <div class="card-header">
+        <h2>📈 Statistik Kehadiran</h2>
+      </div>
+      <div class="chart-body">
+        <div class="donut-wrapper">
+          <svg viewBox="0 0 120 120" class="donut-svg" id="donutSvg">
+            <circle cx="60" cy="60" r="50" fill="none" stroke-width="16" class="donut-bg"/>
+            <circle cx="60" cy="60" r="50" fill="none" stroke-width="16"
+              class="donut-hadir" id="donutHadir"
+              stroke-dasharray="0 314" stroke-dashoffset="78.5"/>
+            <circle cx="60" cy="60" r="50" fill="none" stroke-width="16"
+              class="donut-izin" id="donutIzin"
+              stroke-dasharray="0 314" stroke-dashoffset="78.5"/>
+            <circle cx="60" cy="60" r="50" fill="none" stroke-width="16"
+              class="donut-alpha" id="donutAlpha"
+              stroke-dasharray="0 314" stroke-dashoffset="78.5"/>
+          </svg>
+          <div class="donut-center">
+            <span id="donutPct">0%</span>
+            <small>Hadir</small>
+          </div>
+        </div>
+        <div class="chart-legend">
+          <div class="legend-item"><span class="dot dot-hadir"></span> Hadir <b id="legHadir">0</b></div>
+          <div class="legend-item"><span class="dot dot-izin"></span> Izin <b id="legIzin">0</b></div>
+          <div class="legend-item"><span class="dot dot-alpha"></span> Alpha <b id="legAlpha">0</b></div>
+        </div>
+      </div>
+    </div>
 
+  </div>
+
+  <!-- RIGHT: Table -->
+  <div class="right-panel">
+    <div class="card table-card">
+      <div class="card-header table-header">
+        <h2>📋 Riwayat Absensi</h2>
+        <div class="table-tools">
+          <div class="search-wrap">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="search" placeholder="Cari nama / NIM..." oninput="filterData()">
+          </div>
+          <select id="filterStatus" onchange="filterData()">
+            <option value="all">Semua Status</option>
+            <option value="Hadir">✅ Hadir</option>
+            <option value="Izin">🟡 Izin</option>
+            <option value="Alpha">🔴 Alpha</option>
+          </select>
+          <select id="filterMatkul" onchange="filterData()">
+            <option value="all">Semua Matkul</option>
+          </select>
+          <button class="btn-export" onclick="exportCSV()" title="Export ke CSV">📥 CSV</button>
+          <label class="btn-import" title="Import dari CSV">
+            📤 Import
+            <input type="file" id="importFile" accept=".csv" onchange="importCSV(event)" style="display:none">
+          </label>
+          <button class="btn-print" onclick="cetakData()" title="Cetak / Print">🖨️ Print</button>
+          <button class="btn-reset" onclick="konfirmasiReset()" title="Hapus semua data">🗑 Reset</button>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table id="absensiTable">
+          <thead>
+            <tr>
+              <th>No</th>
+              <th class="sortable" data-col="nama">Nama <span class="sort-icon">↕</span></th>
+              <th class="sortable" data-col="nim">NIM <span class="sort-icon">↕</span></th>
+              <th>Mata Kuliah</th>
+              <th class="sortable" data-col="tanggal">Tanggal <span class="sort-icon">↕</span></th>
+              <th>Status</th>
+              <th>Kehadiran</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody">
+            <!-- rows injected by JS -->
+          </tbody>
+        </table>
+        <div id="emptyState" class="empty-state hidden">
+          <div class="empty-icon">📭</div>
+          <p>Belum ada data absensi</p>
+          <small>Isi form di sebelah kiri untuk memulai</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- MODAL KONFIRMASI -->
+<div class="modal-overlay hidden" id="modalOverlay">
+  <div class="modal">
+    <div class="modal-icon">⚠️</div>
+    <h3 id="modalTitle">Konfirmasi</h3>
+    <p id="modalMsg">Yakin ingin menghapus?</p>
+    <div class="modal-actions">
+      <button class="btn-modal-cancel" onclick="tutupModal()">Batal</button>
+      <button class="btn-modal-confirm" id="modalConfirmBtn">Ya, Lanjutkan</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div id="toastContainer"></div>
+
+<!-- PRINT AREA (hidden) -->
+<div id="printArea" class="hidden"></div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <span>🎓 Sistem Absensi Mahasiswa</span>
+    <span>·</span>
+    <span>Manajemen Informatika UNESA</span>
+    <span>·</span>
+    <span>© 2026 Dzaki Pasha Ramadhan</span>
+  </div>
 </footer>
+
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
