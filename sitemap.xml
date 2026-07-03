@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
+   <!-- Halaman Utama -->
   <url>
     <loc>https://dzakipasha.site/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
+  <!-- Halaman Portfolio -->
   <url>
     <loc>https://dzakipasha.site/project.html</loc>
     <changefreq>weekly</changefreq>
@@ -25,6 +27,7 @@
     <priority>0.7</priority>
   </url>
 
+  <!-- Detail Project -->
   <url>
     <loc>https://dzakipasha.site/project/absensi%20mahasiswa/</loc>
     <changefreq>monthly</changefreq>
@@ -36,5 +39,11 @@
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
+
+  <url>
+  <loc>https://dzakipasha.site/project/kostku%20premium/</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.9</priority>
+</url>
 
 </urlset>
