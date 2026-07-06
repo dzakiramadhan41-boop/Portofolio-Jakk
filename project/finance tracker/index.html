@@ -1,210 +1,258 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" data-theme="dark">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Student Finance Tracker</title>
-
-<link rel="stylesheet" href="style.css">
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>💰 Student Finance Tracker</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-
 <body>
 
+<!-- AURORA -->
+<div class="aurora aurora-1"></div>
+<div class="aurora aurora-2"></div>
+<div class="aurora aurora-3"></div>
+
+<!-- PARTICLES -->
 <div id="particles-js"></div>
 
-<header class="topbar">
-
-  <div class="brand">
-    <h1>💰 Student Finance Tracker</h1>
-    <p>Kelola Keuangan Mahasiswa Secara Modern</p>
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="header-left">
+      <div class="logo-icon">💰</div>
+      <div>
+        <h1>Student Finance Tracker</h1>
+        <p id="greeting">Selamat datang!</p>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="clock-box">
+        <div id="clock-time">--:--:--</div>
+        <div id="clock-date">-</div>
+      </div>
+      <button class="theme-btn" id="themeBtn" title="Toggle tema">🌙</button>
+      <a href="../../project.html" class="back-btn">← Kembali</a>
+    </div>
   </div>
-
-  <div class="top-actions">
-
-  <div class="clock">
-    <span id="clock-time">00:00:00</span>
-    <small id="clock-date"></small>
-  </div>
-
-  <a href="../../project.html" class="back-btn">
-    ← Kembali
-  </a>
-
-  <button id="themeBtn">
-    🌙
-  </button>
-
-</div>
-
 </header>
 
-<section class="hero">
-
-  <h2 id="greeting">Halo Bro 👋</h2>
-
+<!-- STATS -->
+<section class="stats-section">
+  <div class="stat-card saldo-card">
+    <div class="stat-icon">💰</div>
+    <div class="stat-info">
+      <p class="stat-label">Saldo</p>
+      <h2 class="stat-num" id="balance">Rp 0</h2>
+    </div>
+    <div class="stat-trend" id="balanceTrend"></div>
+  </div>
+  <div class="stat-card income-card">
+    <div class="stat-icon">📈</div>
+    <div class="stat-info">
+      <p class="stat-label">Pemasukan</p>
+      <h2 class="stat-num" id="income">Rp 0</h2>
+    </div>
+  </div>
+  <div class="stat-card expense-card">
+    <div class="stat-icon">📉</div>
+    <div class="stat-info">
+      <p class="stat-label">Pengeluaran</p>
+      <h2 class="stat-num" id="expense">Rp 0</h2>
+    </div>
+  </div>
+  <div class="stat-card saving-card">
+    <div class="stat-icon">🏦</div>
+    <div class="stat-info">
+      <p class="stat-label">Tabungan</p>
+      <h2 class="stat-num" id="saving">Rp 0</h2>
+    </div>
+  </div>
 </section>
 
-<section class="stats-grid">
+<!-- MAIN GRID -->
+<main class="main-grid">
 
-  <div class="stat-card saldo">
-    <span>💰</span>
-    <h3>Saldo</h3>
-    <p id="balance">Rp 0</p>
-  </div>
+  <!-- LEFT PANEL -->
+  <div class="left-panel">
 
-  <div class="stat-card income">
-    <span>📈</span>
-    <h3>Pemasukan</h3>
-    <p id="income">Rp 0</p>
-  </div>
-
-  <div class="stat-card expense">
-    <span>📉</span>
-    <h3>Pengeluaran</h3>
-    <p id="expense">Rp 0</p>
-  </div>
-
-  <div class="stat-card saving">
-    <span>🏦</span>
-    <h3>Tabungan</h3>
-    <p id="saving">Rp 0</p>
-  </div>
-
-</section>
-
-<div class="main-grid">
-
-  <section class="form-card">
-
-    <h2>➕ Tambah Transaksi</h2>
-
-    <input type="text" id="desc" placeholder="Nama Transaksi">
-
-    <input type="number" id="amount" placeholder="Nominal">
-
-    <select id="type">
-      <option value="income">📈 Pemasukan</option>
-      <option value="expense">📉 Pengeluaran</option>
-    </select>
-
-    <button onclick="addTransaction()">
-      💾 Simpan Transaksi
-    </button>
-
-  </section>
-
-  <section class="chart-card">
-
-    <h2>📊 Statistik Keuangan</h2>
-
-    <canvas id="financeChart"></canvas>
-    <canvas id="monthlyChart"></canvas>
-
-    <div class="progress-box">
-
-      <h4>Target Pengeluaran</h4>
-
-      <div class="progress">
-        <div id="progressBar"></div>
+    <!-- FORM -->
+    <div class="card form-card">
+      <div class="card-header">
+        <h2 id="formTitle">➕ Tambah Transaksi</h2>
       </div>
-
+      <div class="form-body">
+        <div class="input-group">
+          <label>Nama Transaksi</label>
+          <input type="text" id="desc" placeholder="Contoh: Makan siang" autocomplete="off">
+        </div>
+        <div class="input-group">
+          <label>Nominal (Rp)</label>
+          <input type="number" id="amount" placeholder="Contoh: 25000" min="0">
+        </div>
+        <div class="input-row">
+          <div class="input-group">
+            <label>Kategori</label>
+            <select id="category">
+              <option value="Makan">🍔 Makan</option>
+              <option value="Transport">🚌 Transport</option>
+              <option value="Kuliah">📚 Kuliah</option>
+              <option value="Hiburan">🎮 Hiburan</option>
+              <option value="Belanja">🛍️ Belanja</option>
+              <option value="Kesehatan">💊 Kesehatan</option>
+              <option value="Lainnya">📦 Lainnya</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label>Jenis</label>
+            <div class="type-selector">
+              <button type="button" class="type-opt active" data-val="income">📈 Masuk</button>
+              <button type="button" class="type-opt" data-val="expense">📉 Keluar</button>
+            </div>
+            <input type="hidden" id="type" value="income">
+          </div>
+        </div>
+        <button class="btn-save" onclick="addTransaction()">
+          <span>💾 Simpan Transaksi</span>
+        </button>
+      </div>
     </div>
 
-  </section>
+    <!-- TARGET TABUNGAN -->
+    <div class="card goal-card">
+      <div class="card-header">
+        <h2>🎯 Target Tabungan</h2>
+      </div>
+      <div class="goal-body">
+        <div class="input-group">
+          <label>Target (Rp)</label>
+          <input type="number" id="savingGoal" placeholder="Contoh: 1000000" min="0">
+        </div>
+        <button class="btn-goal" onclick="saveGoal()">Simpan Target</button>
+        <div class="goal-progress-wrap" id="goalProgressWrap">
+          <div class="goal-bar-track">
+            <div class="goal-bar-fill" id="goalBarFill"></div>
+          </div>
+          <p class="goal-text" id="goalText">Belum ada target</p>
+        </div>
+      </div>
+    </div>
 
-</div>
-<div class="insight-card">
-
-<h3>🤖 Financial Insight</h3>
-
-<p id="insightText">
-Belum ada analisis
-</p>
-
-</div>
-
-</div>
-
-<section class="history-card">
-
-  <div class="history-top">
-
-    <h2>📋 Riwayat Transaksi</h2>
-
-    <div class="actions">
-
-      <input
-        type="text"
-        id="search"
-        placeholder="Cari transaksi..."
-      >
-
-      <select id="filter">
-        <option value="all">Semua</option>
-        <option value="income">Pemasukan</option>
-        <option value="expense">Pengeluaran</option>
-      </select>
-
-      <button onclick="exportCSV()">📥 CSV</button>
-
-      <button onclick="resetData()">🗑 Reset</button>
-
+    <!-- INSIGHT -->
+    <div class="card insight-card">
+      <div class="card-header">
+        <h2>🤖 Financial Insight</h2>
+      </div>
+      <div class="insight-body">
+        <p id="insightText">Belum ada data untuk dianalisis.</p>
+        <div id="insightExtra"></div>
+      </div>
     </div>
 
   </div>
 
-  <table>
+  <!-- RIGHT PANEL -->
+  <div class="right-panel">
 
-    <thead>
-      <tr>
-        <th>No</th>
-        <th>Transaksi</th>
-        <th>Tanggal</th>
-        <th>Jenis</th>
-        <th>Nominal</th>
-        <th>Aksi</th>
-      </tr>
-    </thead>
+    <!-- CHARTS -->
+    <div class="card chart-card">
+      <div class="card-header chart-tabs-header">
+        <h2>📊 Statistik</h2>
+        <div class="chart-tabs">
+          <button class="tab-btn active" data-tab="donut">Donut</button>
+          <button class="tab-btn" data-tab="bar">Bar</button>
+          <button class="tab-btn" data-tab="category">Kategori</button>
+        </div>
+      </div>
+      <div class="chart-body">
+        <div class="chart-pane active" id="pane-donut">
+          <div class="donut-wrap">
+            <canvas id="donutChart"></canvas>
+          </div>
+        </div>
+        <div class="chart-pane" id="pane-bar">
+          <canvas id="barChart"></canvas>
+        </div>
+        <div class="chart-pane" id="pane-category">
+          <canvas id="categoryChart"></canvas>
+        </div>
+        <!-- Progress pengeluaran -->
+        <div class="progress-box">
+          <div class="progress-label">
+            <span>Pengeluaran vs Pemasukan</span>
+            <span id="progressPct">0%</span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill" id="progressBar"></div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <tbody id="tableBody"></tbody>
+    <!-- HISTORY -->
+    <div class="card history-card">
+      <div class="card-header history-header">
+        <h2>📋 Riwayat Transaksi</h2>
+        <div class="history-tools">
+          <div class="search-wrap">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="search" placeholder="Cari transaksi...">
+          </div>
+          <select id="filter">
+            <option value="all">Semua</option>
+            <option value="income">📈 Pemasukan</option>
+            <option value="expense">📉 Pengeluaran</option>
+          </select>
+          <select id="filterCategory">
+            <option value="all">Semua Kategori</option>
+          </select>
+          <button class="btn-export" onclick="exportCSV()" title="Export CSV">📥 CSV</button>
+          <button class="btn-reset" onclick="resetData()" title="Reset semua">🗑 Reset</button>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Transaksi</th>
+              <th>Kategori</th>
+              <th>Tanggal</th>
+              <th>Jenis</th>
+              <th>Nominal</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+        <div id="emptyState" class="empty-state hidden">
+          <div class="empty-icon">💸</div>
+          <p>Belum ada transaksi</p>
+          <small>Tambahkan transaksi pertamamu di form sebelah kiri</small>
+        </div>
+      </div>
+    </div>
 
-  </table>
+  </div>
+</main>
 
-</section>
+<!-- TOAST -->
+<div id="toastContainer"></div>
 
-<div id="toast"></div>
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <span>💰 Student Finance Tracker</span>
+    <span>·</span>
+    <span>Manajemen Informatika UNESA</span>
+    <span>·</span>
+    <span>© 2026 Dzaki Pasha Ramadhan</span>
+  </div>
+</footer>
 
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 <script src="script.js"></script>
-<section class="goal-card">
-
-<h2>🎯 Target Tabungan</h2>
-
-<input
-type="number"
-id="savingGoal"
-placeholder="Masukkan target tabungan">
-
-<button onclick="saveGoal()">
-Simpan Target
-</button>
-
-<h3 id="goalText">
-Belum ada target
-</h3>
-
-</section>
-<select id="category">
-  <option value="Makan">🍔 Makan</option>
-  <option value="Transport">🚌 Transport</option>
-  <option value="Kuliah">📚 Kuliah</option>
-  <option value="Hiburan">🎮 Hiburan</option>
-  <option value="Belanja">🛍 Belanja</option>
-  <option value="Lainnya">📦 Lainnya</option>
-</select>
-
-
 </body>
 </html>
