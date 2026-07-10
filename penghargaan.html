@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Penghargaan – Dzaki Pasha</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- SCROLL PROGRESS -->
+<div id="scroll-progress"></div>
+
+<!-- TOAST CONTAINER -->
+<div id="toast-container"></div>
+
+<div class="cursor-dot"></div>
+<div class="cursor-ring"></div>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" onclick="closeMobileMenu()">✕</button>
+  <a href="index.html" onclick="closeMobileMenu()">Home</a>
+  <a href="about.html" onclick="closeMobileMenu()">Tentang</a>
+  <a href="project.html" onclick="closeMobileMenu()">Project</a>
+  <a href="penghargaan.html" class="active" onclick="closeMobileMenu()">Penghargaan</a>
+  <a href="contact.html" onclick="closeMobileMenu()">Kontak</a>
+</div>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="logo">DZAKI</div>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">Tentang</a></li>
+    <li><a href="project.html">Project</a></li>
+    <li><a href="penghargaan.html" class="active">Penghargaan</a></li>
+    <li><a href="contact.html">Kontak</a></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <div class="theme-switch" onclick="toggleDark()" title="Toggle Dark Mode">
+      <div class="switch-circle"></div>
+    </div>
+    <button class="hamburger" id="hamburger" onclick="openMobileMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- PENGHARGAAN SECTION -->
+<section class="penghargaan-section">
+
+  <div class="about-banner fade-in parallax-banner">
+    <div class="section-label">SERTIFIKAT & PRESTASI</div>
+    <h1>🏆 Penghargaan</h1>
+    <p>Kumpulan sertifikat dan penghargaan yang telah saya raih</p>
+  </div>
+
+  <!-- STATS -->
+  <div class="sertif-stats fade-in">
+    <div class="sertif-stat-box">
+      <h2 id="totalSertif">0</h2>
+      <p>Total Sertifikat</p>
+    </div>
+    <div class="sertif-stat-box">
+      <h2>2024–2026</h2>
+      <p>Rentang Tahun</p>
+    </div>
+    <div class="sertif-stat-box">
+      <h2>100%</h2>
+      <p>Semangat Belajar</p>
+    </div>
+  </div>
+
+  <!-- FILTER -->
+  <div class="sertif-filter fade-in">
+    <div class="sertif-search-wrap">
+      <span class="sertif-search-icon">🔍</span>
+      <input type="text" id="sertifSearch" placeholder="Cari sertifikat..." oninput="filterSertif()">
+    </div>
+  </div>
+
+  <!-- GRID SERTIFIKAT -->
+  <div class="sertif-grid" id="sertifGrid">
+
+    <div class="sertif-card fade-in" onclick="openLightbox('images/sertif1.jpg', 'Sertifikat 1')">
+      <div class="sertif-img-wrap">
+        <img src="images/sertif1.jpg" alt="Sertifikat 1" loading="lazy">
+        <div class="sertif-overlay">
+          <span class="sertif-zoom">🔍 Lihat</span>
+        </div>
+      </div>
+      <div class="sertif-info">
+        <p class="sertif-title">Sertifikat 1</p>
+      </div>
+    </div>
+
+    <div class="sertif-card fade-in" onclick="openLightbox('images/sertif2.jpg', 'Sertifikat 2')">
+      <div class="sertif-img-wrap">
+        <img src="images/sertif2.jpg" alt="Sertifikat 2" loading="lazy">
+        <div class="sertif-overlay">
+          <span class="sertif-zoom">🔍 Lihat</span>
+        </div>
+      </div>
+      <div class="sertif-info">
+        <p class="sertif-title">Sertifikat 2</p>
+      </div>
+    </div>
+
+    <div class="sertif-card fade-in" onclick="openLightbox('images/sertif3.jpg', 'Sertifikat 3')">
+      <div class="sertif-img-wrap">
+        <img src="images/sertif3.jpg" alt="Sertifikat 3" loading="lazy">
+        <div class="sertif-overlay">
+          <span class="sertif-zoom">🔍 Lihat</span>
+        </div>
+      </div>
+      <div class="sertif-info">
+        <p class="sertif-title">Sertifikat 3</p>
+      </div>
+    </div>
+
+    <div class="sertif-card fade-in" onclick="openLightbox('images/sertif4.jpg', 'Sertifikat 4')">
+      <div class="sertif-img-wrap">
+        <img src="images/sertif4.jpg" alt="Sertifikat 4" loading="lazy">
+        <div class="sertif-overlay">
+          <span class="sertif-zoom">🔍 Lihat</span>
+        </div>
+      </div>
+      <div class="sertif-info">
+        <p class="sertif-title">Sertifikat 4</p>
+      </div>
+    </div>
+
+    <div class="sertif-card fade-in" onclick="openLightbox('images/sertif5.jpg', 'Sertifikat 5')">
+      <div class="sertif-img-wrap">
+        <img src="images/sertif5.jpg" alt="Sertifikat 5" loading="lazy">
+        <div class="sertif-overlay">
+          <span class="sertif-zoom">🔍 Lihat</span>
+        </div>
+      </div>
+      <div class="sertif-info">
+        <p class="sertif-title">Sertifikat 5</p>
+      </div>
+    </div>
+
+    <div class="sertif-card fade-in" onclick="openLightbox('images/sertif6.jpg', 'Sertifikat 6')">
+      <div class="sertif-img-wrap">
+        <img src="images/sertif6.jpg" alt="Sertifikat 6" loading="lazy">
+        <div class="sertif-overlay">
+          <span class="sertif-zoom">🔍 Lihat</span>
+        </div>
+      </div>
+      <div class="sertif-info">
+        <p class="sertif-title">Sertifikat 6</p>
+      </div>
+    </div>
+
+    <div class="sertif-card fade-in" onclick="openLightbox('images/sertif7.jpg', 'Sertifikat 7')">
+      <div class="sertif-img-wrap">
+        <img src="images/sertif7.jpg" alt="Sertifikat 7" loading="lazy">
+        <div class="sertif-overlay">
+          <span class="sertif-zoom">🔍 Lihat</span>
+        </div>
+      </div>
+      <div class="sertif-info">
+        <p class="sertif-title">Sertifikat 7</p>
+      </div>
+    </div>
+
+    <div class="sertif-card fade-in" onclick="openLightbox('images/sertif8.jpg', 'Sertifikat 8')">
+      <div class="sertif-img-wrap">
+        <img src="images/sertif8.jpg" alt="Sertifikat 8" loading="lazy">
+        <div class="sertif-overlay">
+          <span class="sertif-zoom">🔍 Lihat</span>
+        </div>
+      </div>
+      <div class="sertif-info">
+        <p class="sertif-title">Sertifikat 8</p>
+      </div>
+    </div>
+
+    <div class="sertif-card fade-in" onclick="openLightbox('images/sertif9.jpg', 'Sertifikat 9')">
+      <div class="sertif-img-wrap">
+        <img src="images/sertif9.jpg" alt="Sertifikat 9" loading="lazy">
+        <div class="sertif-overlay">
+          <span class="sertif-zoom">🔍 Lihat</span>
+        </div>
+      </div>
+      <div class="sertif-info">
+        <p class="sertif-title">Sertifikat 9</p>
+      </div>
+    </div>
+
+    <div class="sertif-card fade-in" onclick="openLightbox('images/sertif10.jpg', 'Sertifikat 10')">
+      <div class="sertif-img-wrap">
+        <img src="images/sertif10.jpg" alt="Sertifikat 10" loading="lazy">
+        <div class="sertif-overlay">
+          <span class="sertif-zoom">🔍 Lihat</span>
+        </div>
+      </div>
+      <div class="sertif-info">
+        <p class="sertif-title">Sertifikat 10</p>
+      </div>
+    </div>
+
+    <div class="sertif-card fade-in" onclick="openLightbox('images/sertif11.jpg', 'Sertifikat 11')">
+      <div class="sertif-img-wrap">
+        <img src="images/sertif11.jpg" alt="Sertifikat 11" loading="lazy">
+        <div class="sertif-overlay">
+          <span class="sertif-zoom">🔍 Lihat</span>
+        </div>
+      </div>
+      <div class="sertif-info">
+        <p class="sertif-title">Sertifikat 11</p>
+      </div>
+    </div>
+
+    <div class="sertif-card fade-in" onclick="openLightbox('images/sertif12.jpg', 'Sertifikat 12')">
+      <div class="sertif-img-wrap">
+        <img src="images/sertif12.jpg" alt="Sertifikat 12" loading="lazy">
+        <div class="sertif-overlay">
+          <span class="sertif-zoom">🔍 Lihat</span>
+        </div>
+      </div>
+      <div class="sertif-info">
+        <p class="sertif-title">Sertifikat 12</p>
+      </div>
+    </div>
+
+    <div class="sertif-card fade-in" onclick="openLightbox('images/sertif13.jpg', 'Sertifikat 13')">
+      <div class="sertif-img-wrap">
+        <img src="images/sertif13.jpg" alt="Sertifikat 13" loading="lazy">
+        <div class="sertif-overlay">
+          <span class="sertif-zoom">🔍 Lihat</span>
+        </div>
+      </div>
+      <div class="sertif-info">
+        <p class="sertif-title">Sertifikat 13</p>
+      </div>
+    </div>
+
+    <div class="sertif-card fade-in" onclick="openLightbox('images/sertif14.jpg', 'Sertifikat 14')">
+      <div class="sertif-img-wrap">
+        <img src="images/sertif14.jpg" alt="Sertifikat 14" loading="lazy">
+        <div class="sertif-overlay">
+          <span class="sertif-zoom">🔍 Lihat</span>
+        </div>
+      </div>
+      <div class="sertif-info">
+        <p class="sertif-title">Sertifikat 14</p>
+      </div>
+    </div>
+
+    <div class="sertif-card fade-in" onclick="openLightbox('images/sertif15.jpg', 'Sertifikat 15')">
+      <div class="sertif-img-wrap">
+        <img src="images/sertif15.jpg" alt="Sertifikat 15" loading="lazy">
+        <div class="sertif-overlay">
+          <span class="sertif-zoom">🔍 Lihat</span>
+        </div>
+      </div>
+      <div class="sertif-info">
+        <p class="sertif-title">Sertifikat 15</p>
+      </div>
+    </div>
+
+    <div class="sertif-card fade-in" onclick="openLightbox('images/sertif16.jpg', 'Sertifikat 16')">
+      <div class="sertif-img-wrap">
+        <img src="images/sertif16.jpg" alt="Sertifikat 16" loading="lazy">
+        <div class="sertif-overlay">
+          <span class="sertif-zoom">🔍 Lihat</span>
+        </div>
+      </div>
+      <div class="sertif-info">
+        <p class="sertif-title">Sertifikat 16</p>
+      </div>
+    </div>
+
+    <div class="sertif-card fade-in" onclick="openLightbox('images/sertif17.jpg', 'Sertifikat 17')">
+      <div class="sertif-img-wrap">
+        <img src="images/sertif17.jpg" alt="Sertifikat 17" loading="lazy">
+        <div class="sertif-overlay">
+          <span class="sertif-zoom">🔍 Lihat</span>
+        </div>
+      </div>
+      <div class="sertif-info">
+        <p class="sertif-title">Sertifikat 17</p>
+      </div>
+    </div>
+
+    <div class="sertif-card fade-in" onclick="openLightbox('images/sertif18.jpg', 'Sertifikat 18')">
+      <div class="sertif-img-wrap">
+        <img src="images/sertif18.jpg" alt="Sertifikat 18" loading="lazy">
+        <div class="sertif-overlay">
+          <span class="sertif-zoom">🔍 Lihat</span>
+        </div>
+      </div>
+      <div class="sertif-info">
+        <p class="sertif-title">Sertifikat 18</p>
+      </div>
+    </div>
+
+    <div class="sertif-card fade-in" onclick="openLightbox('images/sertif19.jpg', 'Sertifikat 19')">
+      <div class="sertif-img-wrap">
+        <img src="images/sertif19.jpg" alt="Sertifikat 19" loading="lazy">
+        <div class="sertif-overlay">
+          <span class="sertif-zoom">🔍 Lihat</span>
+        </div>
+      </div>
+      <div class="sertif-info">
+        <p class="sertif-title">Sertifikat 19</p>
+      </div>
+    </div>
+
+    <div class="sertif-card fade-in" onclick="openLightbox('images/sertif20.jpg', 'Sertifikat 20')">
+      <div class="sertif-img-wrap">
+        <img src="images/sertif20.jpg" alt="Sertifikat 20" loading="lazy">
+        <div class="sertif-overlay">
+          <span class="sertif-zoom">🔍 Lihat</span>
+        </div>
+      </div>
+      <div class="sertif-info">
+        <p class="sertif-title">Sertifikat 20</p>
+      </div>
+    </div>
+
+    <div class="sertif-card fade-in" onclick="openLightbox('images/sertif21.jpg', 'Sertifikat 21')">
+      <div class="sertif-img-wrap">
+        <img src="images/sertif21.jpg" alt="Sertifikat 21" loading="lazy">
+        <div class="sertif-overlay">
+          <span class="sertif-zoom">🔍 Lihat</span>
+        </div>
+      </div>
+      <div class="sertif-info">
+        <p class="sertif-title">Sertifikat 21</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- EMPTY STATE -->
+  <div id="sertifEmpty" class="sertif-empty hidden">
+    <div>🏅</div>
+    <p>Tidak ada sertifikat yang cocok</p>
+  </div>
+
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox-overlay hidden" id="lightboxOverlay">
+  <div class="lightbox-box" onclick="event.stopPropagation()">
+    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+    <button class="lightbox-prev" onclick="prevSertif()">‹</button>
+    <button class="lightbox-next" onclick="nextSertif()">›</button>
+    <img id="lightboxImg" src="" alt="">
+    <p id="lightboxCaption"></p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 <span>Dzaki Pasha Ramadhan</span></p>
+  <p>Made with ❤️ · Manajemen Informatika UNESA</p>
+</footer>
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Kembali ke atas">↑</button>
+
+<div id="particles-js"></div>
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script src="script.js"></script>
+<script>
+// ===========================
+// SERTIFIKAT DATA
+// ===========================
+const sertifData = [
+  { img: 'images/sertif1.jpg',  title: 'Sertifikat 1' },
+  { img: 'images/sertif2.jpg',  title: 'Sertifikat 2' },
+  { img: 'images/sertif3.jpg',  title: 'Sertifikat 3' },
+  { img: 'images/sertif4.jpg',  title: 'Sertifikat 4' },
+  { img: 'images/sertif5.jpg',  title: 'Sertifikat 5' },
+  { img: 'images/sertif6.jpg',  title: 'Sertifikat 6' },
+  { img: 'images/sertif7.jpg',  title: 'Sertifikat 7' },
+  { img: 'images/sertif8.jpg',  title: 'Sertifikat 8' },
+  { img: 'images/sertif9.jpg',  title: 'Sertifikat 9' },
+  { img: 'images/sertif10.jpg', title: 'Sertifikat 10' },
+  { img: 'images/sertif11.jpg', title: 'Sertifikat 11' },
+  { img: 'images/sertif12.jpg', title: 'Sertifikat 12' },
+  { img: 'images/sertif13.jpg', title: 'Sertifikat 13' },
+  { img: 'images/sertif14.jpg', title: 'Sertifikat 14' },
+  { img: 'images/sertif15.jpg', title: 'Sertifikat 15' },
+  { img: 'images/sertif16.jpg', title: 'Sertifikat 16' },
+  { img: 'images/sertif17.jpg', title: 'Sertifikat 17' },
+  { img: 'images/sertif18.jpg', title: 'Sertifikat 18' },
+  { img: 'images/sertif19.jpg', title: 'Sertifikat 19' },
+  { img: 'images/sertif20.jpg', title: 'Sertifikat 20' },
+  { img: 'images/sertif21.jpg', title: 'Sertifikat 21' },
+];
+
+var currentLightbox = 0;
+
+document.addEventListener('DOMContentLoaded', function() {
+
+  // Counter animasi total sertifikat
+  var count = 0;
+  var targetCount = sertifData.length;
+  var countEl = document.getElementById('totalSertif');
+  var countTimer = setInterval(function() {
+    count = Math.min(count + 1, targetCount);
+    if (countEl) countEl.textContent = count;
+    if (count >= targetCount) clearInterval(countTimer);
+  }, 60);
+
+  // Klik overlay untuk tutup lightbox
+  var overlay = document.getElementById('lightboxOverlay');
+  if (overlay) {
+    overlay.addEventListener('click', function(e) {
+      if (e.target === overlay) closeLightbox();
+    });
+  }
+
+  // Keyboard navigation lightbox
+  document.addEventListener('keydown', function(e) {
+    var lb = document.getElementById('lightboxOverlay');
+    if (!lb || lb.classList.contains('hidden')) return;
+    if (e.key === 'ArrowLeft')  prevSertif();
+    if (e.key === 'ArrowRight') nextSertif();
+    if (e.key === 'Escape')     closeLightbox();
+  });
+});
+
+// ===========================
+// LIGHTBOX FUNCTIONS
+// ===========================
+function openLightbox(img, title) {
+  var idx = -1;
+  for (var i = 0; i < sertifData.length; i++) {
+    if (sertifData[i].img === img) { idx = i; break; }
+  }
+  currentLightbox = idx >= 0 ? idx : 0;
+  showLightbox();
+}
+
+function showLightbox() {
+  var s   = sertifData[currentLightbox];
+  var img = document.getElementById('lightboxImg');
+  var cap = document.getElementById('lightboxCaption');
+  var lb  = document.getElementById('lightboxOverlay');
+  if (img) img.src = s.img;
+  if (cap) cap.textContent = s.title + '  ·  ' + (currentLightbox + 1) + ' / ' + sertifData.length;
+  if (lb)  lb.classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  var lb = document.getElementById('lightboxOverlay');
+  if (lb) lb.classList.add('hidden');
+  document.body.style.overflow = '';
+}
+
+function prevSertif() {
+  currentLightbox = (currentLightbox - 1 + sertifData.length) % sertifData.length;
+  showLightbox();
+}
+
+function nextSertif() {
+  currentLightbox = (currentLightbox + 1) % sertifData.length;
+  showLightbox();
+}
+
+// ===========================
+// SEARCH / FILTER
+// ===========================
+function filterSertif() {
+  var q      = document.getElementById('sertifSearch').value.toLowerCase().trim();
+  var cards  = document.querySelectorAll('.sertif-card');
+  var visible = 0;
+  cards.forEach(function(card) {
+    var titleEl = card.querySelector('.sertif-title');
+    var title   = titleEl ? titleEl.textContent.toLowerCase() : '';
+    var show    = !q || title.includes(q);
+    card.style.display = show ? '' : 'none';
+    if (show) visible++;
+  });
+  var emptyEl = document.getElementById('sertifEmpty');
+  if (emptyEl) emptyEl.classList.toggle('hidden', visible > 0);
+}
+</script>
+
+</body>
+</html>
