@@ -416,6 +416,24 @@ document.addEventListener('DOMContentLoaded', function() {
     overlay.addEventListener('click', function(e) {
       if (e.target === overlay) closeLightbox();
     });
+
+    // Swipe gesture (touch) untuk mobile
+    var touchStartX = 0;
+    var touchStartY = 0;
+    overlay.addEventListener('touchstart', function(e) {
+      touchStartX = e.changedTouches[0].clientX;
+      touchStartY = e.changedTouches[0].clientY;
+    }, { passive: true });
+    overlay.addEventListener('touchend', function(e) {
+      var lb = document.getElementById('lightboxOverlay');
+      if (!lb || lb.classList.contains('hidden')) return;
+      var dx = e.changedTouches[0].clientX - touchStartX;
+      var dy = e.changedTouches[0].clientY - touchStartY;
+      // Hanya proses jika gerak horizontal lebih dominan (bukan scroll vertikal)
+      if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) {
+        if (dx < 0) nextSertif(); else prevSertif();
+      }
+    }, { passive: true });
   }
 
   // Keyboard navigation lightbox

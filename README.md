@@ -1,36 +1,39 @@
-# Portofolio – Dzaki Pasha Ramadhan
+# Portofolio — Dzaki Pasha Ramadhan
 
-Website portofolio pribadi milik **Dzaki Pasha Ramadhan**, mahasiswa Manajemen Informatika Universitas Negeri Surabaya. Dibangun menggunakan HTML, CSS, dan JavaScript murni tanpa framework.
+Portofolio pribadi milik Dzaki Pasha Ramadhan — mahasiswa Manajemen Informatika, Universitas Negeri Surabaya. Situs ini dibuat dengan HTML, CSS, dan JavaScript murni (vanilla), tanpa build step.
 
 ---
 
-## Struktur Halaman
+## Halaman
 
-| File | Deskripsi |
+| File | Keterangan |
 |---|---|
-| `index.html` | Halaman utama — hero, statistik, dan keahlian |
-| `about.html` | Profil diri, minat, dan karakter |
-| `project.html` | Daftar project yang telah dikerjakan |
-| `contact.html` | Informasi kontak (WhatsApp, Instagram, Email, GitHub) |
+| `index.html` | Halaman utama — hero, tech stack, layanan, dan statistik |
+| `about.html` | Profil, skill, dan statistik belajar |
+| `project.html` | Daftar proyek dengan filter kategori |
+| `penghargaan.html` | Galeri sertifikat & penghargaan *(halaman baru)* |
+| `contact.html` | WhatsApp, Instagram, Email, GitHub, LinkedIn |
 
 ---
 
-## Struktur Folder
+## Struktur Proyek
 
 ```
-biodata jakk/
+Portofolio-Jakk/
 ├── index.html
 ├── about.html
 ├── project.html
+├── penghargaan.html          ← baru
 ├── contact.html
 ├── style.css
 ├── script.js
-├── foto dzaki.jpeg
 ├── images/
-│   ├── finance tracker.jpeg
+│   ├── fotoku.jpg            ← foto profil baru (menggantikan "foto dzaki.jpeg")
+│   ├── finance tracker.png   ← gambar thumbnail baru (menggantikan .jpeg)
 │   ├── kostku premium.png
 │   ├── absensi mahasiswa.png
-│   ├── kost1.jpg – kost6.jpg
+│   ├── kost6.jpg             ← gambar baru
+│   ├── sertif1.jpg – sertif21.jpg  ← 21 file sertifikat baru
 └── project/
     ├── finance tracker/
     │   ├── index.html
@@ -48,68 +51,107 @@ biodata jakk/
 
 ---
 
-## Fitur
+## Perubahan yang Dilakukan
 
-- **Typing effect** — animasi teks bergantian di halaman Home
-- **Real-time clock** — jam yang terus diperbarui setiap detik
-- **Visitor counter** — penghitung pengunjung menggunakan `localStorage`
-- **Dark mode toggle** — beralih antara mode terang dan gelap, disimpan di `localStorage`
-- **Scroll fade-in** — elemen muncul secara animasi saat di-scroll menggunakan `IntersectionObserver`
-- **Particles background** — latar belakang partikel interaktif via `particles.js`
-- **Responsif** — layout menyesuaikan untuk layar mobile (≤768px) dan kecil (≤480px)
+### Halaman Baru
+- **`penghargaan.html`** — halaman galeri sertifikat & penghargaan dengan:
+  - Grid 21 sertifikat (`sertif1.jpg` – `sertif21.jpg`)
+  - Lightbox viewer (buka, tutup, navigasi prev/next)
+  - Kotak pencarian sertifikat real-time
+  - Counter total sertifikat otomatis
+
+### Navigasi (semua halaman)
+- Menu tambah item **Penghargaan** yang mengarah ke `penghargaan.html`, baik di navbar desktop maupun mobile menu
+
+### `index.html`
+- Tambah meta SEO lengkap: `description`, `author`, `robots`, `theme-color`
+- Tambah Open Graph tags (WhatsApp, Facebook, Discord, LinkedIn preview)
+- Tambah Canonical URL (`https://dzakipasha.site/`)
+- Tambah Schema.org JSON-LD untuk Google
+- Ganti foto profil dari `foto dzaki.jpeg` → `images/fotoku.jpg`
+- Tambah ikon media sosial di hero: GitHub, Instagram, Email, WhatsApp, **LinkedIn** *(baru)*
+- Tambah **Tech Stack** section di hero dengan ikon Devicons (HTML, CSS, JS, Python, C++, GitHub)
+- Tambah `devicon` CSS dari CDN jsdelivr
+- Tambah scroll indicator arrow di hero
+- Tambah scroll progress bar (`#scroll-progress`)
+- Tambah toast container (`#toast-container`)
+- Tambah custom cursor (`.cursor-dot`, `.cursor-ring`)
+- Tambah hamburger / mobile menu
+
+### `about.html`
+- Tambah meta SEO + Open Graph + Canonical URL
+- Tambah scroll progress bar, toast container, custom cursor, mobile menu
+- Tambah section **Skill & Kemampuan** dengan badge level dan tooltip (HTML, CSS, JS, Python, C++)
+- Tambah animasi counter pada stats (`count-up` dengan `data-target`)
+- Parallax banner pada header About
+
+### `project.html`
+- Tambah meta SEO + Open Graph + Canonical URL
+- Tambah scroll progress bar, toast container, custom cursor, mobile menu
+- Tambah **filter bar** (Semua / Web App / UI/UX / JavaScript)
+- Setiap kartu proyek punya `data-category` untuk filter
+- Thumbnail Finance Tracker diperbarui ke `images/finance tracker.png`
+
+### `contact.html`
+- Tambah meta SEO + Open Graph + Canonical URL
+- Tambah scroll progress bar, toast container, custom cursor, mobile menu
+- Tambah kartu kontak **LinkedIn** *(baru)*
+- Setiap link kontak punya `data-toast` untuk notifikasi saat diklik
+
+### `script.js`
+- Tambah **custom cursor** dengan efek ring smooth-follow dan state `hovered`
+- Tambah **scroll progress bar** (progress pengisian bar di bagian atas)
+- Tambah **back-to-top button** (muncul saat scroll > 300px)
+- Tambah **ripple effect** pada tombol dan link
+- Tambah **toast notification** system (`showToast()`)
+- Tambah **project filter** (menyembunyikan/menampilkan kartu berdasarkan kategori)
+- Tambah **counter animation** untuk stats di about (`count-up`)
+- Tambah **parallax banner** (scroll parallax ringan, dinonaktifkan di mobile/reduced-motion)
+- Tambah **hamburger/mobile menu** (`openMobileMenu()`, `closeMobileMenu()`, Escape key support)
+- Visitor counter kini memiliki animasi count-up
+- Skill bar legacy tetap dipertahankan untuk kompatibilitas
+
+### `style.css`
+- Penambahan style untuk semua fitur baru di atas (cursor, scroll progress, toast, ripple, filter bar, skill badges, lightbox, penghargaan grid, dsb.)
+
+### Gambar
+- `foto dzaki.jpeg` → dihapus, diganti `images/fotoku.jpg`
+- `images/finance tracker.jpeg` → dihapus, diganti `images/finance tracker.png`
+- Tambah `images/kost6.jpg`
+- Tambah `images/sertif1.jpg` – `images/sertif21.jpg` (21 file)
 
 ---
 
-## Project yang Ditampilkan
+## Fitur Utama
 
-| Project | Deskripsi |
-|---|---|
-| 💰 Student Finance Tracker | Manajemen keuangan mahasiswa dengan dashboard interaktif dan penyimpanan lokal |
-| 🏠 Kost Finder (Kostku Premium) | Pencarian kost berdasarkan budget, lokasi, dan fasilitas |
-| 🎓 Sistem Absensi Mahasiswa | Absensi web dengan statistik, pencarian, dan riwayat kehadiran |
+- Typing effect pada hero
+- Jam real-time yang diperbarui setiap detik
+- Penghitung pengunjung dengan animasi menggunakan `localStorage`
+- Toggle dark mode dengan penyimpanan preferensi di `localStorage`
+- Animasi muncul saat scroll menggunakan `IntersectionObserver`
+- Latar partikel interaktif (via `particles.js` CDN)
+- Custom cursor dengan smooth-follow ring
+- Scroll progress bar
+- Ripple effect pada tombol
+- Toast notification
+- Hamburger menu untuk mobile
+- Back-to-top button
+- Parallax banner (desktop only)
+- Galeri sertifikat dengan lightbox dan pencarian
+- Filter proyek berdasarkan kategori
+- Responsif untuk perangkat mobile
 
 ---
 
 ## Teknologi
 
-- **HTML5** — struktur dan konten
-- **CSS3** — styling, animasi, variabel CSS, dan responsive design
-- **JavaScript (Vanilla)** — interaktivitas dan logika
-- **[particles.js](https://github.com/VincentGarreau/particles.js/)** v2.0.0 via CDN — animasi partikel latar belakang
-- **[Google Fonts – Poppins](https://fonts.google.com/specimen/Poppins)** — tipografi utama
+- HTML5, CSS3, JavaScript (Vanilla)
+- particles.js (CDN)
+- Devicons (CDN)
+- Google Fonts (Poppins)
 
 ---
 
-## Catatan CSS
+## Menjalankan
 
-### Variabel Warna (`:root`)
-| Variabel | Nilai | Keterangan |
-|---|---|---|
-| `--primary` | `#38bdf8` | Biru utama |
-| `--primary-dark` | `#0ea5e9` | Biru gelap |
-| `--accent` | `#818cf8` | Ungu aksen |
-| `--bg-dark` | `#0a0f1e` | Latar gelap utama |
-| `--bg-mid` | `#0f172a` | Latar gelap tengah |
-| `--bg-card` | `rgba(255,255,255,0.05)` | Latar kartu |
-| `--border` | `rgba(56,189,248,0.25)` | Warna border |
-| `--text` | `#e2e8f0` | Teks utama |
-| `--text-muted` | `#94a3b8` | Teks redup |
-| `--glow` | `rgba(56,189,248,0.4)` | Efek glow biru |
-
-### Kompatibilitas Browser – `.foto-ring`
-Elemen `.foto-ring` menggunakan teknik gradient border melingkar dengan `mask` property. Kedua properti berikut digunakan bersama untuk memastikan kompatibilitas lintas browser:
-
-```css
--webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
--webkit-mask-composite: destination-out;
-mask-composite: exclude;
-```
-
-Properti `mask` (standar W3C) ditambahkan berdampingan dengan `-webkit-mask` agar border animasi berfungsi di browser modern yang tidak lagi membutuhkan prefix `-webkit-`.
-
----
-
-## Cara Menjalankan
-
-Buka `index.html` langsung di browser — tidak ada build step atau server yang diperlukan.
+Buka `index.html` di browser (double-click) — tidak perlu server atau build.
