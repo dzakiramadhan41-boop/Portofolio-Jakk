@@ -63,278 +63,42 @@
       <p>Total Sertifikat</p>
     </div>
     <div class="sertif-stat-box">
-      <h2>2024–2026</h2>
+      <h2>2026–Sekarang</h2>
       <p>Rentang Tahun</p>
     </div>
     <div class="sertif-stat-box">
-      <h2>100%</h2>
-      <p>Semangat Belajar</p>
+      <h2 id="visibleCount">0</h2>
+      <p>Ditampilkan</p>
     </div>
   </div>
 
-  <!-- FILTER -->
-  <div class="sertif-filter fade-in">
+  <!-- TOOLBAR: SEARCH + VIEW TOGGLE -->
+  <div class="sertif-toolbar fade-in">
     <div class="sertif-search-wrap">
       <span class="sertif-search-icon">🔍</span>
       <input type="text" id="sertifSearch" placeholder="Cari sertifikat..." oninput="filterSertif()">
+      <button class="sertif-clear-btn hidden" id="clearBtn" onclick="clearSearch()" title="Hapus pencarian">✕</button>
+    </div>
+    <div class="sertif-toolbar-right">
+      <button class="tool-btn" id="btnFavOnly" onclick="toggleFavFilter()" title="Tampilkan favorit saja">♡</button>
+      <select class="sort-select" id="sortSelect" onchange="applySortFilter()" title="Urutkan">
+        <option value="asc">Terlama</option>
+        <option value="desc">Terbaru</option>
+      </select>
+      <div class="sertif-view-toggle">
+        <button class="view-btn active" id="btnGrid" onclick="setView('grid')" title="Grid view">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="currentColor"><rect x="0" y="0" width="7" height="7" rx="1.5"/><rect x="11" y="0" width="7" height="7" rx="1.5"/><rect x="0" y="11" width="7" height="7" rx="1.5"/><rect x="11" y="11" width="7" height="7" rx="1.5"/></svg>
+        </button>
+        <button class="view-btn" id="btnList" onclick="setView('list')" title="List view">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="currentColor"><rect x="0" y="1" width="18" height="3" rx="1.5"/><rect x="0" y="7.5" width="18" height="3" rx="1.5"/><rect x="0" y="14" width="18" height="3" rx="1.5"/></svg>
+        </button>
+      </div>
     </div>
   </div>
 
-  <!-- GRID SERTIFIKAT -->
-  <div class="sertif-grid" id="sertifGrid">
-
-    <div class="sertif-card fade-in" onclick="openLightbox('images/sertif1.jpg', 'Sertifikat 1')">
-      <div class="sertif-img-wrap">
-        <img src="images/sertif1.jpg" alt="Sertifikat 1" loading="lazy">
-        <div class="sertif-overlay">
-          <span class="sertif-zoom">🔍 Lihat</span>
-        </div>
-      </div>
-      <div class="sertif-info">
-        <p class="sertif-title">Sertifikat 1</p>
-      </div>
-    </div>
-
-    <div class="sertif-card fade-in" onclick="openLightbox('images/sertif2.jpg', 'Sertifikat 2')">
-      <div class="sertif-img-wrap">
-        <img src="images/sertif2.jpg" alt="Sertifikat 2" loading="lazy">
-        <div class="sertif-overlay">
-          <span class="sertif-zoom">🔍 Lihat</span>
-        </div>
-      </div>
-      <div class="sertif-info">
-        <p class="sertif-title">Sertifikat 2</p>
-      </div>
-    </div>
-
-    <div class="sertif-card fade-in" onclick="openLightbox('images/sertif3.jpg', 'Sertifikat 3')">
-      <div class="sertif-img-wrap">
-        <img src="images/sertif3.jpg" alt="Sertifikat 3" loading="lazy">
-        <div class="sertif-overlay">
-          <span class="sertif-zoom">🔍 Lihat</span>
-        </div>
-      </div>
-      <div class="sertif-info">
-        <p class="sertif-title">Sertifikat 3</p>
-      </div>
-    </div>
-
-    <div class="sertif-card fade-in" onclick="openLightbox('images/sertif4.jpg', 'Sertifikat 4')">
-      <div class="sertif-img-wrap">
-        <img src="images/sertif4.jpg" alt="Sertifikat 4" loading="lazy">
-        <div class="sertif-overlay">
-          <span class="sertif-zoom">🔍 Lihat</span>
-        </div>
-      </div>
-      <div class="sertif-info">
-        <p class="sertif-title">Sertifikat 4</p>
-      </div>
-    </div>
-
-    <div class="sertif-card fade-in" onclick="openLightbox('images/sertif5.jpg', 'Sertifikat 5')">
-      <div class="sertif-img-wrap">
-        <img src="images/sertif5.jpg" alt="Sertifikat 5" loading="lazy">
-        <div class="sertif-overlay">
-          <span class="sertif-zoom">🔍 Lihat</span>
-        </div>
-      </div>
-      <div class="sertif-info">
-        <p class="sertif-title">Sertifikat 5</p>
-      </div>
-    </div>
-
-    <div class="sertif-card fade-in" onclick="openLightbox('images/sertif6.jpg', 'Sertifikat 6')">
-      <div class="sertif-img-wrap">
-        <img src="images/sertif6.jpg" alt="Sertifikat 6" loading="lazy">
-        <div class="sertif-overlay">
-          <span class="sertif-zoom">🔍 Lihat</span>
-        </div>
-      </div>
-      <div class="sertif-info">
-        <p class="sertif-title">Sertifikat 6</p>
-      </div>
-    </div>
-
-    <div class="sertif-card fade-in" onclick="openLightbox('images/sertif7.jpg', 'Sertifikat 7')">
-      <div class="sertif-img-wrap">
-        <img src="images/sertif7.jpg" alt="Sertifikat 7" loading="lazy">
-        <div class="sertif-overlay">
-          <span class="sertif-zoom">🔍 Lihat</span>
-        </div>
-      </div>
-      <div class="sertif-info">
-        <p class="sertif-title">Sertifikat 7</p>
-      </div>
-    </div>
-
-    <div class="sertif-card fade-in" onclick="openLightbox('images/sertif8.jpg', 'Sertifikat 8')">
-      <div class="sertif-img-wrap">
-        <img src="images/sertif8.jpg" alt="Sertifikat 8" loading="lazy">
-        <div class="sertif-overlay">
-          <span class="sertif-zoom">🔍 Lihat</span>
-        </div>
-      </div>
-      <div class="sertif-info">
-        <p class="sertif-title">Sertifikat 8</p>
-      </div>
-    </div>
-
-    <div class="sertif-card fade-in" onclick="openLightbox('images/sertif9.jpg', 'Sertifikat 9')">
-      <div class="sertif-img-wrap">
-        <img src="images/sertif9.jpg" alt="Sertifikat 9" loading="lazy">
-        <div class="sertif-overlay">
-          <span class="sertif-zoom">🔍 Lihat</span>
-        </div>
-      </div>
-      <div class="sertif-info">
-        <p class="sertif-title">Sertifikat 9</p>
-      </div>
-    </div>
-
-    <div class="sertif-card fade-in" onclick="openLightbox('images/sertif10.jpg', 'Sertifikat 10')">
-      <div class="sertif-img-wrap">
-        <img src="images/sertif10.jpg" alt="Sertifikat 10" loading="lazy">
-        <div class="sertif-overlay">
-          <span class="sertif-zoom">🔍 Lihat</span>
-        </div>
-      </div>
-      <div class="sertif-info">
-        <p class="sertif-title">Sertifikat 10</p>
-      </div>
-    </div>
-
-    <div class="sertif-card fade-in" onclick="openLightbox('images/sertif11.jpg', 'Sertifikat 11')">
-      <div class="sertif-img-wrap">
-        <img src="images/sertif11.jpg" alt="Sertifikat 11" loading="lazy">
-        <div class="sertif-overlay">
-          <span class="sertif-zoom">🔍 Lihat</span>
-        </div>
-      </div>
-      <div class="sertif-info">
-        <p class="sertif-title">Sertifikat 11</p>
-      </div>
-    </div>
-
-    <div class="sertif-card fade-in" onclick="openLightbox('images/sertif12.jpg', 'Sertifikat 12')">
-      <div class="sertif-img-wrap">
-        <img src="images/sertif12.jpg" alt="Sertifikat 12" loading="lazy">
-        <div class="sertif-overlay">
-          <span class="sertif-zoom">🔍 Lihat</span>
-        </div>
-      </div>
-      <div class="sertif-info">
-        <p class="sertif-title">Sertifikat 12</p>
-      </div>
-    </div>
-
-    <div class="sertif-card fade-in" onclick="openLightbox('images/sertif13.jpg', 'Sertifikat 13')">
-      <div class="sertif-img-wrap">
-        <img src="images/sertif13.jpg" alt="Sertifikat 13" loading="lazy">
-        <div class="sertif-overlay">
-          <span class="sertif-zoom">🔍 Lihat</span>
-        </div>
-      </div>
-      <div class="sertif-info">
-        <p class="sertif-title">Sertifikat 13</p>
-      </div>
-    </div>
-
-    <div class="sertif-card fade-in" onclick="openLightbox('images/sertif14.jpg', 'Sertifikat 14')">
-      <div class="sertif-img-wrap">
-        <img src="images/sertif14.jpg" alt="Sertifikat 14" loading="lazy">
-        <div class="sertif-overlay">
-          <span class="sertif-zoom">🔍 Lihat</span>
-        </div>
-      </div>
-      <div class="sertif-info">
-        <p class="sertif-title">Sertifikat 14</p>
-      </div>
-    </div>
-
-    <div class="sertif-card fade-in" onclick="openLightbox('images/sertif15.jpg', 'Sertifikat 15')">
-      <div class="sertif-img-wrap">
-        <img src="images/sertif15.jpg" alt="Sertifikat 15" loading="lazy">
-        <div class="sertif-overlay">
-          <span class="sertif-zoom">🔍 Lihat</span>
-        </div>
-      </div>
-      <div class="sertif-info">
-        <p class="sertif-title">Sertifikat 15</p>
-      </div>
-    </div>
-
-    <div class="sertif-card fade-in" onclick="openLightbox('images/sertif16.jpg', 'Sertifikat 16')">
-      <div class="sertif-img-wrap">
-        <img src="images/sertif16.jpg" alt="Sertifikat 16" loading="lazy">
-        <div class="sertif-overlay">
-          <span class="sertif-zoom">🔍 Lihat</span>
-        </div>
-      </div>
-      <div class="sertif-info">
-        <p class="sertif-title">Sertifikat 16</p>
-      </div>
-    </div>
-
-    <div class="sertif-card fade-in" onclick="openLightbox('images/sertif17.jpg', 'Sertifikat 17')">
-      <div class="sertif-img-wrap">
-        <img src="images/sertif17.jpg" alt="Sertifikat 17" loading="lazy">
-        <div class="sertif-overlay">
-          <span class="sertif-zoom">🔍 Lihat</span>
-        </div>
-      </div>
-      <div class="sertif-info">
-        <p class="sertif-title">Sertifikat 17</p>
-      </div>
-    </div>
-
-    <div class="sertif-card fade-in" onclick="openLightbox('images/sertif18.jpg', 'Sertifikat 18')">
-      <div class="sertif-img-wrap">
-        <img src="images/sertif18.jpg" alt="Sertifikat 18" loading="lazy">
-        <div class="sertif-overlay">
-          <span class="sertif-zoom">🔍 Lihat</span>
-        </div>
-      </div>
-      <div class="sertif-info">
-        <p class="sertif-title">Sertifikat 18</p>
-      </div>
-    </div>
-
-    <div class="sertif-card fade-in" onclick="openLightbox('images/sertif19.jpg', 'Sertifikat 19')">
-      <div class="sertif-img-wrap">
-        <img src="images/sertif19.jpg" alt="Sertifikat 19" loading="lazy">
-        <div class="sertif-overlay">
-          <span class="sertif-zoom">🔍 Lihat</span>
-        </div>
-      </div>
-      <div class="sertif-info">
-        <p class="sertif-title">Sertifikat 19</p>
-      </div>
-    </div>
-
-    <div class="sertif-card fade-in" onclick="openLightbox('images/sertif20.jpg', 'Sertifikat 20')">
-      <div class="sertif-img-wrap">
-        <img src="images/sertif20.jpg" alt="Sertifikat 20" loading="lazy">
-        <div class="sertif-overlay">
-          <span class="sertif-zoom">🔍 Lihat</span>
-        </div>
-      </div>
-      <div class="sertif-info">
-        <p class="sertif-title">Sertifikat 20</p>
-      </div>
-    </div>
-
-    <div class="sertif-card fade-in" onclick="openLightbox('images/sertif21.jpg', 'Sertifikat 21')">
-      <div class="sertif-img-wrap">
-        <img src="images/sertif21.jpg" alt="Sertifikat 21" loading="lazy">
-        <div class="sertif-overlay">
-          <span class="sertif-zoom">🔍 Lihat</span>
-        </div>
-      </div>
-      <div class="sertif-info">
-        <p class="sertif-title">Sertifikat 21</p>
-      </div>
-    </div>
-
+  <!-- ======================== GRID SERTIFIKAT ======================== -->
+  <div class="sertif-grid" id="sertifGrid-all">
+    <!-- Cards di-generate otomatis oleh renderCards() -->
   </div>
 
   <!-- EMPTY STATE -->
@@ -348,11 +112,28 @@
 <!-- LIGHTBOX -->
 <div class="lightbox-overlay hidden" id="lightboxOverlay">
   <div class="lightbox-box" onclick="event.stopPropagation()">
-    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
-    <button class="lightbox-prev" onclick="prevSertif()">‹</button>
-    <button class="lightbox-next" onclick="nextSertif()">›</button>
-    <img id="lightboxImg" src="" alt="">
+    <button class="lightbox-close" onclick="closeLightbox()" title="Tutup">✕</button>
+    <button class="lightbox-prev" onclick="prevSertif()" title="Sebelumnya">‹</button>
+    <button class="lightbox-next" onclick="nextSertif()" title="Berikutnya">›</button>
+    <div class="lightbox-img-wrap">
+      <img id="lightboxImg" src="" alt="">
+    </div>
     <p id="lightboxCaption"></p>
+    <!-- ACTION BUTTONS -->
+    <div class="lightbox-actions">
+      <button class="lb-btn lb-download" onclick="downloadSertif()" title="Download sertifikat">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download
+      </button>
+      <button class="lb-btn lb-share" onclick="shareLightbox()" title="Bagikan">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        Bagikan
+      </button>
+      <button class="lb-btn lb-fav" id="lbFavBtn" onclick="toggleLightboxFav()" title="Favorit">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        Favorit
+      </button>
+    </div>
   </div>
 </div>
 
@@ -370,76 +151,170 @@
 <script src="script.js"></script>
 <script>
 // ===========================
-// SERTIFIKAT DATA
+// DATA SERTIFIKAT
 // ===========================
 const sertifData = [
-  { img: 'images/sertif1.jpg',  title: 'Sertifikat 1' },
-  { img: 'images/sertif2.jpg',  title: 'Sertifikat 2' },
-  { img: 'images/sertif3.jpg',  title: 'Sertifikat 3' },
-  { img: 'images/sertif4.jpg',  title: 'Sertifikat 4' },
-  { img: 'images/sertif5.jpg',  title: 'Sertifikat 5' },
-  { img: 'images/sertif6.jpg',  title: 'Sertifikat 6' },
-  { img: 'images/sertif7.jpg',  title: 'Sertifikat 7' },
-  { img: 'images/sertif8.jpg',  title: 'Sertifikat 8' },
-  { img: 'images/sertif9.jpg',  title: 'Sertifikat 9' },
-  { img: 'images/sertif10.jpg', title: 'Sertifikat 10' },
-  { img: 'images/sertif11.jpg', title: 'Sertifikat 11' },
-  { img: 'images/sertif12.jpg', title: 'Sertifikat 12' },
-  { img: 'images/sertif13.jpg', title: 'Sertifikat 13' },
-  { img: 'images/sertif14.jpg', title: 'Sertifikat 14' },
-  { img: 'images/sertif15.jpg', title: 'Sertifikat 15' },
-  { img: 'images/sertif16.jpg', title: 'Sertifikat 16' },
-  { img: 'images/sertif17.jpg', title: 'Sertifikat 17' },
-  { img: 'images/sertif18.jpg', title: 'Sertifikat 18' },
-  { img: 'images/sertif19.jpg', title: 'Sertifikat 19' },
-  { img: 'images/sertif20.jpg', title: 'Sertifikat 20' },
-  { img: 'images/sertif21.jpg', title: 'Sertifikat 21' },
+  { img:'images/sertif1.jpg',  title:'Sertifikat 1'  },
+  { img:'images/sertif2.jpg',  title:'Sertifikat 2'  },
+  { img:'images/sertif3.jpg',  title:'Sertifikat 3'  },
+  { img:'images/sertif4.jpg',  title:'Sertifikat 4'  },
+  { img:'images/sertif5.jpg',  title:'Sertifikat 5'  },
+  { img:'images/sertif6.jpg',  title:'Sertifikat 6'  },
+  { img:'images/sertif7.jpg',  title:'Sertifikat 7'  },
+  { img:'images/sertif8.jpg',  title:'Sertifikat 8'  },
+  { img:'images/sertif9.jpg',  title:'Sertifikat 9'  },
+  { img:'images/sertif10.jpg', title:'Sertifikat 10' },
+  { img:'images/sertif11.jpg', title:'Sertifikat 11' },
+  { img:'images/sertif12.jpg', title:'Sertifikat 12' },
+  { img:'images/sertif13.jpg', title:'Sertifikat 13' },
+  { img:'images/sertif14.jpg', title:'Sertifikat 14' },
+  { img:'images/sertif15.jpg', title:'Sertifikat 15' },
+  { img:'images/sertif16.jpg', title:'Sertifikat 16' },
+  { img:'images/sertif17.jpg', title:'Sertifikat 17' },
+  { img:'images/sertif18.jpg', title:'Sertifikat 18' },
+  { img:'images/sertif19.jpg', title:'Sertifikat 19' },
+  { img:'images/sertif20.jpg', title:'Sertifikat 20' },
+  { img:'images/sertif21.jpg', title:'Sertifikat 21', isNew: true },
+  { img:'images/sertif22.jpg', title:'Sertifikat 22', isNew: true },
+  { img:'images/sertif23.jpg', title:'Sertifikat 23', isNew: true },
 ];
 
 var currentLightbox = 0;
+var favorites       = JSON.parse(localStorage.getItem('sertifFav') || '[]');
+var currentView     = 'grid';
+var favOnly         = false;
+var sortOrder       = 'asc'; // 'asc' = terlama (1→23), 'desc' = terbaru (23→1)
 
-document.addEventListener('DOMContentLoaded', function() {
+// ===========================
+// GENERATE CARDS OTOMATIS
+// ===========================
+function renderCards(data) {
+  var grid = document.getElementById('sertifGrid-all');
+  if (!grid) return;
+  grid.innerHTML = '';
+  data.forEach(function (s, i) {
+    var isFav = favorites.indexOf(s.img) !== -1;
+    var num   = i + 1; // nomor urut sesuai urutan tampil
+    var card  = document.createElement('div');
+    card.className = 'sertif-card fade-in' + (isFav ? ' is-fav' : '');
+    card.setAttribute('data-img', s.img);
+    card.onclick = function () { openLightbox(s.img, s.title); };
+    card.innerHTML =
+      '<div class="sertif-img-wrap">' +
+        '<div class="sertif-skeleton"></div>' +
+        '<img src="' + s.img + '" alt="' + s.title + '" loading="lazy" onload="this.previousElementSibling.style.display=\'none\'">' +
+        '<div class="sertif-overlay"><span class="sertif-zoom">🔍 Lihat</span></div>' +
+        (s.isNew ? '<span class="sertif-new-badge">Baru ✨</span>' : '') +
+      '</div>' +
+      '<div class="sertif-info">' +
+        '<p class="sertif-title">' + s.title + '</p>' +
+        '<div class="sertif-actions">' +
+          '<button class="sertif-fav-btn' + (isFav ? ' active' : '') + '" onclick="toggleFav(event,this)" title="Favorit">' + (isFav ? '♥' : '♡') + '</button>' +
+          '<span class="sertif-num">#' + num + '</span>' +
+        '</div>' +
+      '</div>';
+    grid.appendChild(card);
+  });
+  // Re-observe fade-in elements
+  document.querySelectorAll('#sertifGrid-all .fade-in').forEach(function (el) {
+    if (!el.classList.contains('visible')) {
+      fadeObserver.observe(el);
+    }
+  });
+}
 
-  // Counter animasi total sertifikat
-  var count = 0;
-  var targetCount = sertifData.length;
-  var countEl = document.getElementById('totalSertif');
-  var countTimer = setInterval(function() {
-    count = Math.min(count + 1, targetCount);
-    if (countEl) countEl.textContent = count;
-    if (count >= targetCount) clearInterval(countTimer);
-  }, 60);
+var fadeObserver = new IntersectionObserver(function (entries) {
+  entries.forEach(function (entry, i) {
+    if (entry.isIntersecting) {
+      setTimeout(function () {
+        entry.target.classList.add('visible');
+      }, i * 60);
+      fadeObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.05 });
 
-  // Klik overlay untuk tutup lightbox
+// ===========================
+// INIT
+// ===========================
+document.addEventListener('DOMContentLoaded', function () {
+
+  // Render cards dari data
+  renderCards(sertifData);
+
+  // Counter total & visible
+  animateCount('totalSertif', sertifData.length, 60);
+  updateVisibleCount();
+
+  // Lightbox zoom wheel
+  var lbBox = document.querySelector('.lightbox-box');
+  var lbImg = document.getElementById('lightboxImg');
+  var lbZoom = 1;
+  if (lbImg) {
+    lbImg.addEventListener('wheel', function (e) {
+      e.preventDefault();
+      lbZoom = Math.min(Math.max(lbZoom + (e.deltaY < 0 ? 0.15 : -0.15), 1), 4);
+      lbImg.style.transform = lbZoom === 1 ? '' : 'scale(' + lbZoom + ')';
+    }, { passive: false });
+    // Reset zoom on close/next/prev
+    document.addEventListener('lightboxReset', function () {
+      lbZoom = 1;
+      lbImg.style.transform = '';
+    });
+  }
+
+  // Pinch-to-zoom (mobile)
+  var pinchDist = 0;
+  if (lbImg) {
+    lbImg.addEventListener('touchstart', function (e) {
+      if (e.touches.length === 2) {
+        pinchDist = Math.hypot(
+          e.touches[0].clientX - e.touches[1].clientX,
+          e.touches[0].clientY - e.touches[1].clientY
+        );
+      }
+    }, { passive: true });
+    lbImg.addEventListener('touchmove', function (e) {
+      if (e.touches.length === 2) {
+        e.preventDefault();
+        var dist = Math.hypot(
+          e.touches[0].clientX - e.touches[1].clientX,
+          e.touches[0].clientY - e.touches[1].clientY
+        );
+        lbZoom = Math.min(Math.max(lbZoom * (dist / pinchDist), 1), 4);
+        pinchDist = dist;
+        lbImg.style.transform = lbZoom === 1 ? '' : 'scale(' + lbZoom + ')';
+      }
+    }, { passive: false });
+  }
+
+  // Klik overlay tutup lightbox
   var overlay = document.getElementById('lightboxOverlay');
   if (overlay) {
-    overlay.addEventListener('click', function(e) {
+    overlay.addEventListener('click', function (e) {
       if (e.target === overlay) closeLightbox();
     });
 
-    // Swipe gesture (touch) untuk mobile
-    var touchStartX = 0;
-    var touchStartY = 0;
-    overlay.addEventListener('touchstart', function(e) {
-      touchStartX = e.changedTouches[0].clientX;
-      touchStartY = e.changedTouches[0].clientY;
+    // Swipe gesture
+    var tx = 0, ty = 0;
+    overlay.addEventListener('touchstart', function (e) {
+      tx = e.changedTouches[0].clientX;
+      ty = e.changedTouches[0].clientY;
     }, { passive: true });
-    overlay.addEventListener('touchend', function(e) {
-      var lb = document.getElementById('lightboxOverlay');
-      if (!lb || lb.classList.contains('hidden')) return;
-      var dx = e.changedTouches[0].clientX - touchStartX;
-      var dy = e.changedTouches[0].clientY - touchStartY;
-      // Hanya proses jika gerak horizontal lebih dominan (bukan scroll vertikal)
+    overlay.addEventListener('touchend', function (e) {
+      if (document.getElementById('lightboxOverlay').classList.contains('hidden')) return;
+      if (e.touches.length > 0) return; // skip jika masih pinch
+      var dx = e.changedTouches[0].clientX - tx;
+      var dy = e.changedTouches[0].clientY - ty;
       if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) {
         if (dx < 0) nextSertif(); else prevSertif();
       }
     }, { passive: true });
   }
 
-  // Keyboard navigation lightbox
-  document.addEventListener('keydown', function(e) {
-    var lb = document.getElementById('lightboxOverlay');
-    if (!lb || lb.classList.contains('hidden')) return;
+  // Keyboard
+  document.addEventListener('keydown', function (e) {
+    if (document.getElementById('lightboxOverlay').classList.contains('hidden')) return;
     if (e.key === 'ArrowLeft')  prevSertif();
     if (e.key === 'ArrowRight') nextSertif();
     if (e.key === 'Escape')     closeLightbox();
@@ -447,25 +322,159 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // ===========================
-// LIGHTBOX FUNCTIONS
+// COUNTER ANIMASI
 // ===========================
-function openLightbox(img, title) {
-  var idx = -1;
-  for (var i = 0; i < sertifData.length; i++) {
-    if (sertifData[i].img === img) { idx = i; break; }
+function animateCount(id, target, delay) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  var c = 0;
+  var t = setInterval(function () {
+    c = Math.min(c + 1, target);
+    el.textContent = c;
+    if (c >= target) clearInterval(t);
+  }, delay);
+}
+
+// Helper: ambil src gambar dari card
+function getCardImg(card) {
+  var imgEl = card.querySelector('img');
+  return imgEl ? imgEl.getAttribute('src') : '';
+}
+
+// Helper: cari data di sertifData berdasarkan src
+function dataByImg(src) {
+  return sertifData.find(function (x) { return x.img === src; }) || null;
+}
+
+function updateVisibleCount() {
+  var cards = document.querySelectorAll('#sertifGrid-all .sertif-card');
+  var visible = 0;
+  cards.forEach(function (c) { if (c.style.display !== 'none') visible++; });
+  var el = document.getElementById('visibleCount');
+  if (el) animateCount('visibleCount', visible, 40);
+}
+
+// ===========================
+// FAVORIT
+// ===========================
+function applyFavoritesOnLoad() {
+  // Iterasi semua card di semua panel, cocokkan via src gambar
+  document.querySelectorAll('.sertif-card').forEach(function (card) {
+    var img = getCardImg(card);
+    if (img && favorites.indexOf(img) !== -1) {
+      var btn = card.querySelector('.sertif-fav-btn');
+      if (btn) { btn.textContent = '♥'; btn.classList.add('active'); }
+      card.classList.add('is-fav');
+    }
+  });
+}
+
+function toggleFav(e, btn) {
+  e.stopPropagation();
+  var card = btn.closest('.sertif-card');
+  var img  = getCardImg(card);
+  if (!img) return;
+  var fi = favorites.indexOf(img);
+  if (fi === -1) {
+    favorites.push(img);
+    btn.textContent = '♥';
+    btn.classList.add('active');
+    card.classList.add('is-fav');
+    spawnConfetti(btn);
+    showToast('💛 Ditambahkan ke favorit');
+  } else {
+    favorites.splice(fi, 1);
+    btn.textContent = '♡';
+    btn.classList.remove('active');
+    card.classList.remove('is-fav');
+    showToast('🗑️ Dihapus dari favorit');
   }
-  currentLightbox = idx >= 0 ? idx : 0;
+  localStorage.setItem('sertifFav', JSON.stringify(favorites));
+  var lbFav = document.getElementById('lbFavBtn');
+  if (lbFav) syncLbFav(lbFav);
+}
+
+function toggleLightboxFav() {
+  var vis = getVisibleSertifData();
+  var img = vis[currentLightbox] ? vis[currentLightbox].img : '';
+  if (!img) return;
+  var fi    = favorites.indexOf(img);
+  var lbFav = document.getElementById('lbFavBtn');
+  if (fi === -1) {
+    favorites.push(img);
+    if (lbFav) lbFav.classList.add('active');
+    showToast('💛 Ditambahkan ke favorit');
+  } else {
+    favorites.splice(fi, 1);
+    if (lbFav) lbFav.classList.remove('active');
+    showToast('🗑️ Dihapus dari favorit');
+  }
+  localStorage.setItem('sertifFav', JSON.stringify(favorites));
+  // Sync semua card di semua panel
+  document.querySelectorAll('.sertif-card').forEach(function (card) {
+    var src = getCardImg(card);
+    var btn = card.querySelector('.sertif-fav-btn');
+    if (favorites.indexOf(src) !== -1) {
+      if (btn) { btn.textContent = '♥'; btn.classList.add('active'); }
+      card.classList.add('is-fav');
+    } else {
+      if (btn) { btn.textContent = '♡'; btn.classList.remove('active'); }
+      card.classList.remove('is-fav');
+    }
+  });
+}
+
+function syncLbFav(lbFav) {
+  var vis = getVisibleSertifData();
+  var img = vis[currentLightbox] ? vis[currentLightbox].img : '';
+  if (favorites.indexOf(img) !== -1) lbFav.classList.add('active');
+  else lbFav.classList.remove('active');
+}
+
+// ===========================
+// LIGHTBOX
+// ===========================
+function getVisibleSertifData() {
+  var result = [];
+  document.querySelectorAll('#sertifGrid-all .sertif-card').forEach(function (card) {
+    if (card.style.display === 'none') return;
+    var d = dataByImg(getCardImg(card));
+    if (d) result.push(d);
+  });
+  return result;
+}
+
+function openLightbox(img, title) {
+  var vis = getVisibleSertifData();
+  var idx = 0;
+  for (var i = 0; i < vis.length; i++) {
+    if (vis[i].img === img) { idx = i; break; }
+  }
+  currentLightbox = idx;
   showLightbox();
 }
 
 function showLightbox() {
-  var s   = sertifData[currentLightbox];
-  var img = document.getElementById('lightboxImg');
-  var cap = document.getElementById('lightboxCaption');
-  var lb  = document.getElementById('lightboxOverlay');
-  if (img) img.src = s.img;
-  if (cap) cap.textContent = s.title + '  ·  ' + (currentLightbox + 1) + ' / ' + sertifData.length;
-  if (lb)  lb.classList.remove('hidden');
+  var vis = getVisibleSertifData();
+  var s   = vis[currentLightbox];
+  if (!s) return;
+  var imgEl   = document.getElementById('lightboxImg');
+  var capEl   = document.getElementById('lightboxCaption');
+  var lb      = document.getElementById('lightboxOverlay');
+  var lbFav   = document.getElementById('lbFavBtn');
+
+  // Animasi fade ganti gambar
+  if (imgEl) {
+    imgEl.style.opacity = '0';
+    imgEl.src = s.img;
+    imgEl.onload = function () {
+      imgEl.style.transition = 'opacity 0.3s ease';
+      imgEl.style.opacity    = '1';
+    };
+  }
+  if (capEl) capEl.textContent = s.title + '  ·  ' + (currentLightbox + 1) + ' / ' + vis.length;
+  if (lbFav) syncLbFav(lbFav);
+  if (lb)    lb.classList.remove('hidden');
   document.body.style.overflow = 'hidden';
 }
 
@@ -473,34 +482,245 @@ function closeLightbox() {
   var lb = document.getElementById('lightboxOverlay');
   if (lb) lb.classList.add('hidden');
   document.body.style.overflow = '';
+  document.dispatchEvent(new Event('lightboxReset'));
 }
 
 function prevSertif() {
-  currentLightbox = (currentLightbox - 1 + sertifData.length) % sertifData.length;
+  var vis = getVisibleSertifData();
+  currentLightbox = (currentLightbox - 1 + vis.length) % vis.length;
+  document.dispatchEvent(new Event('lightboxReset'));
   showLightbox();
 }
 
 function nextSertif() {
-  currentLightbox = (currentLightbox + 1) % sertifData.length;
+  var vis = getVisibleSertifData();
+  currentLightbox = (currentLightbox + 1) % vis.length;
+  document.dispatchEvent(new Event('lightboxReset'));
   showLightbox();
+}
+
+// ===========================
+// SHARE / COPY LINK
+// ===========================
+function shareLightbox() {
+  var vis = getVisibleSertifData();
+  var s   = vis[currentLightbox];
+  if (!s) return;
+
+  // Coba Web Share API dulu (mobile/modern browser)
+  if (navigator.share) {
+    navigator.share({ title: s.title, text: s.title })
+      .then(function() { showToast('✅ Berhasil dibagikan!'); })
+      .catch(function() {});
+    return;
+  }
+
+  // Fallback: salin nama file / path ke clipboard
+  var text = s.title + ' — ' + s.img;
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text).then(function () {
+      showToast('🔗 Info sertifikat disalin!');
+    });
+  } else {
+    // Fallback manual untuk file:// protocol
+    var el = document.createElement('textarea');
+    el.value = text;
+    el.style.position = 'fixed';
+    el.style.opacity  = '0';
+    document.body.appendChild(el);
+    el.select();
+    try {
+      document.execCommand('copy');
+      showToast('🔗 Info sertifikat disalin!');
+    } catch (e) {
+      showToast('ℹ️ ' + s.title);
+    }
+    document.body.removeChild(el);
+  }
+}
+
+// ===========================
+// DOWNLOAD SERTIFIKAT
+// ===========================
+function downloadSertif() {
+  var vis = getVisibleSertifData();
+  var s   = vis[currentLightbox];
+  if (!s) return;
+
+  // Gunakan fetch + blob agar download bekerja di file:// protocol
+  fetch(s.img)
+    .then(function(res) { return res.blob(); })
+    .then(function(blob) {
+      var url  = URL.createObjectURL(blob);
+      var a    = document.createElement('a');
+      a.href   = url;
+      a.download = s.title + '.jpg';
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(function() {
+        URL.revokeObjectURL(url);
+        document.body.removeChild(a);
+      }, 1000);
+      showToast('⬇️ Mengunduh ' + s.title + '...');
+    })
+    .catch(function() {
+      // Fallback: buka gambar di tab baru, user bisa save manual
+      window.open(s.img, '_blank');
+      showToast('💡 Klik kanan gambar → Simpan untuk mengunduh');
+    });
+}
+
+// ===========================
+// FILTER FAVORIT & SORT
+// ===========================
+function toggleFavFilter() {
+  favOnly = !favOnly;
+  var btn = document.getElementById('btnFavOnly');
+  if (btn) {
+    btn.classList.toggle('active', favOnly);
+    btn.textContent = favOnly ? '♥' : '♡';
+    btn.title = favOnly ? 'Tampilkan semua' : 'Tampilkan favorit saja';
+  }
+  applyAllFilters();
+}
+
+function applySortFilter() {
+  var sel = document.getElementById('sortSelect');
+  sortOrder = sel ? sel.value : 'asc';
+  applyAllFilters();
+}
+
+function applyAllFilters() {
+  var searchEl = document.getElementById('sertifSearch');
+  var q = searchEl ? (searchEl.value || '').toLowerCase().trim() : '';
+
+  // Sort data dulu
+  var sorted = sertifData.slice();
+  if (sortOrder === 'desc') sorted.reverse();
+
+  // Re-render dengan urutan baru
+  renderCards(sorted);
+
+  // Terapkan filter search & fav
+  var cards = document.querySelectorAll('#sertifGrid-all .sertif-card');
+  var vis = 0;
+  var clear = document.getElementById('clearBtn');
+  if (clear) clear.classList.toggle('hidden', q === '');
+
+  cards.forEach(function (card) {
+    var titleEl = card.querySelector('.sertif-title');
+    var title   = titleEl ? titleEl.textContent.toLowerCase() : '';
+    var isFav   = card.classList.contains('is-fav');
+    var matchQ  = !q || title.includes(q);
+    var matchFav = !favOnly || isFav;
+    var show = matchQ && matchFav;
+    card.style.display = show ? '' : 'none';
+    if (show) vis++;
+  });
+
+  var emptyEl = document.getElementById('sertifEmpty');
+  if (emptyEl) emptyEl.classList.toggle('hidden', vis > 0);
+  var visEl = document.getElementById('visibleCount');
+  if (visEl) visEl.textContent = vis;
+}
+
+// ===========================
+// KONFETI SAAT FAVORIT
+// ===========================
+function spawnConfetti(originEl) {
+  var rect    = originEl.getBoundingClientRect();
+  var cx      = rect.left + rect.width / 2;
+  var cy      = rect.top  + rect.height / 2;
+  var colors  = ['#0ea5e9','#6366f1','#ec4899','#fbbf24','#34d399'];
+  for (var i = 0; i < 18; i++) {
+    (function(i) {
+      var el = document.createElement('span');
+      el.className = 'confetti-bit';
+      var color = colors[i % colors.length];
+      var angle = (i / 18) * 360;
+      var dist  = 60 + Math.random() * 50;
+      var dx    = Math.cos(angle * Math.PI / 180) * dist;
+      var dy    = Math.sin(angle * Math.PI / 180) * dist - 30;
+      el.style.cssText = [
+        'position:fixed',
+        'left:' + cx + 'px',
+        'top:' + cy + 'px',
+        'width:' + (6 + Math.random() * 6) + 'px',
+        'height:' + (6 + Math.random() * 6) + 'px',
+        'background:' + color,
+        'border-radius:' + (Math.random() > 0.5 ? '50%' : '2px'),
+        'pointer-events:none',
+        'z-index:999999',
+        'transform:translate(-50%,-50%)',
+        'transition:transform 0.7s ease, opacity 0.7s ease',
+        'opacity:1'
+      ].join(';');
+      document.body.appendChild(el);
+      requestAnimationFrame(function() {
+        requestAnimationFrame(function() {
+          el.style.transform = 'translate(calc(-50% + ' + dx + 'px), calc(-50% + ' + dy + 'px)) rotate(' + (Math.random()*360) + 'deg)';
+          el.style.opacity   = '0';
+        });
+      });
+      setTimeout(function() { el.remove(); }, 800);
+    })(i);
+  }
 }
 
 // ===========================
 // SEARCH / FILTER
 // ===========================
 function filterSertif() {
-  var q      = document.getElementById('sertifSearch').value.toLowerCase().trim();
-  var cards  = document.querySelectorAll('.sertif-card');
-  var visible = 0;
-  cards.forEach(function(card) {
-    var titleEl = card.querySelector('.sertif-title');
-    var title   = titleEl ? titleEl.textContent.toLowerCase() : '';
-    var show    = !q || title.includes(q);
-    card.style.display = show ? '' : 'none';
-    if (show) visible++;
+  applyAllFilters();
+}
+
+function clearSearch() {
+  var searchEl = document.getElementById('sertifSearch');
+  if (searchEl) searchEl.value = '';
+  filterSertif();
+}
+
+// ===========================
+// VIEW TOGGLE (GRID / LIST)
+// ===========================
+function setView(v) {
+  currentView = v;
+  var btnG = document.getElementById('btnGrid');
+  var btnL = document.getElementById('btnList');
+  document.querySelectorAll('.sertif-grid').forEach(function (grid) {
+    if (v === 'grid') {
+      grid.classList.remove('sertif-list-view');
+    } else {
+      grid.classList.add('sertif-list-view');
+    }
   });
-  var emptyEl = document.getElementById('sertifEmpty');
-  if (emptyEl) emptyEl.classList.toggle('hidden', visible > 0);
+  if (v === 'grid') {
+    btnG.classList.add('active');
+    btnL.classList.remove('active');
+  } else {
+    btnL.classList.add('active');
+    btnG.classList.remove('active');
+  }
+}
+
+// ===========================
+// TOAST (override script.js agar konsisten dengan duration param)
+// ===========================
+function showToast(msg, duration) {
+  duration = duration || 2800;
+  var container = document.getElementById('toast-container');
+  if (!container) return;
+  var t = document.createElement('div');
+  t.className = 'toast';
+  t.innerHTML = '<span class="toast-icon">🔔</span><span>' + msg + '</span>';
+  container.appendChild(t);
+  requestAnimationFrame(function () {
+    requestAnimationFrame(function () { t.classList.add('show'); });
+  });
+  setTimeout(function () {
+    t.classList.remove('show');
+    t.addEventListener('transitionend', function () { t.remove(); });
+  }, duration);
 }
 </script>
 
