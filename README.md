@@ -2,6 +2,8 @@
 
 Portofolio pribadi milik Dzaki Pasha Ramadhan — mahasiswa Manajemen Informatika, Universitas Negeri Surabaya. Situs ini dibuat dengan HTML, CSS, dan JavaScript murni (vanilla), tanpa build step.
 
+🌐 **Live:** [dzakipasha.site](https://dzakipasha.site)
+
 ---
 
 ## Halaman
@@ -11,7 +13,7 @@ Portofolio pribadi milik Dzaki Pasha Ramadhan — mahasiswa Manajemen Informatik
 | `index.html` | Halaman utama — hero, tech stack, layanan, dan statistik |
 | `about.html` | Profil, skill, dan statistik belajar |
 | `project.html` | Daftar proyek dengan filter kategori |
-| `penghargaan.html` | Galeri sertifikat & penghargaan *(halaman baru)* |
+| `penghargaan.html` | Galeri sertifikat & penghargaan (23 sertifikat) |
 | `contact.html` | WhatsApp, Instagram, Email, GitHub, LinkedIn |
 
 ---
@@ -23,18 +25,28 @@ Portofolio-Jakk/
 ├── index.html
 ├── about.html
 ├── project.html
-├── penghargaan.html          ← baru
+├── penghargaan.html
 ├── contact.html
 ├── style.css
 ├── script.js
+├── sitemap.xml               ← SEO sitemap
+├── robots.txt                ← SEO robots
+├── favicon.ico               ← fallback favicon
+├── googlec1a37de692454a95.html  ← Google Search Console verification
 ├── images/
-│   ├── fotoku.jpg            ← foto profil baru (menggantikan "foto dzaki.jpeg")
-│   ├── finance tracker.png   ← gambar thumbnail baru (menggantikan .jpeg)
+│   ├── fotoku.jpg
+│   ├── favicon.jpg           ← favicon logo ZD biru
+│   ├── finance tracker.png
 │   ├── kostku premium.png
 │   ├── absensi mahasiswa.png
-│   ├── kost6.jpg             ← gambar baru
-│   ├── sertif1.jpg – sertif21.jpg  ← 21 file sertifikat baru
+│   ├── hand tracking.png     ← thumbnail baru
+│   ├── kost1.jpg – kost6.jpg
+│   └── sertif1.jpg – sertif23.jpg
 └── project/
+    ├── hand tracking/        ← project baru
+    │   ├── index.html
+    │   ├── style.css
+    │   └── script.js
     ├── finance tracker/
     │   ├── index.html
     │   ├── style.css
@@ -51,74 +63,32 @@ Portofolio-Jakk/
 
 ---
 
-## Perubahan yang Dilakukan
+## Proyek
 
-### Halaman Baru
-- **`penghargaan.html`** — halaman galeri sertifikat & penghargaan dengan:
-  - Grid 21 sertifikat (`sertif1.jpg` – `sertif21.jpg`)
-  - Lightbox viewer (buka, tutup, navigasi prev/next)
-  - Kotak pencarian sertifikat real-time
-  - Counter total sertifikat otomatis
+| Nama | Deskripsi | Teknologi |
+|---|---|---|
+| 🖐️ Hand Gesture Particle Control | Kontrol partikel interaktif via gerakan tangan real-time dengan kamera | HTML, CSS, JS, MediaPipe |
+| 💸 Student Finance Tracker | Manajemen keuangan mahasiswa dengan dashboard interaktif | HTML, CSS, JS |
+| 🏡 Kost Finder | Pencarian kost berdasarkan budget, lokasi, dan fasilitas | HTML, CSS, JS |
+| 🎓 Sistem Absensi Mahasiswa | Absensi berbasis web dengan statistik dan riwayat kehadiran | HTML, CSS, JS |
 
-### Navigasi (semua halaman)
-- Menu tambah item **Penghargaan** yang mengarah ke `penghargaan.html`, baik di navbar desktop maupun mobile menu
+---
 
-### `index.html`
-- Tambah meta SEO lengkap: `description`, `author`, `robots`, `theme-color`
-- Tambah Open Graph tags (WhatsApp, Facebook, Discord, LinkedIn preview)
-- Tambah Canonical URL (`https://dzakipasha.site/`)
-- Tambah Schema.org JSON-LD untuk Google
-- Ganti foto profil dari `foto dzaki.jpeg` → `images/fotoku.jpg`
-- Tambah ikon media sosial di hero: GitHub, Instagram, Email, WhatsApp, **LinkedIn** *(baru)*
-- Tambah **Tech Stack** section di hero dengan ikon Devicons (HTML, CSS, JS, Python, C++, GitHub)
-- Tambah `devicon` CSS dari CDN jsdelivr
-- Tambah scroll indicator arrow di hero
-- Tambah scroll progress bar (`#scroll-progress`)
-- Tambah toast container (`#toast-container`)
-- Tambah custom cursor (`.cursor-dot`, `.cursor-ring`)
-- Tambah hamburger / mobile menu
+## SEO
 
-### `about.html`
-- Tambah meta SEO + Open Graph + Canonical URL
-- Tambah scroll progress bar, toast container, custom cursor, mobile menu
-- Tambah section **Skill & Kemampuan** dengan badge level dan tooltip (HTML, CSS, JS, Python, C++)
-- Tambah animasi counter pada stats (`count-up` dengan `data-target`)
-- Parallax banner pada header About
+Website sudah dioptimasi untuk mesin pencari:
 
-### `project.html`
-- Tambah meta SEO + Open Graph + Canonical URL
-- Tambah scroll progress bar, toast container, custom cursor, mobile menu
-- Tambah **filter bar** (Semua / Web App / UI/UX / JavaScript)
-- Setiap kartu proyek punya `data-category` untuk filter
-- Thumbnail Finance Tracker diperbarui ke `images/finance tracker.png`
-
-### `contact.html`
-- Tambah meta SEO + Open Graph + Canonical URL
-- Tambah scroll progress bar, toast container, custom cursor, mobile menu
-- Tambah kartu kontak **LinkedIn** *(baru)*
-- Setiap link kontak punya `data-toast` untuk notifikasi saat diklik
-
-### `script.js`
-- Tambah **custom cursor** dengan efek ring smooth-follow dan state `hovered`
-- Tambah **scroll progress bar** (progress pengisian bar di bagian atas)
-- Tambah **back-to-top button** (muncul saat scroll > 300px)
-- Tambah **ripple effect** pada tombol dan link
-- Tambah **toast notification** system (`showToast()`)
-- Tambah **project filter** (menyembunyikan/menampilkan kartu berdasarkan kategori)
-- Tambah **counter animation** untuk stats di about (`count-up`)
-- Tambah **parallax banner** (scroll parallax ringan, dinonaktifkan di mobile/reduced-motion)
-- Tambah **hamburger/mobile menu** (`openMobileMenu()`, `closeMobileMenu()`, Escape key support)
-- Visitor counter kini memiliki animasi count-up
-- Skill bar legacy tetap dipertahankan untuk kompatibilitas
-
-### `style.css`
-- Penambahan style untuk semua fitur baru di atas (cursor, scroll progress, toast, ripple, filter bar, skill badges, lightbox, penghargaan grid, dsb.)
-
-### Gambar
-- `foto dzaki.jpeg` → dihapus, diganti `images/fotoku.jpg`
-- `images/finance tracker.jpeg` → dihapus, diganti `images/finance tracker.png`
-- Tambah `images/kost6.jpg`
-- Tambah `images/sertif1.jpg` – `images/sertif21.jpg` (21 file)
+- ✅ Meta tags lengkap (`description`, `author`, `robots`) di semua halaman
+- ✅ Open Graph tags (preview WhatsApp, Facebook, LinkedIn, Discord)
+- ✅ Twitter Card tags di semua halaman
+- ✅ Canonical URL di semua halaman
+- ✅ JSON-LD Schema.org (`Person` di homepage, `CollectionPage` di penghargaan)
+- ✅ `sitemap.xml` terdaftar di Google Search Console
+- ✅ `robots.txt` dengan referensi sitemap
+- ✅ Favicon custom (logo ZD) di semua halaman
+- ✅ `lang="id"` pada semua halaman
+- ✅ Satu H1 per halaman (heading hierarchy benar)
+- ✅ Google Search Console terverifikasi
 
 ---
 
@@ -126,10 +96,10 @@ Portofolio-Jakk/
 
 - Typing effect pada hero
 - Jam real-time yang diperbarui setiap detik
-- Penghitung pengunjung dengan animasi menggunakan `localStorage`
-- Toggle dark mode dengan penyimpanan preferensi di `localStorage`
-- Animasi muncul saat scroll menggunakan `IntersectionObserver`
-- Latar partikel interaktif (via `particles.js` CDN)
+- Penghitung pengunjung dengan animasi (`localStorage`)
+- Toggle dark mode dengan penyimpanan preferensi (`localStorage`)
+- Animasi muncul saat scroll (`IntersectionObserver`)
+- Latar partikel interaktif (`particles.js` CDN)
 - Custom cursor dengan smooth-follow ring
 - Scroll progress bar
 - Ripple effect pada tombol
@@ -137,7 +107,7 @@ Portofolio-Jakk/
 - Hamburger menu untuk mobile
 - Back-to-top button
 - Parallax banner (desktop only)
-- Galeri sertifikat dengan lightbox dan pencarian
+- Galeri sertifikat dengan lightbox, pencarian, sort, favorit, download, share
 - Filter proyek berdasarkan kategori
 - Responsif untuk perangkat mobile
 
@@ -146,6 +116,7 @@ Portofolio-Jakk/
 ## Teknologi
 
 - HTML5, CSS3, JavaScript (Vanilla)
+- MediaPipe Hands (hand tracking project)
 - particles.js (CDN)
 - Devicons (CDN)
 - Google Fonts (Poppins)
@@ -154,4 +125,6 @@ Portofolio-Jakk/
 
 ## Menjalankan
 
-Buka `index.html` di browser (double-click) — tidak perlu server atau build.
+Buka `index.html` di browser (double-click) — tidak perlu server atau build step.
+
+> **Catatan:** Project Hand Tracking membutuhkan akses kamera dan koneksi internet (MediaPipe CDN). Jalankan via local server (Live Server / `http-server`) agar kamera bisa diakses.
