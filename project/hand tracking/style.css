@@ -1,0 +1,64 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { overflow: hidden; background: #050505; font-family: 'Segoe UI', Arial, sans-serif; }
+
+#webcam-wrap { position: absolute; bottom: 20px; left: 20px; z-index: 20; }
+#webcam {
+  width: 200px; height: 150px;
+  border: 2px solid rgba(0,255,180,0.5);
+  border-radius: 10px; transform: scaleX(-1);
+  background: #111; display: block;
+}
+#landmark-canvas {
+  position: absolute; top: 0; left: 0;
+  width: 200px; height: 150px;
+  border-radius: 10px; pointer-events: none;
+}
+#cam-label {
+  text-align: center; color: rgba(0,255,180,0.7);
+  font-size: 0.7rem; letter-spacing: 1px; margin-top: 4px;
+}
+
+#guide {
+  position: absolute; right: 20px; top: 50%;
+  transform: translateY(-50%);
+  z-index: 20; display: flex; flex-direction: column; gap: 7px; pointer-events: none;
+}
+.g-item {
+  display: flex; align-items: center; gap: 10px;
+  background: rgba(0,0,0,0.55);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px; padding: 6px 12px;
+  transition: all 0.25s ease; backdrop-filter: blur(6px);
+}
+.g-item.active {
+  border-color: rgba(0,255,180,0.65);
+  background: rgba(0,255,180,0.09);
+  box-shadow: 0 0 14px rgba(0,255,180,0.3);
+}
+.g-icon { font-size: 1.2rem; width: 22px; text-align: center; }
+.g-text { font-size: 0.7rem; color: rgba(255,255,255,0.5); line-height: 1.4; }
+.g-text b { color: rgba(255,255,255,0.85); font-weight: 600; display: block; }
+.g-item.active .g-text { color: rgba(255,255,255,0.85); }
+
+#conf-wrap {
+  position: absolute; bottom: 20px; right: 20px;
+  z-index: 20; display: flex; flex-direction: column;
+  align-items: flex-end; gap: 4px;
+}
+#conf-label { font-size: 0.62rem; color: rgba(255,255,255,0.3); letter-spacing: 1px; }
+#conf-bar-bg { width: 110px; height: 4px; background: rgba(255,255,255,0.1); border-radius: 4px; }
+#conf-bar {
+  height: 4px; background: linear-gradient(90deg,#00ffb4,#00cfff);
+  border-radius: 4px; width: 0%; transition: width 0.2s ease;
+}
+
+#lock-ring { position: absolute; bottom: 178px; left: 30px; z-index: 20; pointer-events: none; }
+
+#error-msg {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  color: #ff4444; background: rgba(0,0,0,0.85);
+  padding: 24px 32px; border-radius: 12px; font-size: 15px;
+  display: none; text-align: center; z-index: 100;
+  border: 1px solid rgba(255,68,68,0.3);
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hand Gesture Particle Control</title>
+  <link rel="stylesheet" href="style.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <div id="error-msg">Kamera tidak terdeteksi atau izin akses kamera ditolak!<br>Mohon izinkan akses kamera pada browser Anda.</div>
+
+  <div id="webcam-wrap">
+    <video id="webcam" autoplay playsinline muted></video>
+    <canvas id="landmark-canvas" width="200" height="150"></canvas>
+    <div id="cam-label">LIVE</div>
+  </div>
+
+  <div id="guide">
+    <div class="g-item active" id="gi-0"><span class="g-icon">&#128400;</span><div class="g-text"><b>Telapak Terbuka</b>Nebula Cloud</div></div>
+    <div class="g-item"       id="gi-1"><span class="g-icon">&#9994;</span><div class="g-text"><b>Kepalan</b>Heart</div></div>
+    <div class="g-item"       id="gi-2"><span class="g-icon">&#9757;</span><div class="g-text"><b>Satu Jari</b>Planet Uranus</div></div>
+    <div class="g-item"       id="gi-3"><span class="g-icon">&#9996;</span><div class="g-text"><b>Dua Jari (Peace)</b>I LOVE YOU</div></div>
+    <div class="g-item"       id="gi-4"><span class="g-icon">&#129305;</span><div class="g-text"><b>Shaka</b>Gelombang Laut</div></div>
+    <div class="g-item"       id="gi-5"><span class="g-icon">&#128077;</span><div class="g-text"><b>Jempol Naik</b>Api / Flame</div></div>
+    <div class="g-item"       id="gi-6"><span class="g-icon">&#129311;</span><div class="g-text"><b>ILY Sign</b>Kristal Diamond</div></div>
+    <div class="g-item"       id="gi-7"><span class="g-icon">&#128406;</span><div class="g-text"><b>4 Jari</b>Spiral Galaxy</div></div>
+  </div>
+
+  <div id="conf-wrap">
+    <div id="conf-label">HAND CONFIDENCE</div>
+    <div id="conf-bar-bg"><div id="conf-bar"></div></div>
+  </div>
+
+  <canvas id="lock-ring" width="40" height="40"></canvas>
+
+  <script src="script.js"></script>
+</body>
+</html>
