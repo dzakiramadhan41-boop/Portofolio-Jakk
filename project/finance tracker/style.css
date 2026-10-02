@@ -730,22 +730,28 @@ footer {
 @media (max-width: 768px) {
   html, body { overflow-x: hidden; }
 
+  /* Header */
   .header-inner {
     padding: 10px 14px;
     flex-wrap: wrap;
+    gap: 8px;
   }
   .header-left h1 { font-size: 14px; }
   .clock-box      { display: none; }
+  .back-btn       { padding: 6px 12px; font-size: 12px; min-height: 36px; }
+  .theme-btn      { width: 34px; height: 34px; font-size: 16px; flex-shrink: 0; }
 
+  /* Stats */
   .stats-section {
     grid-template-columns: repeat(2, 1fr);
     padding: 0 12px;
     gap: 10px;
     margin-top: 14px;
   }
-  .stat-card { padding: 14px 16px; gap: 10px; }
+  .stat-card { padding: 12px 14px; gap: 10px; }
   .stat-num  { font-size: 18px; }
 
+  /* Main grid */
   .main-grid {
     grid-template-columns: 1fr;
     padding: 0 12px 28px;
@@ -753,44 +759,116 @@ footer {
     gap: 14px;
   }
   .left-panel   { gap: 14px; }
-  .form-body    { padding: 16px; gap: 12px; }
-  .input-row    { grid-template-columns: 1fr; }
 
-  .type-selector { gap: 6px; }
-  .type-opt      { padding: 8px 4px; font-size: 11px; }
-
-  .btn-save { padding: 11px; font-size: 13px; }
-
-  .card-header    { padding: 14px 16px; }
+  /* Cards */
+  .card        { max-width: 100%; }
+  .card-header { padding: 12px 14px; }
   .card-header h2 { font-size: 13px; }
 
+  /* Form */
+  .form-body { padding: 12px 14px; gap: 12px; }
+  .input-row { grid-template-columns: 1fr; }
+
+  /* Type selector */
+  .type-selector {
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .type-opt {
+    padding: 8px 4px;
+    font-size: 12px;
+    min-width: 0;
+    flex: 1;
+    min-height: 44px;
+  }
+
+  /* Buttons */
+  .btn-save { padding: 11px; font-size: 13px; min-height: 44px; }
+  .btn-goal { min-height: 44px; }
+  .btn-export,
+  .btn-reset { padding: 7px 10px; font-size: 12px; min-height: 44px; }
+
+  /* Chart */
   .chart-tabs-header {
     flex-direction: column;
     align-items: flex-start;
     gap: 8px;
   }
-  .chart-body  { padding: 16px; gap: 14px; }
+  .chart-body  { padding: 12px 14px; gap: 14px; }
   .donut-wrap  { max-width: 200px; }
+  .tab-btn     { min-height: 36px; }
 
+  /* History tools — stack vertically */
   .history-header {
     flex-direction: column;
     align-items: stretch;
     gap: 10px;
   }
-  .history-tools        { flex-wrap: wrap; gap: 6px; }
-  .search-wrap input    { width: 100%; }
+  .history-tools {
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+  }
+  .history-tools > * { width: 100%; }
+
+  /* Search */
+  .search-wrap { width: 100%; }
+  .search-wrap input {
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 13px;
+  }
+
+  /* Filter selects */
   #filter,
-  #filterCategory       { flex: 1; font-size: 12px; }
-  .btn-export,
-  .btn-reset            { padding: 7px 10px; font-size: 11px; }
+  #filterCategory {
+    width: 100%;
+    flex: unset;
+    font-size: 12px;
+    box-sizing: border-box;
+  }
 
-  thead th              { padding: 10px 10px; font-size: 10px; }
-  tbody td              { padding: 10px 10px; font-size: 12px; }
+  /* Table → card view */
+  .table-wrap {
+    overflow-x: auto;
+    max-width: 100%;
+    max-height: none;
+  }
+  table thead { display: none; }
+  table tbody tr {
+    display: block;
+    margin-bottom: 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    background: var(--bg-card);
+  }
+  table tbody td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 0;
+    font-size: 13px;
+    border-bottom: 1px solid rgba(56,189,248,0.05);
+  }
+  table tbody td:last-child { border-bottom: none; }
+  table tbody td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: #666;
+    font-size: 12px;
+    flex-shrink: 0;
+    margin-right: 8px;
+  }
 
-  .goal-body    { padding: 16px; gap: 10px; }
-  .insight-body { padding: 14px 16px; }
+  /* Goal & Insight */
+  .goal-body    { padding: 12px 14px; gap: 10px; }
+  .insight-body { padding: 12px 14px; }
 
-  .table-wrap   { max-height: 350px; }
+  /* Font floor */
+  body          { font-size: 12px; }
+  #insightText  { font-size: 12px; }
+  .stat-label   { font-size: 12px; }
 
   #toastContainer { right: 10px; bottom: 14px; }
   footer          { padding: 18px 14px; }
@@ -801,4 +879,25 @@ footer {
   .stats-section { grid-template-columns: repeat(2, 1fr); }
   .stat-num      { font-size: 15px; }
   .tab-btn       { padding: 5px 10px; font-size: 11px; }
+
+  /* Tighter card padding on very small screens */
+  .card-header  { padding: 10px 12px; }
+  .form-body    { padding: 10px 12px; }
+  .goal-body    { padding: 10px 12px; }
+  .insight-body { padding: 10px 12px; }
+  .chart-body   { padding: 10px 12px; }
+
+  /* Ensure inputs are comfortably tappable */
+  .input-group input,
+  .input-group select,
+  .search-wrap input,
+  #filter,
+  #filterCategory {
+    min-height: 44px;
+    font-size: 13px;
+  }
+
+  .btn-save, .btn-goal { min-height: 48px; font-size: 14px; }
+
+  .stat-label, .goal-text, .insight-row, .progress-label { font-size: 12px; }
 }

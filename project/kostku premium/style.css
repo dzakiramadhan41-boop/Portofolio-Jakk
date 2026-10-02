@@ -745,14 +745,22 @@ footer {
 @media (max-width: 768px) {
   html, body { overflow-x: hidden; }
 
+  /* Pastikan semua teks minimal 12px */
+  body { font-size: 12px; }
+
+  /* Header: flex-wrap + tidak overflow */
   .header-inner {
-    padding: 10px 14px;
+    padding: 10px 12px;
     flex-wrap: wrap;
     gap: 8px;
+    overflow: hidden;
   }
+  .header-left  { flex-shrink: 0; overflow: hidden; }
+  .header-right { flex-shrink: 0; }
   .logo-text h1 { font-size: 16px; }
   .logo-text p  { display: none; }
 
+  /* Stats */
   .stats-section {
     grid-template-columns: repeat(2, 1fr);
     padding: 0 12px;
@@ -762,41 +770,78 @@ footer {
   .stat-card    { padding: 14px 16px; gap: 10px; }
   .stat-card h2 { font-size: 20px; }
 
+  /* Search section: column, semua item full width */
   .search-section {
     padding: 10px 12px 12px;
     gap: 8px;
     flex-direction: column;
+    align-items: stretch;
   }
-  .search-wrap  { width: 100%; }
-  .filter-pills { width: 100%; gap: 6px; }
-  .pill         { padding: 7px 13px; font-size: 11px; }
-  .sort-select  { width: 100%; }
+  .search-wrap  { width: 100%; flex: 0 0 100%; }
+  .filter-pills {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .pill         { padding: 7px 13px; font-size: 12px; min-height: 44px; box-sizing: border-box; }
+  .sort-select  { width: 100%; box-sizing: border-box; min-height: 44px; }
 
+  /* Kost grid: satu kolom */
   .kost-wrapper    { padding: 0 12px 32px; margin-top: 16px; }
   .kost-container  { grid-template-columns: 1fr; gap: 16px; }
 
+  /* Card */
   .card-img-wrap img { height: 185px; }
-  .card-body         { padding: 14px 16px 16px; }
+  .card-body         { padding: 14px 16px; }
   .card-body h3      { font-size: 14px; }
-  .card-location     { font-size: 11px; }
+  .card-location     { font-size: 12px; }
   .card-price        { font-size: 15px; }
-  .btn-detail        { padding: 8px 14px; font-size: 11px; }
-  .fac-tag           { padding: 3px 8px; font-size: 10px; }
+  .btn-detail {
+    padding: 8px 14px;
+    font-size: 12px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .fac-tag { padding: 3px 8px; font-size: 12px; }
 
-  .modal-box         { border-radius: 20px; }
+  /* Buttons min-height 44px */
+  .back-btn,
+  .theme-btn,
+  .fav-btn,
+  .btn-wa,
+  .btn-fav-modal {
+    min-height: 44px;
+  }
+
+  /* Modal */
+  .modal-box          { border-radius: 20px; }
   .modal-img-wrap img { height: 190px; }
-  .modal-body        { padding: 18px 18px 22px; }
-  .modal-body h2     { font-size: 17px; }
+  .modal-body         { padding: 18px 18px 22px; }
+  .modal-body h2      { font-size: 17px; }
   .modal-actions {
     flex-direction: column;
     gap: 10px;
   }
   .btn-wa,
-  .btn-fav-modal { width: 100%; justify-content: center; }
+  .btn-fav-modal {
+    width: 100%;
+    justify-content: center;
+    padding: 13px;
+    box-sizing: border-box;
+  }
 
+  /* Toast & footer */
   #toastContainer { right: 10px; bottom: 14px; }
-  footer          { padding: 18px 14px; }
-  .footer-inner   { flex-direction: column; gap: 10px; }
+  footer          { padding: 18px 12px; }
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+    align-items: center;
+  }
+  .footer-links { justify-content: center; }
 }
 
 /* — Mobile small (≤ 480px) — */
@@ -804,7 +849,9 @@ footer {
   .stats-section { grid-template-columns: repeat(2, 1fr); }
   .stat-card h2  { font-size: 18px; }
   .logo-icon     { width: 36px; height: 36px; font-size: 16px; }
-  .pill          { padding: 6px 10px; font-size: 10px; }
+  .pill          { padding: 6px 10px; font-size: 12px; min-height: 44px; box-sizing: border-box; }
+  .search-section { padding: 8px 12px 10px; }
+  .kost-wrapper   { padding: 0 12px 28px; }
 }
 
 /* ===========================

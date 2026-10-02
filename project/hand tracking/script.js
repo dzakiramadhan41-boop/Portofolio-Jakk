@@ -250,7 +250,7 @@ function drawLockRing(pct) {
   c.lineWidth=3; c.lineCap='round'; c.stroke();
 }
 
-// Landmark overlay
+// Landmark overlay — ukuran canvas disesuaikan dengan webcam display
 const lmCanvas=document.getElementById('landmark-canvas');
 const lmCtx   =lmCanvas.getContext('2d');
 const CONN=[
@@ -259,9 +259,10 @@ const CONN=[
   [0,17],[17,18],[18,19],[19,20],[5,9],[9,13],[13,17]
 ];
 function drawLandmarks(lm) {
-  lmCtx.clearRect(0,0,200,150);
+  const W=lmCanvas.width, H=lmCanvas.height;
+  lmCtx.clearRect(0,0,W,H);
   if (!lm) return;
-  const sx=pt=>(1-pt.x)*200, sy=pt=>pt.y*150;
+  const sx=pt=>(1-pt.x)*W, sy=pt=>pt.y*H;
   lmCtx.strokeStyle='rgba(0,255,180,0.75)'; lmCtx.lineWidth=1.8;
   CONN.forEach(([a,b])=>{
     lmCtx.beginPath(); lmCtx.moveTo(sx(lm[a]),sy(lm[a])); lmCtx.lineTo(sx(lm[b]),sy(lm[b])); lmCtx.stroke();
@@ -299,19 +300,71 @@ function onResults(res) {
 const videoEl =document.getElementById('webcam');
 const errorMsg=document.getElementById('error-msg');
 
+// Guide toggle (mobile/tablet)
+function toggleGuide() {
+  const guide = document.getElementById('guide');
+  const btn   = document.getElementById('guide-toggle');
+  guide.classList.toggle('open');
+  btn.classList.toggle('active');
+  btn.textContent = guide.classList.contains('open') ? '✕ Close' : '🖐️ Gestures';
+}
+// Close guide when tapping a gesture item on mobile
+document.querySelectorAll('.g-item').forEach(function(el) {
+  el.addEventListener('click', function() {
+    var guide = document.getElementById('guide');
+    var btn   = document.getElementById('guide-toggle');
+    if (guide.classList.contains('open')) {
+      guide.classList.remove('open');
+      btn.classList.remove('active');
+      btn.textContent = '🖐️ Gestures';
+    }
+  });
+});
+
+// Sync canvas resolution dengan ukuran display webcam yang aktual
+function syncCanvasToWebcam() {
+  const webcamEl = document.getElementById('webcam');
+  const displayW = webcamEl.offsetWidth;
+  const displayH = webcamEl.offsetHeight;
+  if (displayW > 0 && displayH > 0) {
+    lmCanvas.width  = displayW;
+    lmCanvas.height = displayH;
+  }
+}
+
+// Pilih resolusi kamera berdasarkan ukuran layar
+function getCameraResolution() {
+  const w = window.innerWidth;
+  if (w <= 480) return { width: 320, height: 240 };   // mobile kecil
+  if (w <= 768) return { width: 480, height: 360 };   // tablet / mobile besar
+  return { width: 640, height: 480 };                  // desktop
+}
+
 initThreeJS();
 updateHUD(0);
+syncCanvasToWebcam();
+
+// Re-sync canvas saat resize
+window.addEventListener('resize', syncCanvasToWebcam);
 
 const hands=new Hands({ locateFile:f=>`https://cdn.jsdelivr.net/npm/@mediapipe/hands/${f}` });
 hands.setOptions({ maxNumHands:1, modelComplexity:1, minDetectionConfidence:0.6, minTrackingConfidence:0.55 });
 hands.onResults(onResults);
 
-navigator.mediaDevices.getUserMedia({ video:{ width:480, height:360, facingMode:'user' } })
-  .then(stream=>{
-    videoEl.srcObject=stream;
-    new Camera(videoEl,{
-      onFrame: async()=>{ await hands.send({image:videoEl}); },
-      width:480, height:360
+const camRes = getCameraResolution();
+navigator.mediaDevices.getUserMedia({
+  video: {
+    width:      { ideal: camRes.width },
+    height:     { ideal: camRes.height },
+    facingMode: 'user'
+  }
+})
+  .then(stream => {
+    videoEl.srcObject = stream;
+    new Camera(videoEl, {
+      onFrame: async () => { await hands.send({ image: videoEl }); },
+      width:  camRes.width,
+      height: camRes.height
     }).start();
   })
-  .catch(err=>{ console.error(err); errorMsg.style.display='block'; });
+  .catch(err => { console.error(err); errorMsg.style.display = 'block'; });

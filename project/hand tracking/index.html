@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Hand Gesture Particle Control</title>
   <link rel="stylesheet" href="style.css">
 
@@ -12,14 +12,23 @@
 </head>
 <body>
 
+  <!-- BACK BUTTON -->
+  <a href="../../project.html" id="back-btn">← Back</a>
+
+  <!-- GUIDE TOGGLE (mobile/tablet only) -->
+  <button id="guide-toggle" onclick="toggleGuide()">🖐️ Gestures</button>
+
+  <!-- ERROR MESSAGE -->
   <div id="error-msg">Kamera tidak terdeteksi atau izin akses kamera ditolak!<br>Mohon izinkan akses kamera pada browser Anda.</div>
 
+  <!-- WEBCAM -->
   <div id="webcam-wrap">
     <video id="webcam" autoplay playsinline muted></video>
     <canvas id="landmark-canvas" width="200" height="150"></canvas>
     <div id="cam-label">LIVE</div>
   </div>
 
+  <!-- GESTURE GUIDE -->
   <div id="guide">
     <div class="g-item active" id="gi-0"><span class="g-icon">&#128400;</span><div class="g-text"><b>Telapak Terbuka</b>Nebula Cloud</div></div>
     <div class="g-item"       id="gi-1"><span class="g-icon">&#9994;</span><div class="g-text"><b>Kepalan</b>Heart</div></div>
@@ -31,11 +40,13 @@
     <div class="g-item"       id="gi-7"><span class="g-icon">&#128406;</span><div class="g-text"><b>4 Jari</b>Spiral Galaxy</div></div>
   </div>
 
+  <!-- CONFIDENCE BAR -->
   <div id="conf-wrap">
     <div id="conf-label">HAND CONFIDENCE</div>
     <div id="conf-bar-bg"><div id="conf-bar"></div></div>
   </div>
 
+  <!-- LOCK RING -->
   <canvas id="lock-ring" width="40" height="40"></canvas>
 
   <script src="script.js"></script>

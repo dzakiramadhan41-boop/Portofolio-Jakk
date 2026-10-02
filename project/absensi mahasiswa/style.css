@@ -1451,3 +1451,190 @@ tbody tr:nth-child(even) {
     width: 100%;
   }
 }
+
+/* ===========================
+   RESPONSIVE MOBILE ENHANCED
+=========================== */
+
+/* — Mobile (≤ 768px) enhanced — */
+@media (max-width: 768px) {
+
+  /* Header: hide clock, prevent button overflow */
+  .clock-box { display: none; }
+
+  .header-right {
+    flex-wrap: wrap;
+    gap: 8px;
+    overflow: hidden;
+  }
+
+  .back-btn,
+  .theme-btn {
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+
+  .back-btn { padding: 6px 12px; font-size: 12px; }
+  .theme-btn { width: 36px; height: 36px; }
+
+  /* All sections: consistent padding */
+  .stats-section,
+  .main-grid {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  /* Table wrapper: horizontal scroll */
+  .table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Card view for table rows */
+  table thead { display: none; }
+
+  table tbody tr {
+    display: block;
+    margin-bottom: 12px;
+    border: 1px solid rgba(56,189,248,0.2);
+    border-radius: 8px;
+    padding: 10px 14px;
+    background: var(--bg-card);
+  }
+
+  table tbody td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 0;
+    font-size: 13px;
+    border: none;
+  }
+
+  table tbody td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: #666;
+    flex-shrink: 0;
+    margin-right: 8px;
+  }
+
+  /* Remove last-child bottom border within card */
+  table tbody tr:last-child { border-bottom: 1px solid rgba(56,189,248,0.2); }
+
+  /* table-tools / search row */
+  .table-tools {
+    flex-direction: column;
+    gap: 8px;
+    align-items: stretch;
+  }
+
+  .table-tools > * {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* search-wrap input */
+  .search-wrap { width: 100%; }
+  .search-wrap input {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  #filterStatus,
+  #filterMatkul {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* status-selector: wrap and flex buttons */
+  .status-selector {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .status-opt {
+    flex: 1;
+    min-width: 0;
+    text-align: center;
+  }
+
+  /* Attendance progress bar: narrower on mobile */
+  .attendance-bar-wrap,
+  .attendance-wrap {
+    min-width: 60px;
+  }
+
+  /* Modal */
+  .modal {
+    padding: 16px 14px;
+    border-radius: 16px;
+  }
+
+  .modal-actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .btn-modal-cancel,
+  .btn-modal-confirm {
+    width: 100%;
+    min-height: 44px;
+  }
+
+  /* All interactive buttons: minimum touch target */
+  .btn-save,
+  .btn-cancel,
+  .btn-export,
+  .btn-reset,
+  .btn-import,
+  .btn-print,
+  .back-btn,
+  .theme-btn,
+  .btn-edit,
+  .btn-hapus {
+    min-height: 44px;
+  }
+
+  /* Minimum font size */
+  body, input, select, button, td, th { font-size: 12px; }
+}
+
+/* — Mobile small (≤ 480px) enhanced — */
+@media (max-width: 480px) {
+
+  /* Keep 2-column stats grid, just tighten */
+  .stats-section {
+    gap: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .stat-card { padding: 12px; gap: 8px; }
+  .stat-num  { font-size: 18px; }
+  .stat-icon { font-size: 24px; }
+
+  /* Stack donut chart */
+  .chart-body {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Table card view: tighter */
+  table tbody tr { padding: 8px 10px; }
+  table tbody td { font-size: 12px; }
+
+  /* Form */
+  .form-body { padding: 12px; }
+  .input-group input,
+  .input-group select { font-size: 12px; padding: 9px 10px; }
+
+  /* Modal */
+  .modal { padding: 14px 10px; }
+  .modal h3 { font-size: 16px; }
+  .modal p  { font-size: 13px; }
+
+  /* Footer */
+  footer { padding: 14px 10px; }
+  .footer-inner { font-size: 11px; }
+}
