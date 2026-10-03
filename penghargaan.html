@@ -164,9 +164,9 @@
     <p id="lightboxCaption"></p>
     <!-- ACTION BUTTONS -->
     <div class="lightbox-actions">
-      <button class="lb-btn lb-download" onclick="downloadSertif()" title="Download sertifikat">
+      <button class="lb-btn lb-download" onclick="downloadSertif()" title="Download / Simpan sertifikat">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Download
+        Simpan
       </button>
       <button class="lb-btn lb-share" onclick="shareLightbox()" title="Bagikan">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
@@ -588,14 +588,28 @@ function downloadSertif() {
   var s   = vis[currentLightbox];
   if (!s) return;
 
-  // Gunakan fetch + blob agar download bekerja di file:// protocol
+  // Deteksi mobile
+  var isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+
+  if (isMobile) {
+    // Mobile: buka gambar di tab baru, user long-press → Simpan Gambar
+    window.open(s.img, '_blank');
+    showToast('💡 Tahan gambar → "Simpan Gambar" untuk mengunduh');
+    return;
+  }
+
+  // Desktop: fetch + blob download
   fetch(s.img)
-    .then(function(res) { return res.blob(); })
+    .then(function(res) {
+      if (!res.ok) throw new Error('fetch failed');
+      return res.blob();
+    })
     .then(function(blob) {
       var url  = URL.createObjectURL(blob);
       var a    = document.createElement('a');
       a.href   = url;
       a.download = s.title + '.jpg';
+      a.style.display = 'none';
       document.body.appendChild(a);
       a.click();
       setTimeout(function() {
@@ -605,7 +619,6 @@ function downloadSertif() {
       showToast('⬇️ Mengunduh ' + s.title + '...');
     })
     .catch(function() {
-      // Fallback: buka gambar di tab baru, user bisa save manual
       window.open(s.img, '_blank');
       showToast('💡 Klik kanan gambar → Simpan untuk mengunduh');
     });

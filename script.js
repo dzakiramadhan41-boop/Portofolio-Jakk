@@ -1,7 +1,7 @@
 // ===========================
 // TYPING EFFECT
 // ===========================
-const words = ["Web Developer", "UI Designer", "Tech Enthusiast", "Programmer Muda"];
+const words = ["Web Developer", "UI Designer", "Web Enthusiast", "Programmer Muda"];
 let wordIndex = 0;
 let charIndex = 0;
 let isDeleting = false;

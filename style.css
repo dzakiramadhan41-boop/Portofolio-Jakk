@@ -1783,11 +1783,12 @@ body.dark .mobile-menu { background: rgba(4,7,15,0.97); }
   .stats { padding: 8px 12px 32px; gap: 10px; display: grid; grid-template-columns: 1fr 1fr; }
   .box { min-width: 0; padding: 16px 12px; border-radius: 16px; }
   .box h3 { font-size: 20px; }
-  /* Item ketiga (Project) ditaruh di tengah baris kedua */
+  /* Item ketiga (Project) — lebar sama dengan kotak lain, posisi tengah */
   .stats .box:last-child:nth-child(odd) {
     grid-column: 1 / -1;
-    max-width: calc(50% - 5px);
+    width: calc(50% - 5px);
     margin: 0 auto;
+    justify-self: center;
   }
   .box p { font-size: 11px; }
 
@@ -1877,8 +1878,9 @@ body.dark .mobile-menu { background: rgba(4,7,15,0.97); }
   /* Tetap center item ketiga di 480px */
   .stats .box:last-child:nth-child(odd) {
     grid-column: 1 / -1;
-    max-width: calc(50% - 5px);
+    width: calc(50% - 5px);
     margin: 0 auto;
+    justify-self: center;
   }
   .box h3 { font-size: 18px; }
 
