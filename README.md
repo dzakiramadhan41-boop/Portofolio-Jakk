@@ -1,6 +1,6 @@
 # Portofolio — Dzaki Pasha Ramadhan
 
-Portofolio pribadi milik Dzaki Pasha Ramadhan — mahasiswa Manajemen Informatika, Universitas Negeri Surabaya. Situs ini dibuat dengan HTML, CSS, dan JavaScript murni (vanilla), tanpa build step.
+Portofolio pribadi milik Dzaki Pasha Ramadhan — mahasiswa Manajemen Informatika, Universitas Negeri Surabaya. Situs ini dibuat dengan HTML, CSS, dan JavaScript 
 
 🌐 **Live:** [dzakipasha.site](https://dzakipasha.site)
 

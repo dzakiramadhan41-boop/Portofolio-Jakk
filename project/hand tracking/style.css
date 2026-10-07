@@ -191,28 +191,30 @@ body { overflow: hidden; background: #050505; font-family: 'Segoe UI', Arial, sa
    ===================== */
 @media (max-width: 768px) {
 
-  /* Webcam — pindah ke bawah tengah agar tangan lebih mudah diarahkan */
+  /* Webcam — pojok kanan bawah */
   #webcam-wrap {
-    bottom: 70px;
+    bottom: 20px;
     top: auto;
-    left: 50%;
-    transform: translateX(-50%);
+    left: auto;
+    right: 16px;
+    transform: none;
   }
   #webcam {
-    width: 180px;
-    height: 135px;
+    width: 160px;
+    height: 120px;
   }
   #landmark-canvas {
-    width: 180px;
-    height: 135px;
+    width: 160px;
+    height: 120px;
   }
 
   /* Lock ring tepat di atas webcam wrap */
   #lock-ring {
-    bottom: 213px;
-    left: 50%;
+    bottom: 148px;
+    left: auto;
+    right: 52px;
     top: auto;
-    transform: translateX(-50%);
+    transform: none;
   }
 
   /* Guide — tersembunyi by default, tampil saat toggle */
@@ -245,14 +247,15 @@ body { overflow: hidden; background: #050505; font-family: 'Segoe UI', Arial, sa
   .g-icon { font-size: 1.4rem; }
   .g-text { font-size: 0.78rem; }
 
-  /* Confidence bar — di atas webcam wrap, tengah */
+  /* Confidence bar — di atas webcam, pojok kanan */
   #conf-wrap {
-    bottom: 218px;
-    right: 50%;
-    transform: translateX(50%);
-    align-items: center;
+    bottom: 152px;
+    right: 16px;
+    left: auto;
+    transform: none;
+    align-items: flex-end;
   }
-  #conf-bar-bg { width: 150px; }
+  #conf-bar-bg { width: 130px; }
 }
 
 /* =====================
@@ -261,27 +264,30 @@ body { overflow: hidden; background: #050505; font-family: 'Segoe UI', Arial, sa
 @media (max-width: 480px) {
 
   #webcam-wrap {
-    bottom: 60px;
+    bottom: 16px;
+    right: 12px;
   }
   #webcam {
-    width: 140px;
-    height: 105px;
+    width: 130px;
+    height: 98px;
   }
   #landmark-canvas {
-    width: 140px;
-    height: 105px;
+    width: 130px;
+    height: 98px;
   }
 
   /* Lock ring */
   #lock-ring {
-    bottom: 173px;
+    bottom: 122px;
+    right: 37px;
   }
 
   /* Confidence bar */
   #conf-wrap {
-    bottom: 178px;
+    bottom: 126px;
+    right: 12px;
   }
-  #conf-bar-bg { width: 120px; }
+  #conf-bar-bg { width: 110px; }
 
   .g-item { max-width: 290px; }
   .g-icon { font-size: 1.2rem; }

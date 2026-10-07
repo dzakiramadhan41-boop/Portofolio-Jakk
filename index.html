@@ -31,6 +31,8 @@
     <!-- Favicon -->
     <link rel="icon" href="images/favicon.png" type="image/png">
     <link rel="apple-touch-icon" href="images/favicon.png">
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
 
     <!-- Schema.org (SEO Google) -->
     <script type="application/ld+json">
@@ -62,24 +64,25 @@
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
   <button class="mobile-menu-close" onclick="closeMobileMenu()">✕</button>
-  <a href="index.html" class="active" onclick="closeMobileMenu()">Home</a>
-  <a href="about.html" onclick="closeMobileMenu()">Tentang</a>
-  <a href="project.html" onclick="closeMobileMenu()">Project</a>
-  <a href="penghargaan.html" onclick="closeMobileMenu()">Penghargaan</a>
-  <a href="contact.html" onclick="closeMobileMenu()">Kontak</a>
+  <a href="index.html" class="active" onclick="closeMobileMenu()" data-i18n="nav_home">Home</a>
+  <a href="about.html" onclick="closeMobileMenu()" data-i18n="nav_about">Tentang</a>
+  <a href="project.html" onclick="closeMobileMenu()" data-i18n="nav_project">Project</a>
+  <a href="penghargaan.html" onclick="closeMobileMenu()" data-i18n="nav_awards">Penghargaan</a>
+  <a href="contact.html" onclick="closeMobileMenu()" data-i18n="nav_contact">Kontak</a>
 </div>
 
 <!-- NAVBAR -->
 <nav>
   <div class="logo">DZAKI</div>
   <ul>
-    <li><a href="index.html" class="active">Home</a></li>
-    <li><a href="about.html">Tentang</a></li>
-    <li><a href="project.html">Project</a></li>
-    <li><a href="penghargaan.html">Penghargaan</a></li>
-    <li><a href="contact.html">Kontak</a></li>
+    <li><a href="index.html" class="active" data-i18n="nav_home">Home</a></li>
+    <li><a href="about.html" data-i18n="nav_about">Tentang</a></li>
+    <li><a href="project.html" data-i18n="nav_project">Project</a></li>
+    <li><a href="penghargaan.html" data-i18n="nav_awards">Penghargaan</a></li>
+    <li><a href="contact.html" data-i18n="nav_contact">Kontak</a></li>
   </ul>
   <div style="display:flex;align-items:center;gap:12px;">
+    <button class="lang-btn" id="langToggle" onclick="toggleLang()" title="Toggle Language">🌐 <span id="langLabel">EN</span></button>
     <div class="theme-switch" onclick="toggleDark()" title="Toggle Dark Mode">
       <div class="switch-circle"></div>
     </div>
@@ -96,12 +99,16 @@
     <img src="images/fotoku.jpg" alt="Foto Profil" class="foto">
   </div>
 
-  <div class="hero-badge"> Mahasiswa Manajemen Informatika</div>
+  <div class="hero-badge" data-i18n="hero_badge"> Mahasiswa Manajemen Informatika</div>
+  <div class="available-badge">
+    <span class="available-dot"></span>
+    <span class="available-text" data-i18n="available_badge">Available for Work</span>
+  </div>
 
   <h1>Dzaki Pasha Ramadhan</h1>
   <h2>Saya Seorang <span id="typing"></span></h2>
 
-  <p>Universitas Negeri Surabaya &nbsp;·&nbsp; Web Developer &nbsp;·&nbsp; Web Enthusiast</p>
+  <p data-i18n="hero_sub">Universitas Negeri Surabaya &nbsp;·&nbsp; Web Developer &nbsp;·&nbsp; Web Enthusiast</p>
 
   <!-- SOCIAL LINKS -->
   <div class="hero-social">
@@ -136,8 +143,12 @@
   </div>
 
   <div class="hero-buttons">
-    <a href="contact.html" class="btn-primary">🔥 Hubungi Saya</a>
-    <a href="project.html" class="btn-outline">🛸 Lihat Project</a>
+    <a href="contact.html" class="btn-primary" data-i18n="btn_contact">🔥 Hubungi Saya</a>
+    <a href="project.html" class="btn-outline" data-i18n="btn_projects">🛸 Lihat Project</a>
+    <a href="cv/dzaki-cv.pdf" download="CV_Dzaki_Pasha.pdf" class="btn-cv" id="btnCV" title="Download CV PDF" data-i18n="btn_cv">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M5 20h14v-2H5v2zm7-18L5.33 9h3.84v4h5.66V9h3.84L12 2z"/></svg>
+      Download CV
+    </a>
   </div>
 
   <!-- SCROLL ARROW -->
@@ -151,38 +162,102 @@
 <section class="stats">
   <div class="box fade-in">
     <h3 id="visitor">0</h3>
-    <p>👁️ Pengunjung</p>
+    <p> Pengunjung</p>
   </div>
   <div class="box fade-in">
     <h3 id="jam">--:--:--</h3>
-    <p>⏰ Jam Sekarang</p>
+    <p> Jam Sekarang</p>
   </div>
   <div class="box fade-in">
     <h3>4+</h3>
-    <p>⚙️ Project</p>
+    <p> Project</p>
   </div>
 </section>
 
 <!-- SERVICES -->
 <section class="services">
-  <div class="section-label">KEAHLIAN</div>
-  <h2>Apa yang Saya Kerjakan?</h2>
-  <p class="section-desc">Fokus membangun pengalaman digital yang modern, cepat, dan menarik.</p>
+  <div class="section-label" data-i18n="services_label">KEAHLIAN</div>
+  <h2 data-i18n="services_title">Apa yang Saya Kerjakan?</h2>
+  <p class="section-desc" data-i18n="services_desc">Fokus membangun pengalaman digital yang modern, cepat, dan menarik.</p>
 
   <div class="service-grid">
     <div class="service-card fade-in">
-      <h2>🖥️ Web Development</h2>
+      <h2> Web Development</h2>
       <p>Membangun website modern dan responsif menggunakan HTML, CSS, dan JavaScript.</p>
     </div>
     <div class="service-card fade-in">
-      <h2>🎨 UI Design</h2>
+      <h2> UI Design</h2>
       <p>Merancang tampilan antarmuka yang menarik, intuitif, dan nyaman digunakan.</p>
     </div>
     <div class="service-card fade-in">
-      <h2>⚡ Programming</h2>
+      <h2> Programming</h2>
       <p>Belajar dan mengimplementasikan solusi pemrograman dengan teknologi terkini.</p>
     </div>
   </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="section-label">TESTIMONI</div>
+  <h2>Apa Kata Mereka?</h2>
+  <p class="section-desc">Feedback dari teman, mentor, dan rekan yang pernah berkolaborasi.</p>
+
+  <div class="testimonial-track-wrap">
+    <div class="testimonial-track" id="testimonialTrack">
+
+      <div class="testimonial-card">
+        <div class="testimonial-quote">❝</div>
+        <p class="testimonial-text">Dzaki sangat antusias dalam belajar web development. Kualitas kodenya bersih dan ia selalu berusaha memahami konsep secara mendalam, bukan sekadar copy-paste.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">MR</div>
+          <div>
+            <strong>M. Rizal</strong>
+            <span>Senior Developer · Mentor</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-quote">❝</div>
+        <p class="testimonial-text">Saya terkesan dengan portfolio Dzaki — desainnya modern, responsif, dan menunjukkan kemampuan front-end yang solid untuk seorang mahasiswa semester awal.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">AS</div>
+          <div>
+            <strong>Aditya S.</strong>
+            <span>UI/UX Designer · Rekan Kuliah</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-quote">❝</div>
+        <p class="testimonial-text">Project Finance Tracker yang Dzaki buat sangat membantu manajemen keuangan saya sebagai mahasiswa. Fiturnya lengkap dan tampilannya intuitif.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">FR</div>
+          <div>
+            <strong>Faris R.</strong>
+            <span>Mahasiswa UNESA · Pengguna</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-quote">❝</div>
+        <p class="testimonial-text">Dzaki punya kemampuan debugging yang baik dan tidak mudah menyerah saat menghadapi masalah teknis. Itu kualitas yang langka di mahasiswa seusianya.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">DP</div>
+          <div>
+            <strong>Dosen Pembimbing</strong>
+            <span>Manajemen Informatika UNESA</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Dots Navigation -->
+  <div class="testimonial-dots" id="testimonialDots"></div>
 </section>
 
 <!-- FOOTER -->

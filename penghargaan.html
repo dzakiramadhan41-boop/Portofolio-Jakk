@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8">
@@ -30,6 +30,8 @@
   <!-- Favicon -->
   <link rel="icon" href="images/favicon.png" type="image/png">
   <link rel="apple-touch-icon" href="images/favicon.png">
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="manifest.json">
 
   <!-- Schema.org -->
   <script type="application/ld+json">
@@ -81,6 +83,7 @@
     <li><a href="contact.html">Kontak</a></li>
   </ul>
   <div style="display:flex;align-items:center;gap:12px;">
+    <button class="lang-btn" id="langToggle" onclick="toggleLang()" title="Toggle Language">🌐 <span id="langLabel">EN</span></button>
     <div class="theme-switch" onclick="toggleDark()" title="Toggle Dark Mode">
       <div class="switch-circle"></div>
     </div>
@@ -168,9 +171,14 @@
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         Simpan
       </button>
-      <button class="lb-btn lb-share" onclick="shareLightbox()" title="Bagikan">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
-        Bagikan
+      <button class="lb-btn lb-share" onclick="shareToWA()" title="Bagikan ke WhatsApp">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WA
+      </button>
+      <button class="lb-btn lb-copy" onclick="copyImgLink()" title="Salin link gambar">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        Salin Link
+      </button>
       </button>
       <button class="lb-btn lb-fav" id="lbFavBtn" onclick="toggleLightboxFav()" title="Favorit">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
@@ -541,46 +549,56 @@ function nextSertif() {
 }
 
 // ===========================
-// SHARE / COPY LINK
+// SHARE
 // ===========================
-function shareLightbox() {
+
+// Bagikan ke WhatsApp — kirim link langsung ke WA
+function shareToWA() {
   var vis = getVisibleSertifData();
   var s   = vis[currentLightbox];
   if (!s) return;
 
-  // Coba Web Share API dulu (mobile/modern browser)
-  if (navigator.share) {
-    navigator.share({ title: s.title, text: s.title })
-      .then(function() { showToast('✅ Berhasil dibagikan!'); })
-      .catch(function() {});
-    return;
-  }
+  var origin  = window.location.origin;
+  var pageUrl = origin + '/penghargaan.html';
+  var text    = encodeURIComponent(s.title + ' \u2014 Lihat sertifikat di portfolio Dzaki Pasha: ' + pageUrl);
+  var waUrl   = 'https://wa.me/?text=' + text;
 
-  // Fallback: salin nama file / path ke clipboard
-  var text = s.title + ' — ' + s.img;
+  window.open(waUrl, '_blank', 'noopener');
+  showToast('\uD83D\uDCAC Membuka WhatsApp...');
+}
+
+// Salin link gambar ke clipboard
+function copyImgLink() {
+  var vis = getVisibleSertifData();
+  var s   = vis[currentLightbox];
+  if (!s) return;
+
+  var origin  = window.location.origin;
+  var imgUrl  = origin + '/' + s.img;
+  copyToClipboard(imgUrl, '\uD83D\uDD17 Link gambar disalin! Paste ke chat WA kamu.');
+}
+
+// Helper salin ke clipboard
+function copyToClipboard(text, toastMsg) {
   if (navigator.clipboard && window.isSecureContext) {
-    navigator.clipboard.writeText(text).then(function () {
-      showToast('🔗 Info sertifikat disalin!');
-    });
+    navigator.clipboard.writeText(text)
+      .then(function() { showToast(toastMsg); })
+      .catch(function() { copyFallback(text, toastMsg); });
   } else {
-    // Fallback manual untuk file:// protocol
-    var el = document.createElement('textarea');
-    el.value = text;
-    el.style.position = 'fixed';
-    el.style.opacity  = '0';
-    document.body.appendChild(el);
-    el.select();
-    try {
-      document.execCommand('copy');
-      showToast('🔗 Info sertifikat disalin!');
-    } catch (e) {
-      showToast('ℹ️ ' + s.title);
-    }
-    document.body.removeChild(el);
+    copyFallback(text, toastMsg);
   }
 }
 
-// ===========================
+function copyFallback(text, toastMsg) {
+  var el = document.createElement('textarea');
+  el.value = text;
+  el.style.cssText = 'position:fixed;top:0;left:0;opacity:0;pointer-events:none;';
+  document.body.appendChild(el);
+  el.focus(); el.select();
+  try { document.execCommand('copy'); showToast(toastMsg); }
+  catch(e) { showToast('\u2139\uFE0F Tidak dapat menyalin.'); }
+  document.body.removeChild(el);
+}
 // DOWNLOAD SERTIFIKAT
 // ===========================
 function downloadSertif() {

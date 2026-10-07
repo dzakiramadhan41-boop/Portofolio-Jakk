@@ -262,7 +262,9 @@ function drawLandmarks(lm) {
   const W=lmCanvas.width, H=lmCanvas.height;
   lmCtx.clearRect(0,0,W,H);
   if (!lm) return;
-  const sx=pt=>(1-pt.x)*W, sy=pt=>pt.y*H;
+  // MediaPipe sudah normalisasi x dengan mirror (0=kanan, 1=kiri dari sudut pandang user)
+  // Video di-mirror via CSS scaleX(-1), jadi koordinat landmark sudah match langsung
+  const sx=pt=>pt.x*W, sy=pt=>pt.y*H;
   lmCtx.strokeStyle='rgba(0,255,180,0.75)'; lmCtx.lineWidth=1.8;
   CONN.forEach(([a,b])=>{
     lmCtx.beginPath(); lmCtx.moveTo(sx(lm[a]),sy(lm[a])); lmCtx.lineTo(sx(lm[b]),sy(lm[b])); lmCtx.stroke();
@@ -342,7 +344,6 @@ function getCameraResolution() {
 
 initThreeJS();
 updateHUD(0);
-syncCanvasToWebcam();
 
 // Re-sync canvas saat resize
 window.addEventListener('resize', syncCanvasToWebcam);
@@ -361,8 +362,14 @@ navigator.mediaDevices.getUserMedia({
 })
   .then(stream => {
     videoEl.srcObject = stream;
+    // Sync canvas setelah video metadata loaded (ukuran sudah render)
+    videoEl.addEventListener('loadedmetadata', syncCanvasToWebcam, { once: true });
     new Camera(videoEl, {
-      onFrame: async () => { await hands.send({ image: videoEl }); },
+      onFrame: async () => {
+        // Sync canvas tiap frame pertama jika belum tersync
+        if (lmCanvas.width === 0) syncCanvasToWebcam();
+        await hands.send({ image: videoEl });
+      },
       width:  camRes.width,
       height: camRes.height
     }).start();
